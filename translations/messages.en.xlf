@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="yKeA0.P" resname="Log in!">
+        <source>Log in!</source>
+        <target>Log in!</target>
+      </trans-unit>
+      <trans-unit id="dDUw20Q" resname="Please sign in">
+        <source>Please sign in</source>
+        <target>Please sign in</target>
+      </trans-unit>
+      <trans-unit id="acVpEs4" resname="You are logged in as">
+        <source>You are logged in as</source>
+        <target>You are logged in as</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="v9QCsvb" resname="Sign in">
+        <source>Sign in</source>
+        <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="0FJ_Sz1" resname="Logout">
+        <source>Logout</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="BJ44eLM" resname="Add observation's">
+        <source>Add observation's</source>
+        <target>Add observation's</target>
+      </trans-unit>
+      <trans-unit id="x32_gCK" resname="Add observation's to AVES database!">
+        <source>Add observation's to AVES database!</source>
+        <target>Add observation's to AVES database!</target>
+      </trans-unit>
+      <trans-unit id="qx.p965" resname="Hello, here you can add observation's to AVES database!">
+        <source>Hello, here you can add observation's to AVES database!</source>
+        <target>Hello, here you can add observation's to AVES database!</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

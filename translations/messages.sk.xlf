@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="sk" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="yKeA0.P" resname="Log in!">
+        <source>Log in!</source>
+        <target>Prihláste sa prosím!</target>
+      </trans-unit>
+      <trans-unit id="dDUw20Q" resname="Please sign in">
+        <source>Please sign in</source>
+        <target>Prihláste sa prosím</target>
+      </trans-unit>
+      <trans-unit id="acVpEs4" resname="You are logged in as">
+        <source>You are logged in as</source>
+        <target>Ste prihlásený ako</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Heslo</target>
+      </trans-unit>
+      <trans-unit id="v9QCsvb" resname="Sign in">
+        <source>Sign in</source>
+        <target>Prihlásiť sa</target>
+      </trans-unit>
+      <trans-unit id="0FJ_Sz1" resname="Logout">
+        <source>Logout</source>
+        <target>Odhlásiť sa</target>
+      </trans-unit>
+      <trans-unit id="BJ44eLM" resname="Add observation's">
+        <source>Add observation's</source>
+        <target>Pridávanie pozorovaní</target>
+      </trans-unit>
+      <trans-unit id="x32_gCK" resname="Add observation's to AVES database!">
+        <source>Add observation's to AVES database!</source>
+        <target>Pridávanie pozorovaní do databázy AVES!</target>
+      </trans-unit>
+      <trans-unit id="qx.p965" resname="Hello, here you can add observation's to AVES database!">
+        <source>Hello, here you can add observation's to AVES database!</source>
+        <target>Vitajte, tu môžete pridávať pozorovania do databázy AVES Symfónia!</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
