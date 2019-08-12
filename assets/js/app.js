@@ -9,6 +9,17 @@
 require('../css/app.css');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-// const $ = require('jquery');
+const $ = require('jquery');
+
+
+//require('jquery-ui');
+
+//require('jquery-mobile');
+
+//AK pokus require("jquery-mobile/js/jquery.mobile.js");
+
+// the bootstrap module doesn't export/return anything
+require('bootstrap');
+require('bootstrap/dist/css/bootstrap.css');
 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');

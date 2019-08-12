@@ -1,8 +1,15 @@
 {
     "devDependencies": {
         "@symfony/webpack-encore": "^0.28.0",
+        "bootstrap": "^4.3.1",
         "core-js": "^3.0.0",
+        "file": "^0.2.2",
+        "fs": "^0.0.1-security",
+        "jquery": "^3.4.1",
+        "jquery-mobile": "^1.5.0-alpha.1",
+        "popper.js": "^1.15.0",
         "regenerator-runtime": "^0.13.2",
+        "system": "^2.0.1",
         "webpack-notifier": "^1.6.0"
     },
     "license": "UNLICENSED",
@@ -12,5 +19,13 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
+    },
+    "dependencies": {
+        "grunt": "^1.0.4",
+        "imports-loader": "^0.8.0",
+        "jquery-ui": "^1.12.1",
+        "load-grunt-config": "^3.0.0",
+        "load-grunt-tasks": "^5.1.0",
+        "module": "^1.2.5"
     }
 }
