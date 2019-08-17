@@ -1,4 +1,6 @@
 index:
-    path: /
+    path: /{_locale}
     controller: App\Controller\PrehladController::index
     locale: sk
+    requirements:
+      _locale : sk|en
