@@ -5,17 +5,65 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
+      <trans-unit id="A4rOVpT" resname="hlavny.nadpis">
+        <source>hlavny.nadpis</source>
+        <target>Add observation's to AVES database!</target>
+      </trans-unit>
+      <trans-unit id="g.pD35M" resname="Tituluj.Aves">
+        <source>Tituluj.Aves</source>
+        <target>Database Aves-Symfónia</target>
+      </trans-unit>
+      <trans-unit id="UZFZG_m" resname="domov">
+        <source>domov</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="BhDPDm2" resname="linka">
+        <source>linka</source>
+        <target>Link</target>
+      </trans-unit>
+      <trans-unit id="DK7wrs1" resname="pridaj.pozorovanie">
+        <source>pridaj.pozorovanie</source>
+        <target>Add observation's</target>
+      </trans-unit>
+      <trans-unit id="99VtN99" resname="z.excelu">
+        <source>z.excelu</source>
+        <target>From excel</target>
+      </trans-unit>
+      <trans-unit id="zv_Spbd" resname="z.mobilu">
+        <source>z.mobilu</source>
+        <target>Small device (mobile, tablet..)</target>
+      </trans-unit>
+      <trans-unit id="YFaKwae" resname="je.prihlaseny">
+        <source>je.prihlaseny</source>
+        <target>Logged</target>
+      </trans-unit>
+      <trans-unit id="0hEeKli" resname="odhlasit">
+        <source>odhlasit</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="Pxe2ZyQ" resname="o.com.je.stranka">
+        <source>o.com.je.stranka</source>
+        <target>Hello, here you can add observation's to AVES database!</target>
+      </trans-unit>
+      <trans-unit id="rsMHTBz" resname="vyzva.k.prihlaseniu">
+        <source>vyzva.k.prihlaseniu</source>
+        <target>Sign in</target>
+      </trans-unit>
       <trans-unit id="yKeA0.P" resname="Log in!">
         <source>Log in!</source>
         <target>Log in!</target>
       </trans-unit>
-      <trans-unit id="dDUw20Q" resname="Please sign in">
-        <source>Please sign in</source>
-        <target>Please sign in</target>
-      </trans-unit>
       <trans-unit id="acVpEs4" resname="You are logged in as">
         <source>You are logged in as</source>
         <target>You are logged in as</target>
+      </trans-unit>
+      <trans-unit id="0FJ_Sz1" resname="Logout">
+        <source>Logout</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="dDUw20Q" resname="Please sign in">
+        <source>Please sign in</source>
+        <target>Please sign in</target>
       </trans-unit>
       <trans-unit id="588_9PF" resname="Password">
         <source>Password</source>
@@ -24,22 +72,6 @@
       <trans-unit id="v9QCsvb" resname="Sign in">
         <source>Sign in</source>
         <target>Sign in</target>
-      </trans-unit>
-      <trans-unit id="0FJ_Sz1" resname="Logout">
-        <source>Logout</source>
-        <target>Logout</target>
-      </trans-unit>
-      <trans-unit id="BJ44eLM" resname="Add observation's">
-        <source>Add observation's</source>
-        <target>Add observation's</target>
-      </trans-unit>
-      <trans-unit id="x32_gCK" resname="Add observation's to AVES database!">
-        <source>Add observation's to AVES database!</source>
-        <target>Add observation's to AVES database!</target>
-      </trans-unit>
-      <trans-unit id="qx.p965" resname="Hello, here you can add observation's to AVES database!">
-        <source>Hello, here you can add observation's to AVES database!</source>
-        <target>Hello, here you can add observation's to AVES database!</target>
       </trans-unit>
     </body>
   </file>
