@@ -3,18 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiProperty;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Zoology - database of observations
  *
- * @ApiResource(
- *  collectionOperations={
- *         "post"={"access_control"="is_granted('ROLE_USER')", "access_control_message"="Only user can add observation."}
- *     },
- * )
  * @ORM\Entity(repositoryClass="App\Repository\ZoologyRepository")
  */
 class Zoology
@@ -69,6 +62,8 @@ class Zoology
     /**
      * @ORM\Column(type="string", length=1)
      * @Assert\Length(max=1)
+     * @ORM\ManyToOne(targetEntity="app\Entity\Lkppristupnost")
+     * @ORM\JoinColumn(name="zoology_accessibility", referencedColumnName="lkppristupnost_pristupnost", nullable=false)
      */
     private $zoology_accessibility;
 
@@ -91,6 +86,8 @@ class Zoology
 
     /**
      * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="app\Entity\Lkpzoochar")
+     * @ORM\JoinColumn(name="lkpzoochar_id", referencedColumnName="id", nullable=false)
      */
     private $lkpzoochar_id;
 
@@ -165,12 +162,12 @@ class Zoology
         return $this;
     }
 
-    public function getZoologyAccessibility(): ?string
+    public function getZoologyAccessibility(): ?Lkppristupnost
     {
         return $this->zoology_accessibility;
     }
 
-    public function setZoologyAccessibility(string $zoology_accessibility): self
+    public function setZoologyAccessibility(?Lkppristupnost $zoology_accessibility): self
     {
         $this->zoology_accessibility = $zoology_accessibility;
 
@@ -236,4 +233,6 @@ class Zoology
 
         return $this;
     }
+
+
 }

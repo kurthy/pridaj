@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+  <file source-language="sk" target-language="en" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
@@ -72,6 +72,62 @@
       <trans-unit id="v9QCsvb" resname="Sign in">
         <source>Sign in</source>
         <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="Lj_6Vx." resname="novy.zaznam">
+        <source>novy.zaznam</source>
+        <target>NEW DATA</target>
+      </trans-unit>
+      <trans-unit id="zoology.date" resname="zoology.date">
+        <source>zoology.date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="VhFi9Uw" resname="nazov.lokality">
+        <source>nazov.lokality</source>
+        <target>Locality</target>
+      </trans-unit>
+      <trans-unit id="_cu_ULl" resname="zoology.longitud">
+        <source>zoology.longitud</source>
+        <target>Longitude</target>
+      </trans-unit>
+      <trans-unit id="hZwpAHb" resname="zoology.latitud">
+        <source>zoology.latitud</source>
+        <target>Latitude</target>
+      </trans-unit>
+      <trans-unit id="zoology.description" resname="zoology.description">
+        <source>zoology.description</source>
+        <target>Zoology description</target>
+      </trans-unit>
+      <trans-unit id="zoology.acces" resname="zoology.acces">
+        <source>zoology.acces</source>
+        <target>Accessibility</target>
+      </trans-unit>
+      <trans-unit id="Lkpzoospecies id" resname="Lkpzoospecies id">
+        <source>Lkpzoospecies id</source>
+        <target>Species</target>
+      </trans-unit>
+      <trans-unit id="lkpzoospecies_id" resname="lkpzoospecies_id">
+        <source>lkpzoospecies_id</source>
+        <target>Druh</target>
+      </trans-unit>
+      <trans-unit id="pocet" resname="pocet">
+        <source>pocet</source>
+        <target>Count</target>
+      </trans-unit>
+      <trans-unit id="charakteristika" resname="charakteristika">
+        <source>charakteristika</source>
+        <target>Charakteristic</target>
+      </trans-unit>
+      <trans-unit id="zoospecies.description" resname="zoospecies.description">
+        <source>zoospecies.description</source>
+        <target>Taxon description</target>
+      </trans-unit>
+      <trans-unit id="save" resname="save">
+        <source>save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="reset" resname="reset">
+        <source>reset</source>
+        <target>Reset</target>
       </trans-unit>
     </body>
   </file>
