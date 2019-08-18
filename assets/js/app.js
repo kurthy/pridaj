@@ -21,5 +21,8 @@ const $ = require('jquery');
 // the bootstrap module doesn't export/return anything
 require('bootstrap');
 require('bootstrap/dist/css/bootstrap.css');
+require('bootstrap-datepicker/dist/js/bootstrap-datepicker.js');
+require('bootstrap-datepicker/dist/css/bootstrap-datepicker3.css');
+require('bootstrap-datepicker/js/locales/bootstrap-datepicker.sk.js');
 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');

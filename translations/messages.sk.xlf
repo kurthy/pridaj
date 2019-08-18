@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" target-language="sk" datatype="plaintext" original="file.ext">
+  <file source-language="sk" target-language="sk" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
@@ -72,6 +72,58 @@
       <trans-unit id="v9QCsvb" resname="Sign in">
         <source>Sign in</source>
         <target>Prihlásiť sa</target>
+      </trans-unit>
+      <trans-unit id="Lj_6Vx." resname="novy.zaznam">
+        <source>novy.zaznam</source>
+        <target>NOVÉ DÁTA</target>
+      </trans-unit>
+      <trans-unit id="CcDC.Q3" resname="zoology.date">
+        <source>zoology.date</source>
+        <target>Dátum</target>
+      </trans-unit>
+      <trans-unit id="VhFi9Uw" resname="nazov.lokality">
+        <source>nazov.lokality</source>
+        <target>Lokalita</target>
+      </trans-unit>
+      <trans-unit id="_cu_ULl" resname="zoology.longitud">
+        <source>zoology.longitud</source>
+        <target>Zemepisná dĺžka</target>
+      </trans-unit>
+      <trans-unit id="hZwpAHb" resname="zoology.latitud">
+        <source>zoology.latitud</source>
+        <target>Zemepisná šírka</target>
+      </trans-unit>
+      <trans-unit id="zoology.description" resname="zoology.description">
+        <source>zoology.description</source>
+        <target>Poznámka k lokalite</target>
+      </trans-unit>
+      <trans-unit id="zoology.acces" resname="zoology.acces">
+        <source>zoology.acces</source>
+        <target>Prístupnosť</target>
+      </trans-unit>
+      <trans-unit id="Lkpzoospecies id" resname="Lkpzoospecies id">
+        <source>Lkpzoospecies id</source>
+        <target>Druh</target>
+      </trans-unit>
+      <trans-unit id="pocet" resname="pocet">
+        <source>pocet</source>
+        <target>Počet</target>
+      </trans-unit>
+      <trans-unit id="charakteristika" resname="charakteristika">
+        <source>charakteristika</source>
+        <target>Charakteristika</target>
+      </trans-unit>
+      <trans-unit id="zoospecies.description" resname="zoospecies.description">
+        <source>zoospecies.description</source>
+        <target>Poznámka k druhu</target>
+      </trans-unit>
+      <trans-unit id="save" resname="save">
+        <source>save</source>
+        <target>Uložiť</target>
+      </trans-unit>
+      <trans-unit id="reset" resname="reset">
+        <source>reset</source>
+        <target>Reset</target>
       </trans-unit>
     </body>
   </file>
