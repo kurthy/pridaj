@@ -63,10 +63,14 @@ class ZoologyType  extends AbstractType
               'label' => 'zoology.acces'
 	      ])
               ->add('lkpzoospecies_id',null, [
-              'placeholder' => 'Vyberte si druh',
+              'placeholder' => 'druh.vyzva.polozka',
 	      'choice_label' => function ($lkpzoospeciesAves){
-		       return $lkpzoospeciesAves->getLkpzoospeciesGenusSpecies(); 
-               }
+		       return $lkpzoospeciesAves->getLkpzoospeciesSk().' ('.$lkpzoospeciesAves->getLkpzoospeciesLat().')'; 
+              },
+	      'query_builder' => function (EntityRepository $er) {
+		      return $er->createQueryBuilder('d')
+			      ->orderBy('d.lkpzoospecies_subspecorder', 'ASC');
+	      },
               ]) //, SpeciesSelectTextType::class)
 	    ->add('count', null, [
 		    'label' => 'pocet',
@@ -121,7 +125,16 @@ class ZoologyType  extends AbstractType
                },
               'label' => 'zoology.acces'
 	      ])
-            ->add('lkpzoospecies_id')
+              ->add('lkpzoospecies_id', null, [
+                            'placeholder' => 'druh.vyzva.polozka',
+	      'choice_label' => function ($lkpzoospeciesAves){
+		       return $lkpzoospeciesAves->getLkpzoospeciesLat(); 
+              },
+	      'query_builder' => function (EntityRepository $er) {
+		      return $er->createQueryBuilder('d')
+			      ->orderBy('d.lkpzoospecies_subspecorder', 'ASC');
+	      },
+              ])
             ->add('count', null, ['label' => 'pocet', 'data' => 1,])
             ->add('lkpzoochar_id', EntityType::class, [
 	      'class' => Lkpzoochar::class,
