@@ -77,7 +77,7 @@
         <source>novy.zaznam</source>
         <target>NEW DATA</target>
       </trans-unit>
-      <trans-unit id="zoology.date" resname="zoology.date">
+      <trans-unit id="CcDC.Q3" resname="zoology.date">
         <source>zoology.date</source>
         <target>Date</target>
       </trans-unit>
@@ -93,41 +93,45 @@
         <source>zoology.latitud</source>
         <target>Latitude</target>
       </trans-unit>
-      <trans-unit id="zoology.description" resname="zoology.description">
+      <trans-unit id="YEd0sEx" resname="zoology.description">
         <source>zoology.description</source>
         <target>Zoology description</target>
       </trans-unit>
-      <trans-unit id="zoology.acces" resname="zoology.acces">
+      <trans-unit id="H3aNLA2" resname="zoology.acces">
         <source>zoology.acces</source>
         <target>Accessibility</target>
       </trans-unit>
-      <trans-unit id="Lkpzoospecies id" resname="Lkpzoospecies id">
+      <trans-unit id="r0mu8bq" resname="Lkpzoospecies id">
         <source>Lkpzoospecies id</source>
         <target>Species</target>
       </trans-unit>
-      <trans-unit id="lkpzoospecies_id" resname="lkpzoospecies_id">
+      <trans-unit id="s3nFgpR" resname="lkpzoospecies_id">
         <source>lkpzoospecies_id</source>
         <target>Druh</target>
       </trans-unit>
-      <trans-unit id="pocet" resname="pocet">
+      <trans-unit id="REAaNsB" resname="pocet">
         <source>pocet</source>
         <target>Count</target>
       </trans-unit>
-      <trans-unit id="charakteristika" resname="charakteristika">
+      <trans-unit id="gE.ke7p" resname="charakteristika">
         <source>charakteristika</source>
         <target>Charakteristic</target>
       </trans-unit>
-      <trans-unit id="zoospecies.description" resname="zoospecies.description">
+      <trans-unit id="Ja8KDUn" resname="zoospecies.description">
         <source>zoospecies.description</source>
         <target>Taxon description</target>
       </trans-unit>
-      <trans-unit id="save" resname="save">
+      <trans-unit id="FX3KkuQ" resname="save">
         <source>save</source>
         <target>Save</target>
       </trans-unit>
-      <trans-unit id="reset" resname="reset">
+      <trans-unit id="Ab4wu0o" resname="reset">
         <source>reset</source>
         <target>Reset</target>
+      </trans-unit>
+      <trans-unit id="druh.vyzva.polozka" resname="druh.vyzva.polozka">
+        <source>druh.vyzva.polozka</source>
+        <target>Select the species..</target>
       </trans-unit>
     </body>
   </file>

@@ -93,37 +93,41 @@
         <source>zoology.latitud</source>
         <target>Zemepisná šírka</target>
       </trans-unit>
-      <trans-unit id="zoology.description" resname="zoology.description">
+      <trans-unit id="YEd0sEx" resname="zoology.description">
         <source>zoology.description</source>
         <target>Poznámka k lokalite</target>
       </trans-unit>
-      <trans-unit id="zoology.acces" resname="zoology.acces">
+      <trans-unit id="H3aNLA2" resname="zoology.acces">
         <source>zoology.acces</source>
         <target>Prístupnosť</target>
       </trans-unit>
-      <trans-unit id="Lkpzoospecies id" resname="Lkpzoospecies id">
+      <trans-unit id="r0mu8bq" resname="Lkpzoospecies id">
         <source>Lkpzoospecies id</source>
         <target>Druh</target>
       </trans-unit>
-      <trans-unit id="pocet" resname="pocet">
+      <trans-unit id="REAaNsB" resname="pocet">
         <source>pocet</source>
         <target>Počet</target>
       </trans-unit>
-      <trans-unit id="charakteristika" resname="charakteristika">
+      <trans-unit id="gE.ke7p" resname="charakteristika">
         <source>charakteristika</source>
         <target>Charakteristika</target>
       </trans-unit>
-      <trans-unit id="zoospecies.description" resname="zoospecies.description">
+      <trans-unit id="Ja8KDUn" resname="zoospecies.description">
         <source>zoospecies.description</source>
         <target>Poznámka k druhu</target>
       </trans-unit>
-      <trans-unit id="save" resname="save">
+      <trans-unit id="FX3KkuQ" resname="save">
         <source>save</source>
         <target>Uložiť</target>
       </trans-unit>
-      <trans-unit id="reset" resname="reset">
+      <trans-unit id="Ab4wu0o" resname="reset">
         <source>reset</source>
         <target>Reset</target>
+      </trans-unit>
+      <trans-unit id="druh.vyzva.polozka" resname="druh.vyzva.polozka">
+        <source>druh.vyzva.polozka</source>
+        <target>Vyberte si druh..</target>
       </trans-unit>
     </body>
   </file>
