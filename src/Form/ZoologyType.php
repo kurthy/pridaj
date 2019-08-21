@@ -2,21 +2,21 @@
 // src/Form/ZoologyType.php
 namespace App\Form;
 
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\AbstractType;
 use App\Entity\Zoology;
+use App\Entity\LkpzoospeciesAves;
 use App\Entity\Lkppristupnost;
 use App\Entity\Lkpzoochar;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Doctrine\ORM\EntityRepository;
 
 class ZoologyType  extends AbstractType
 {
@@ -34,25 +34,27 @@ class ZoologyType  extends AbstractType
         if ($aPom == 'sk')
         {
         $builder
-            ->add('zoology_locality',TextType::class,[ 'label' => 'nazov.lokality'])
+            ->add('zoology_locality',null,[ 'label' => 'nazov.lokality', 'data' => 'Testovacia lokalita'])
 	    ->add('zoology_date',DateType::class,[ 
 		    'label' => 'zoology.date',
+		    'data' => new \DateTime(), 
 		    'widget' => 'single_text',
                     'html5' => false,
 		    'attr' => [
 			    'data-provide' => 'datepicker', 
-			    'data-date-format' => 'dd.mm.yyyy',
+			    'data-date-format' => 'yyyy-mm-dd',
 			    'data-date-start-date' => '0',
 			    'data-date-calendar-weeks'  => 1,
                             'data-date-default-view-date'  => 'today',
                             'data-date-end-date' => '0d',
 			    'data-date-today-highlight' => true,
 			    'data-date-language' => 'sk',
+			    'data-date-today-btn' => 'linked',
 		    ],
  	    ])
-            ->add('zoology_longitud',NumberType::class, ['label' => 'zoology.longitud'])
-            ->add('zoology_latitud',NumberType::class, ['label' => 'zoology.latitud'])
-            ->add('zoology_description',TextType::class, ['label' => 'zoology.description'])
+            ->add('zoology_longitud',null, ['label' => 'zoology.longitud', 'data' => '48.12345'])
+            ->add('zoology_latitud',null, ['label' => 'zoology.latitud', 'data' => '17.12345'])
+            ->add('zoology_description',null, ['label' => 'zoology.description', 'data' => 'Popis lokality ...'])
 	    ->add('zoology_accessibility', EntityType::class, [
 	      'class' => Lkppristupnost::class,
 	      'choice_label' => function ($lkppristupnost){
@@ -60,17 +62,30 @@ class ZoologyType  extends AbstractType
                },
               'label' => 'zoology.acces'
 	      ])
-            ->add('lkpzoospecies_id')
-            ->add('count', IntegerType::class, ['label' => 'pocet'])
+              ->add('lkpzoospecies_id',null, [
+              'placeholder' => 'Vyberte si druh',
+	      'choice_label' => function ($lkpzoospeciesAves){
+		       return $lkpzoospeciesAves->getLkpzoospeciesGenusSpecies(); 
+               }
+              ]) //, SpeciesSelectTextType::class)
+	    ->add('count', null, [
+		    'label' => 'pocet',
+		    'data' => 1,
+	    ])
+	   // ->add('lkpzoochar_id')
 	    ->add('lkpzoochar_id', EntityType::class, [
 	      'class' => Lkpzoochar::class,
 	      'choice_label' =>  function($lkpzoochar){ 
 		 return $lkpzoochar->getLkpzoocharIdCh().' - '.$lkpzoochar->getLkpzoocharPopularmeaning();
 	      },
+	      'query_builder' => function (EntityRepository $er) {
+		      return $er->createQueryBuilder('u')
+			      ->orderBy('u.lkpzoochar_comborder', 'ASC');
+	      },
               'label' => 'charakteristika'
 	      ]
              )
-            ->add('description',TextType::class, ['label' => 'zoospecies.description'])
+            ->add('description',null, ['label' => 'zoospecies.description', 'data' => 'Tu bude poznámka k druhu..'])
             ->add('save', SubmitType::class, ['label' => 'save'])
             ->add('reset', ResetType::class, ['label' => 'reset'])
         ;
@@ -78,24 +93,27 @@ class ZoologyType  extends AbstractType
             else
            {
 	   $builder
-            ->add('zoology_locality',TextType::class,[ 'label' => 'nazov.lokality'])
+            ->add('zoology_locality',null,[ 'label' => 'nazov.lokality', 'data' => 'Test locality'])
 	    ->add('zoology_date',DateType::class,[ 
 		    'label' => 'zoology.date',
 		    'widget' => 'single_text',
+		    'data' => new \DateTime(), 
                     'html5' => false,
                     'attr' => [
 			    'data-provide' => 'datepicker', 
+			    'data-date-format' => 'yyyy-mm-dd',
 			    'data-date-start-date' => '0',
 			    'data-date-calendar-weeks'  => 1,
                             'data-date-default-view-date'  => 'today',
                             'data-date-end-date' => '0d',
 			    'data-date-today-highlight' => true,
 			    'data-date-language' => 'en',
+			    'data-date-today-btn' => 'linked',
 		    ],
  	    ])
-            ->add('zoology_longitud',NumberType::class, ['label' => 'zoology.longitud'])
-            ->add('zoology_latitud',NumberType::class, ['label' => 'zoology.latitud'])
-            ->add('zoology_description',TextType::class, ['label' => 'zoology.description'])
+            ->add('zoology_longitud',null, ['label' => 'zoology.longitud', 'data' => '48.12345'])
+            ->add('zoology_latitud',null, ['label' => 'zoology.latitud', 'data' => '17.12345'])
+            ->add('zoology_description',null, ['label' => 'zoology.description', 'data' => 'Notices about lokality ...'])
 	    ->add('zoology_accessibility', EntityType::class, [
 	      'class' => Lkppristupnost::class,
 	      'choice_label' => function ($lkppristupnost){
@@ -104,21 +122,37 @@ class ZoologyType  extends AbstractType
               'label' => 'zoology.acces'
 	      ])
             ->add('lkpzoospecies_id')
-            ->add('count', IntegerType::class, ['label' => 'pocet'])
+            ->add('count', null, ['label' => 'pocet', 'data' => 1,])
             ->add('lkpzoochar_id', EntityType::class, [
 	      'class' => Lkpzoochar::class,
 	      'choice_label' =>  function($lkpzoochar){ 
 		 return $lkpzoochar->getLkpzoocharIdCh().' - '.$lkpzoochar->getLkpzoocharPopularmeaningen();
 	      },
-              'label' => 'charakteristika'
+              'label' => 'charakteristika',
+	      'query_builder' => function (EntityRepository $er) {
+		      return $er->createQueryBuilder('u')
+			      ->orderBy('u.lkpzoochar_comborder', 'ASC');
+	      },
 	      ]
              )
-            ->add('description',TextType::class, ['label' => 'zoospecies.description'])
+            ->add('description',null, ['label' => 'zoospecies.description', 'data' => 'Notice about observed species..'])
             ->add('save', SubmitType::class, ['label' => 'save'])
             ->add('reset', ResetType::class, ['label' => 'reset'])
         ;	   
       }
+
+        $builder->get('lkpzoochar_id')
+          ->addModelTransformer(new CallbackTransformer(
+            function ($lkpzoocharIdod) {
+            return $lkpzoocharIdod; 
+            }, 
+            function ($lkpzoocharIddo) {
+              //dd($lkpzoocharIddo);
+              return $lkpzoocharIddo->getId();
+            }
+          ));
     }
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

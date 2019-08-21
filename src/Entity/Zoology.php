@@ -62,7 +62,7 @@ class Zoology
     /**
      * @ORM\Column(type="string", length=1)
      * @Assert\Length(max=1)
-     * @ORM\ManyToOne(targetEntity="app\Entity\Lkppristupnost")
+     * @ORM\ManyToOne(targetEntity="Lkppristupnost")
      * @ORM\JoinColumn(name="zoology_accessibility", referencedColumnName="lkppristupnost_pristupnost", nullable=false)
      */
     private $zoology_accessibility;
@@ -74,7 +74,7 @@ class Zoology
     private $zoology_description;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="LkpzoospeciesAves")
      */
     private $lkpzoospecies_id;
 
@@ -85,9 +85,7 @@ class Zoology
     private $count;
 
     /**
-     * @ORM\Column(type="integer")
-     * @ORM\ManyToOne(targetEntity="app\Entity\Lkpzoochar")
-     * @ORM\JoinColumn(name="lkpzoochar_id", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Lkpzoochar")
      */
     private $lkpzoochar_id;
 
