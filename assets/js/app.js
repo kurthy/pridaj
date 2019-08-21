@@ -25,4 +25,7 @@ require('bootstrap-datepicker/dist/js/bootstrap-datepicker.js');
 require('bootstrap-datepicker/dist/css/bootstrap-datepicker3.css');
 require('bootstrap-datepicker/js/locales/bootstrap-datepicker.sk.js');
 
+require('autocomplete.js/dist/autocomplete.jquery.min.js');
+require('autocomplete.js/dist/algolia-autocomplete.css');
+require('algolia-autocomplete.js');
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
