@@ -69,6 +69,7 @@ class ZoologyType  extends AbstractType
               },
 	      'query_builder' => function (EntityRepository $er) {
 		      return $er->createQueryBuilder('d')
+                              ->where('d.lkpzoospecies_najc <= 340')
 			      ->orderBy('d.lkpzoospecies_subspecorder', 'ASC');
 	      },
               ]) //, SpeciesSelectTextType::class)
@@ -132,6 +133,7 @@ class ZoologyType  extends AbstractType
               },
 	      'query_builder' => function (EntityRepository $er) {
 		      return $er->createQueryBuilder('d')
+                              ->where('d.lkpzoospecies_najc <= 340')
 			      ->orderBy('d.lkpzoospecies_subspecorder', 'ASC');
 	      },
               ])

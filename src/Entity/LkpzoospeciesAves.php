@@ -55,6 +55,11 @@ class LkpzoospeciesAves
      */
     private $lkpzoospecies_subspecorder;
 
+    /**
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private $lkpzoospecies_najc;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -116,6 +121,18 @@ class LkpzoospeciesAves
     public function setLkpzoospeciesSubspecorder(?int $lkpzoospecies_subspecorder): self
     {
         $this->lkpzoospecies_subspecorder = $lkpzoospecies_subspecorder;
+
+        return $this;
+    }
+
+    public function getLkpzoospeciesNajc(): ?int
+    {
+        return $this->lkpzoospecies_najc;
+    }
+
+    public function setLkpzoospeciesNajc(?int $lkpzoospecies_najc): self
+    {
+        $this->lkpzoospecies_najc = $lkpzoospecies_najc;
 
         return $this;
     }
