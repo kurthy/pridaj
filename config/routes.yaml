@@ -1,6 +1,11 @@
+#neviem prečo potom čo som prepol na api adresár s inou symfony aplikáciou a potom localhost:8000 skočí na error localhost:8000/api
+#takto som to "ošetril"
 index:
-    path: /{_locale}
-    controller: App\Controller\PrehladController::index
-    locale: sk
-    requirements:
-      _locale : sk|en
+  path: /api
+  controller: App\Controller\PrehladController::index
+#homepage:
+#    path: /{_locale}/
+#    controller: App\Controller\PrehladController::index
+#    locale: sk
+#    requirements:
+#     _locale : sk|en
