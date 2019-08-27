@@ -26,8 +26,11 @@ class ZoologyController extends AbstractController
     if($form->isSubmitted() && $form->isValid()) {
 	   $zoology = $form->getData();	
 	   $zoology->setSfGuardUserId($this->getUser()->getSfGuardUserId());
-           dd($zoology);
+  //         dd($zoology);
 	   $em->persist($zoology);
+           $em->flush();
+          
+           return $this->redirectToRoute('homepage');
     }
 
 
