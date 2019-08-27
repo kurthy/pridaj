@@ -1,4 +1,5 @@
 <?php
+// tests/Entity/LkpzoospeciesAvesTest.php
 
 namespace App\Tests\Entity;
 
@@ -50,6 +51,14 @@ class LkpzoospeciesAvesTest extends TestCase
     $iSubspecorder = 10;
     $objSubspecorder->setLkpzoospeciesSubspecorder($iSubspecorder);
     $this->assertSame($iSubspecorder, $objSubspecorder->getLkpzoospeciesSubspecorder());
+  }
+
+  public function testPolozkaNajc()
+  {
+    $objLkpAves = new LkpzoospeciesAves();
+    $iPomNajc   = 350;
+    $objLkpAves->setLkpzoospeciesNajc($iPomNajc);
+    $this->assertSame($iPomNajc, $objLkpAves->getLkpzoospeciesNajc());
   }
 }
 

@@ -1,1 +1,4 @@
 10.8.2019 6:48 pridal som bootstrap pomocou yarn aj jquery a propel a teraz ostava yarn encore dev
+27.8.2019
+
+

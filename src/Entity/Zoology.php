@@ -189,7 +189,7 @@ class Zoology
         return $this->lkpzoospecies_id;
     }
 
-    public function setLkpzoospeciesId(int $lkpzoospecies_id): self
+    public function setLkpzoospeciesId($lkpzoospecies_id): self
     {
         $this->lkpzoospecies_id = $lkpzoospecies_id;
 
@@ -213,7 +213,7 @@ class Zoology
         return $this->lkpzoochar_id;
     }
 
-    public function setLkpzoocharId(int $lkpzoochar_id): self
+    public function setLkpzoocharId($lkpzoochar_id): self
     {
         $this->lkpzoochar_id = $lkpzoochar_id;
 

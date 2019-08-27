@@ -62,16 +62,21 @@ class ZoologyType  extends AbstractType
                },
               'label' => 'zoology.acces'
 	      ])
-              ->add('lkpzoospecies_id',null, [
+              ->add('lkpzoospecies_id', EntityType::class, [
+	      'class' => LkpzoospeciesAves::class,
               'placeholder' => 'druh.vyzva.polozka',
 	      'choice_label' => function ($lkpzoospeciesAves){
 		       return $lkpzoospeciesAves->getLkpzoospeciesSk().' ('.$lkpzoospeciesAves->getLkpzoospeciesLat().')'; 
               },
 	      'query_builder' => function (EntityRepository $er) {
 		      return $er->createQueryBuilder('d')
-                              ->where('d.lkpzoospecies_najc <= 340')
+                              ->where('d.lkpzoospecies_najc <= 360')
 			      ->orderBy('d.lkpzoospecies_subspecorder', 'ASC');
 	      },
+ /*             'choice_value' =>  function  ($lkpzoospeciesAves) {
+                return $lkpzoospeciesAves ? $lkpzoospeciesAves->getId() : '';
+               },
+*/
               ]) //, SpeciesSelectTextType::class)
 	    ->add('count', null, [
 		    'label' => 'pocet',
@@ -133,7 +138,7 @@ class ZoologyType  extends AbstractType
               },
 	      'query_builder' => function (EntityRepository $er) {
 		      return $er->createQueryBuilder('d')
-                              ->where('d.lkpzoospecies_najc <= 340')
+                              ->where('d.lkpzoospecies_najc <= 360')
 			      ->orderBy('d.lkpzoospecies_subspecorder', 'ASC');
 	      },
               ])
@@ -155,7 +160,7 @@ class ZoologyType  extends AbstractType
             ->add('reset', ResetType::class, ['label' => 'reset'])
         ;	   
       }
-
+/*
         $builder->get('lkpzoochar_id')
           ->addModelTransformer(new CallbackTransformer(
             function ($lkpzoocharIdod) {
@@ -166,6 +171,7 @@ class ZoologyType  extends AbstractType
               return $lkpzoocharIddo->getId();
             }
           ));
+*/
     }
 
     public function configureOptions(OptionsResolver $resolver)
