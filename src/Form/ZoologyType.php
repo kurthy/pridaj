@@ -73,16 +73,11 @@ class ZoologyType  extends AbstractType
                               ->where('d.lkpzoospecies_najc <= 360')
 			      ->orderBy('d.lkpzoospecies_subspecorder', 'ASC');
 	      },
- /*             'choice_value' =>  function  ($lkpzoospeciesAves) {
-                return $lkpzoospeciesAves ? $lkpzoospeciesAves->getId() : '';
-               },
-*/
-              ]) //, SpeciesSelectTextType::class)
+              ])
 	    ->add('count', null, [
 		    'label' => 'pocet',
 		    'data' => 1,
 	    ])
-	   // ->add('lkpzoochar_id')
 	    ->add('lkpzoochar_id', EntityType::class, [
 	      'class' => Lkpzoochar::class,
 	      'choice_label' =>  function($lkpzoochar){ 
@@ -160,18 +155,6 @@ class ZoologyType  extends AbstractType
             ->add('reset', ResetType::class, ['label' => 'reset'])
         ;	   
       }
-/*
-        $builder->get('lkpzoochar_id')
-          ->addModelTransformer(new CallbackTransformer(
-            function ($lkpzoocharIdod) {
-            return $lkpzoocharIdod; 
-            }, 
-            function ($lkpzoocharIddo) {
-              //dd($lkpzoocharIddo);
-              return $lkpzoocharIddo->getId();
-            }
-          ));
-*/
     }
 
     public function configureOptions(OptionsResolver $resolver)
