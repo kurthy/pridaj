@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LkpzoospeciesAves{% endblock %}
+
+{% block body %}
+    <h1>LkpzoospeciesAves</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ lkpzoospecies_afe.id }}</td>
+            </tr>
+            <tr>
+                <th>Lkpzoospecies_genus_species</th>
+                <td>{{ lkpzoospecies_afe.lkpzoospeciesGenusSpecies }}</td>
+            </tr>
+            <tr>
+                <th>Lkpzoospecies_lat</th>
+                <td>{{ lkpzoospecies_afe.lkpzoospeciesLat }}</td>
+            </tr>
+            <tr>
+                <th>Lkpzoospecies_sk</th>
+                <td>{{ lkpzoospecies_afe.lkpzoospeciesSk }}</td>
+            </tr>
+            <tr>
+                <th>Lkpzoospecies_dynamic_id</th>
+                <td>{{ lkpzoospecies_afe.lkpzoospeciesDynamicId }}</td>
+            </tr>
+            <tr>
+                <th>Lkpzoospecies_subspecorder</th>
+                <td>{{ lkpzoospecies_afe.lkpzoospeciesSubspecorder }}</td>
+            </tr>
+            <tr>
+                <th>Lkpzoospecies_najc</th>
+                <td>{{ lkpzoospecies_afe.lkpzoospeciesNajc }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('lkpzoospecies_aves_index') }}">back to list</a>
+
+    <a href="{{ path('lkpzoospecies_aves_edit', {'id': lkpzoospecies_afe.id}) }}">edit</a>
+
+    {{ include('lkpzoospecies_aves/_delete_form.html.twig') }}
+{% endblock %}

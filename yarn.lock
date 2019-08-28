@@ -2112,6 +2112,21 @@ d@1:
     es5-ext "^0.10.50"
     type "^1.0.1"
 
+datatables-bootstrap@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/datatables-bootstrap/-/datatables-bootstrap-0.0.1.tgz#31f1691623bbed87feb72c83682d1e75ca3fc6f9"
+  integrity sha1-MfFpFiO77Yf+tyyDaC0edco/xvk=
+  dependencies:
+    datatables ">=1.10.0"
+    jquery ">=1.7.0"
+
+datatables@>=1.10.0:
+  version "1.10.18"
+  resolved "https://registry.yarnpkg.com/datatables/-/datatables-1.10.18.tgz#fee16e82aa70b17c5faf1a6954ac68f404f33a70"
+  integrity sha512-ntatMgS9NN6UMpwbmO+QkYJuKlVeMA2Mi0Gu/QxyIh+dW7ZjLSDhPT2tWlzjpIWEkDYgieDzS9Nu7bdQCW0sbQ==
+  dependencies:
+    jquery ">=1.7"
+
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
@@ -3978,7 +3993,7 @@ jquery-ui@^1.12.1:
   resolved "https://registry.yarnpkg.com/jquery-ui/-/jquery-ui-1.12.1.tgz#bcb4045c8dd0539c134bc1488cdd3e768a7a9e51"
   integrity sha1-vLQEXI3QU5wTS8FIjN0+dop6nlE=
 
-"jquery@>=1.7.1 <4.0.0", jquery@>=1.8.3, jquery@^3.4.1:
+jquery@>=1.7, jquery@>=1.7.0, "jquery@>=1.7.1 <4.0.0", jquery@>=1.8.3, jquery@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
   integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
