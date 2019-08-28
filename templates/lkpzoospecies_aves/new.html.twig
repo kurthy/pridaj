@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New LkpzoospeciesAves{% endblock %}
+
+{% block body %}
+    <h1>Create new LkpzoospeciesAves</h1>
+
+    {{ include('lkpzoospecies_aves/_form.html.twig') }}
+
+    <a href="{{ path('lkpzoospecies_aves_index') }}">back to list</a>
+{% endblock %}

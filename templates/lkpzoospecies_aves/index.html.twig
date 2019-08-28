@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LkpzoospeciesAves index{% endblock %}
+
+{% block body %}
+
+<div class="container">
+<div class="row header" style="text-align:center;color:green">
+    <h1>LkpzoospeciesAves index</h1>
+    <table id="dtBasicExample" class="table table-striped table-dark table-responsive" >
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Lkpzoospecies_genus_species</th>
+                <th scope="col">Lkpzoospecies_lat</th>
+                <th scope="col">Lkpzoospecies_sk</th>
+                <th scope="col">Lkpzoospecies_dynamic_id</th>
+                <th scope="col">Lkpzoospecies_subspecorder</th>
+                <th scope="col">Lkpzoospecies_najc</th>
+                <th scope="col">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lkpzoospecies_afe in lkpzoospecies_aves %}
+            <tr>
+                <td scope="row">{{ lkpzoospecies_afe.id }}</td>
+                <td scope="row">{{ lkpzoospecies_afe.lkpzoospeciesGenusSpecies }}</td>
+                <td scope="row">{{ lkpzoospecies_afe.lkpzoospeciesLat }}</td>
+                <td scope="row">{{ lkpzoospecies_afe.lkpzoospeciesSk }}</td>
+                <td scope="row">{{ lkpzoospecies_afe.lkpzoospeciesDynamicId }}</td>
+                <td scope="row">{{ lkpzoospecies_afe.lkpzoospeciesSubspecorder }}</td>
+                <td scope="row">{{ lkpzoospecies_afe.lkpzoospeciesNajc }}</td>
+                <td scope="row">
+                    <a href="{{ path('lkpzoospecies_aves_show', {'id': lkpzoospecies_afe.id})  }}" class="btn btn-primary">show</a>
+                    <a href="{{ path('lkpzoospecies_aves_edit', {'id': lkpzoospecies_afe.id})}}"   class="btn btn-success" >edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr scope="row">
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <a href="{{ path('lkpzoospecies_aves_new') }}">Create new</a>
+</div>
+
+{% endblock %}
+
+
+
