@@ -136,4 +136,10 @@ class LkpzoospeciesAves
 
         return $this;
     }
+
+    public function __toString()
+    {
+      return $this->getLkpzoospeciesSk();
+    }
+
 }

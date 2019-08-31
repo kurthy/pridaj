@@ -160,7 +160,7 @@ class Zoology
         return $this;
     }
 
-    public function getZoologyAccessibility(): ?Lkppristupnost
+    public function getZoologyAccessibility() //: ?Lkppristupnost
     {
         return $this->zoology_accessibility;
     }
@@ -184,7 +184,7 @@ class Zoology
         return $this;
     }
 
-    public function getLkpzoospeciesId(): ?int
+    public function getLkpzoospeciesId() 
     {
         return $this->lkpzoospecies_id;
     }
@@ -208,7 +208,7 @@ class Zoology
         return $this;
     }
 
-    public function getLkpzoocharId(): ?int
+    public function getLkpzoocharId() //: ?int
     {
         return $this->lkpzoochar_id;
     }

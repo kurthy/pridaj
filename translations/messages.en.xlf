@@ -129,9 +129,17 @@
         <source>reset</source>
         <target>Reset</target>
       </trans-unit>
-      <trans-unit id="druh.vyzva.polozka" resname="druh.vyzva.polozka">
+      <trans-unit id=".b7V2Ds" resname="druh.vyzva.polozka">
         <source>druh.vyzva.polozka</source>
         <target>Select the species..</target>
+      </trans-unit>
+      <trans-unit id="OB41K98" resname="nadpis.prehlad.pozorani">
+        <source>nadpis.prehlad.pozorani</source>
+        <target>List of data</target>
+      </trans-unit>
+      <trans-unit id="81Ya43O" resname="link.na.zoznam.pozorovani">
+        <source>link.na.zoznam.pozorovani</source>
+        <target>Inserted observations</target>
       </trans-unit>
     </body>
   </file>
