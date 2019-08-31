@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zoology{% endblock %}
+
+{% block body %}
+    <h1>Zoology</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ zoozaznam.id }}</td>
+            </tr>
+            <tr>
+              <th>{% trans %}nazov.lokality{% endtrans %}</th>
+                <td>{{ zoozaznam.zoologyLocality }}</td>
+            </tr>
+             <tr>
+              <th>{% trans %}zoology.date{% endtrans %}</th>
+                <td>{{ zoozaznam.zoologyDate|date('d.m.Y') }}</td>
+            </tr>
+             <tr>
+              <th>{% trans %}zoology.longitud{% endtrans %}</th>
+                <td>{{ zoozaznam.zoologyLongitud }}</td>
+            </tr>
+             <tr>
+              <th>{% trans %}zoology.latitud{% endtrans %}</th>
+                <td>{{ zoozaznam.zoologyLatitud }}</td>
+            </tr>
+             <tr>
+              <th>{% trans %}zoology.description{% endtrans %}</th>
+                <td>{{ zoozaznam.zoologyDescription }}</td>
+            </tr>
+             <tr>
+              <th>{% trans %}Lkpzoospecies id{% endtrans %}</th>
+              <td>{{ zoozaznam.getLkpzoospeciesId.lkpzoospeciesLat }}</td>
+            </tr>
+             <tr>
+              <th>{% trans %}zoology.acces{% endtrans %}</th>
+              <td>{{ zoozaznam.zoologyAccessibility }}</td>
+            </tr>
+             <tr>
+              <th>{% trans %}pocet{% endtrans %}</th>
+              <td>{{ zoozaznam.count }}</td>
+            </tr>
+             <tr>
+              <th>{% trans %}charakteristika{% endtrans %}</th>
+              <td>{{ zoozaznam.lkpzoocharId }}</td>
+            </tr>
+             <tr>
+              <th>{% trans %}zoospecies.description{% endtrans %}</th>
+              <td>{{ zoozaznam.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('zoology_index') }}">back to list</a>
+
+    <a href="{{ path('zoology_edit', {'id': zoozaznam.id}) }}">edit</a>
+
+    {{ include('zoology/_delete_form.html.twig') }}
+{% endblock %}

@@ -125,9 +125,45 @@
         <source>reset</source>
         <target>Reset</target>
       </trans-unit>
-      <trans-unit id="druh.vyzva.polozka" resname="druh.vyzva.polozka">
+      <trans-unit id=".b7V2Ds" resname="druh.vyzva.polozka">
         <source>druh.vyzva.polozka</source>
         <target>Vyberte si druh..</target>
+      </trans-unit>
+      <trans-unit id="OB41K98" resname="nadpis.prehlad.pozorani">
+        <source>nadpis.prehlad.pozorani</source>
+        <target>Prehľad údajov</target>
+      </trans-unit>
+      <trans-unit id="81Ya43O" resname="link.na.zoznam.pozorovani">
+        <source>link.na.zoznam.pozorovani</source>
+        <target>Zapísané pozorovania</target>
+      </trans-unit>
+      <trans-unit id="qdnGY0T" resname="prehlad.zapisanych.pozorovani">
+        <source>prehlad.zapisanych.pozorovani</source>
+        <target>Prehľad zapísaných pozorovaní</target>
+      </trans-unit>
+      <trans-unit id="HGMzUJ3" resname="show">
+        <source>show</source>
+        <target>zobraziť</target>
+      </trans-unit>
+      <trans-unit id="JiEhxTc" resname="edit">
+        <source>edit</source>
+        <target>upraviť</target>
+      </trans-unit>
+      <trans-unit id="B3cBdNd" resname="zalozit.novy.zaznam">
+        <source>zalozit.novy.zaznam</source>
+        <target>Založiť nový záznam</target>
+      </trans-unit>
+      <trans-unit id="0KaZgQW" resname="charakteristika.kratko">
+        <source>charakteristika.kratko</source>
+        <target>Charak.</target>
+      </trans-unit>
+      <trans-unit id="7xbsoU6" resname="zoology.acces.kratko">
+        <source>zoology.acces.kratko</source>
+        <target>Príst.</target>
+      </trans-unit>
+      <trans-unit id="Kw3N1AA" resname="actions">
+        <source>actions</source>
+        <target>Akcie</target>
       </trans-unit>
     </body>
   </file>

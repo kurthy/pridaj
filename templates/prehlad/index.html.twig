@@ -6,26 +6,29 @@
   <div class="jumbotron">
 
     <h2>{% trans %}pridaj.pozorovanie{% endtrans %} </h2>
+    {% if app.user %}
+      <ul>
+          <li>{% trans %}z.excelu{% endtrans %}</li>
+          <li><a class="nav-link" href="{{ path('newzoology') }}">{% trans %}z.mobilu{% endtrans %}</a></li>
+      </ul>
 
-{% if app.user %}
+    <h2>{% trans %}nadpis.prehlad.pozorani{% endtrans %} </h2>
+      <ul>
+          <li><a class="nav-link" href="{{ path('zoology_index') }}">{% trans %}link.na.zoznam.pozorovani{% endtrans %}</a></li>
+      </ul>
+      <p><small>{% trans %}je.prihlaseny{% endtrans %}:  {{ app.user.username }} ({{ app.user.firstname }} ), <a href="{{ path('app_logout') }}">{% trans %}odhlasit{% endtrans %}</a> </small></p>
 
-    <ul>
-        <li>{% trans %}z.excelu{% endtrans %}</li>
-        <li><a class="nav-link" href="{{ path('newzoology') }}">{% trans %}z.mobilu{% endtrans %}</a></li>
-    </ul>
 
 
-<p><small>{% trans %}je.prihlaseny{% endtrans %}:  {{ app.user.username }} ({{ app.user.firstname }} ), <a href="{{ path('app_logout') }}">{% trans %}odhlasit{% endtrans %}</a> </small></p>
+    {% else %}
 
-{% else %}
+      <p>{% trans %}o.com.je.stranka{% endtrans %}</p>
+      <br />
+      <strong> <a href="{{ path('app_login', {_locale: 'sk'})}}" class="btn btn-primary"  >{% trans %}vyzva.k.prihlaseniu{% endtrans %}</a></strong> 
+      <br /><br />  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+      (.. or <a href="{{ path('app_login', {_locale: 'en'}) }}">Sign in for english!</a> ) 
 
-<p>{% trans %}o.com.je.stranka{% endtrans %}</p>
-<br />
-<strong> <a href="{{ path('app_login', {_locale: 'sk'})}}" class="btn btn-primary"  >{% trans %}vyzva.k.prihlaseniu{% endtrans %}</a></strong> 
-<br /><br />  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
-(.. or <a href="{{ path('app_login', {_locale: 'en'}) }}">Sign in for english!</a> ) 
-
-{% endif %}
-</div>
+    {% endif %}
+  </div>
 
 {% endblock %}
