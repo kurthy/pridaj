@@ -155,11 +155,11 @@
       </trans-unit>
       <trans-unit id="0KaZgQW" resname="charakteristika.kratko">
         <source>charakteristika.kratko</source>
-        <target>Charak.</target>
+        <target>Cha.</target>
       </trans-unit>
       <trans-unit id="7xbsoU6" resname="zoology.acces.kratko">
         <source>zoology.acces.kratko</source>
-        <target>Príst.</target>
+        <target>Pr.</target>
       </trans-unit>
       <trans-unit id="Kw3N1AA" resname="actions">
         <source>actions</source>
@@ -184,6 +184,10 @@
       <trans-unit id="YME6lQg" resname="o.symfonii">
         <source>o.symfonii</source>
         <target>Aves-Symfónia 4 predstavenie</target>
+      </trans-unit>
+      <trans-unit id="ig0_klg" resname="pocet.kratko">
+        <source>pocet.kratko</source>
+        <target>Pč.</target>
       </trans-unit>
     </body>
   </file>

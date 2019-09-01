@@ -163,7 +163,7 @@
       </trans-unit>
       <trans-unit id="HGMzUJ3" resname="show">
         <source>show</source>
-        <target>show</target>
+        <target>Show</target>
       </trans-unit>
       <trans-unit id="JiEhxTc" resname="edit">
         <source>edit</source>
