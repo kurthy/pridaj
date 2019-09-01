@@ -26,8 +26,11 @@ class ZoologyController extends AbstractController
    */
   public function index(ZoologyRepository $zoologyRepository): Response
   {
+    $user = $this->getUser();
     return $this->render('zoology/index.html.twig', [
-      'zoology' => $zoologyRepository->findAll(),
+      'zoology' => $zoologyRepository->findBy(
+        ['sf_guard_user_id' => $user->getSfGuardUserId()] 
+      ),
     ]);
 
   }
