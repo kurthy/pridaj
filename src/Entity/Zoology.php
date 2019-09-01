@@ -75,6 +75,7 @@ class Zoology
 
     /**
      * @ORM\ManyToOne(targetEntity="LkpzoospeciesAves")
+     * @ORM\JoinColumn(name="lkpzoospecies_id", referencedColumnName="id")
      */
     private $lkpzoospecies_id;
 
@@ -86,6 +87,7 @@ class Zoology
 
     /**
      * @ORM\ManyToOne(targetEntity="Lkpzoochar")
+     * @ORM\JoinColumn(name="lkpzoochar_id", referencedColumnName="id")
      */
     private $lkpzoochar_id;
 
