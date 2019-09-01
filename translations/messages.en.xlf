@@ -141,6 +141,50 @@
         <source>link.na.zoznam.pozorovani</source>
         <target>Inserted observations</target>
       </trans-unit>
+      <trans-unit id="Dj4i.m2" resname="Uprava.zaznamu">
+        <source>Uprava.zaznamu</source>
+        <target>Edit data</target>
+      </trans-unit>
+      <trans-unit id="qdnGY0T" resname="prehlad.zapisanych.pozorovani">
+        <source>prehlad.zapisanych.pozorovani</source>
+        <target>List of data</target>
+      </trans-unit>
+      <trans-unit id="0KaZgQW" resname="charakteristika.kratko">
+        <source>charakteristika.kratko</source>
+        <target>charact.</target>
+      </trans-unit>
+      <trans-unit id="7xbsoU6" resname="zoology.acces.kratko">
+        <source>zoology.acces.kratko</source>
+        <target>access.</target>
+      </trans-unit>
+      <trans-unit id="Kw3N1AA" resname="actions">
+        <source>actions</source>
+        <target>actions</target>
+      </trans-unit>
+      <trans-unit id="HGMzUJ3" resname="show">
+        <source>show</source>
+        <target>show</target>
+      </trans-unit>
+      <trans-unit id="JiEhxTc" resname="edit">
+        <source>edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="B3cBdNd" resname="zalozit.novy.zaznam">
+        <source>zalozit.novy.zaznam</source>
+        <target>Create a new record</target>
+      </trans-unit>
+      <trans-unit id="U0M9PNE" resname="back to list">
+        <source>back to list</source>
+        <target>Back to list</target>
+      </trans-unit>
+      <trans-unit id="cvIH99o" resname="id.zaznamu">
+        <source>id.zaznamu</source>
+        <target>Record nr.</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

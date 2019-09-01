@@ -34,10 +34,9 @@ class ZoologyType  extends AbstractType
         if ($aPom == 'sk')
         {
         $builder
-            ->add('zoology_locality',null,[ 'label' => 'nazov.lokality', 'data' => 'Testovacia lokalita'])
+            ->add('zoology_locality',null,[ 'label' => 'nazov.lokality'])
 	    ->add('zoology_date',DateType::class,[ 
 		    'label' => 'zoology.date',
-		    'data' => new \DateTime(), 
 		    'widget' => 'single_text',
                     'html5' => false,
 		    'attr' => [
@@ -52,9 +51,9 @@ class ZoologyType  extends AbstractType
 			    'data-date-today-btn' => 'linked',
 		    ],
  	    ])
-            ->add('zoology_longitud',null, ['label' => 'zoology.longitud', 'data' => '48.12345'])
-            ->add('zoology_latitud',null, ['label' => 'zoology.latitud', 'data' => '17.12345'])
-            ->add('zoology_description',null, ['label' => 'zoology.description', 'data' => 'Popis lokality ...'])
+            ->add('zoology_longitud',null, ['label' => 'zoology.longitud'])
+            ->add('zoology_latitud',null, ['label' => 'zoology.latitud'])
+            ->add('zoology_description',null, ['label' => 'zoology.description'])
 	    ->add('zoology_accessibility', EntityType::class, [
 	      'class' => Lkppristupnost::class,
 	      'choice_label' => function ($lkppristupnost){
@@ -76,7 +75,6 @@ class ZoologyType  extends AbstractType
               ])
 	    ->add('count', null, [
 		    'label' => 'pocet',
-		    'data' => 1,
 	    ])
 	    ->add('lkpzoochar_id', EntityType::class, [
 	      'class' => Lkpzoochar::class,
@@ -90,19 +88,18 @@ class ZoologyType  extends AbstractType
               'label' => 'charakteristika'
 	      ]
              )
-            ->add('description',null, ['label' => 'zoospecies.description', 'data' => 'Tu bude poznámka k druhu..'])
-            ->add('save', SubmitType::class, ['label' => 'save'])
+            ->add('description',null, ['label' => 'zoospecies.description'])
+            ->add('save', SubmitType::class, ['attr' => ['class' => 'btn-success btn'], 'label' => 'save'])
             ->add('reset', ResetType::class, ['label' => 'reset'])
         ;
 	    }
             else
            {
 	   $builder
-            ->add('zoology_locality',null,[ 'label' => 'nazov.lokality', 'data' => 'Test locality'])
+            ->add('zoology_locality',null,[ 'label' => 'nazov.lokality'])
 	    ->add('zoology_date',DateType::class,[ 
 		    'label' => 'zoology.date',
 		    'widget' => 'single_text',
-		    'data' => new \DateTime(), 
                     'html5' => false,
                     'attr' => [
 			    'data-provide' => 'datepicker', 
@@ -116,9 +113,9 @@ class ZoologyType  extends AbstractType
 			    'data-date-today-btn' => 'linked',
 		    ],
  	    ])
-            ->add('zoology_longitud',null, ['label' => 'zoology.longitud', 'data' => '48.12345'])
-            ->add('zoology_latitud',null, ['label' => 'zoology.latitud', 'data' => '17.12345'])
-            ->add('zoology_description',null, ['label' => 'zoology.description', 'data' => 'Notices about lokality ...'])
+            ->add('zoology_longitud',null, ['label' => 'zoology.longitud'])
+            ->add('zoology_latitud',null, ['label' => 'zoology.latitud'])
+            ->add('zoology_description',null, ['label' => 'zoology.description'])
 	    ->add('zoology_accessibility', EntityType::class, [
 	      'class' => Lkppristupnost::class,
 	      'choice_label' => function ($lkppristupnost){
@@ -137,7 +134,7 @@ class ZoologyType  extends AbstractType
 			      ->orderBy('d.lkpzoospecies_subspecorder', 'ASC');
 	      },
               ])
-            ->add('count', null, ['label' => 'pocet', 'data' => 1,])
+            ->add('count', null, ['label' => 'pocet'])
             ->add('lkpzoochar_id', EntityType::class, [
 	      'class' => Lkpzoochar::class,
 	      'choice_label' =>  function($lkpzoochar){ 
@@ -150,8 +147,8 @@ class ZoologyType  extends AbstractType
 	      },
 	      ]
              )
-            ->add('description',null, ['label' => 'zoospecies.description', 'data' => 'Notice about observed species..'])
-            ->add('save', SubmitType::class, ['label' => 'save'])
+            ->add('description',null, ['label' => 'zoospecies.description'])
+            ->add('save', SubmitType::class, ['attr' => ['class' => 'btn-danger btn'], 'label' => 'save'])
             ->add('reset', ResetType::class, ['label' => 'reset'])
         ;	   
       }

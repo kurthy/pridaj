@@ -143,11 +143,11 @@
       </trans-unit>
       <trans-unit id="HGMzUJ3" resname="show">
         <source>show</source>
-        <target>zobraziť</target>
+        <target>Zobraziť</target>
       </trans-unit>
       <trans-unit id="JiEhxTc" resname="edit">
         <source>edit</source>
-        <target>upraviť</target>
+        <target>Upraviť</target>
       </trans-unit>
       <trans-unit id="B3cBdNd" resname="zalozit.novy.zaznam">
         <source>zalozit.novy.zaznam</source>
@@ -164,6 +164,22 @@
       <trans-unit id="Kw3N1AA" resname="actions">
         <source>actions</source>
         <target>Akcie</target>
+      </trans-unit>
+      <trans-unit id="Dj4i.m2" resname="Uprava.zaznamu">
+        <source>Uprava.zaznamu</source>
+        <target>Uprav údaj</target>
+      </trans-unit>
+      <trans-unit id="U0M9PNE" resname="back to list">
+        <source>back to list</source>
+        <target>Späť na zoznam</target>
+      </trans-unit>
+      <trans-unit id="cvIH99o" resname="id.zaznamu">
+        <source>id.zaznamu</source>
+        <target>Záznam číslo</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Zmazať</target>
       </trans-unit>
     </body>
   </file>
