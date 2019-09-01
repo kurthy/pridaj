@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}o.symfonii{% endtrans %}{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="jumbotron">
+    <h2>{% trans %}o.symfonii{% endtrans %}</h2>
+    <p>Aves-Symfónia 4 je súčasťou databázového systému AVES Symfónia Slovenskej ornitologickej spoločnosti SOS/BL. Hlavná databáza sídli na  <a href="https://aves.vtaky.sk">aves.vtaky.sk</a>. Tam sa nachádzajú hlavné dáta a program vyvíjaný už 10 rokov.</p>
+<p>Táto stránka má cieľ poskytovať:</p>
+    <ul>
+      <li>&#9989; Možnosť zápisu pozorovaní aj cez web malých zariadení (mobil, tablet, malý notebook). Zariadenia pripojené na internet.</li>
+      <li>&#9874;Import dát zapísaných v:</li>
+        <ul>
+          <li>&#9874;Excel</li>
+          <li>&#9874;CSV (štrukturovaný text)</li>
+          <li>&#9989;API (univerzálny spôsob, podľa API vytvorenými vlastnými nástrojmi)</li>
+        </ul>
+      <li>&#9989; API pre zber dát (univerzálne prostredie, využitie tretími stranami, napríklad aktuálne vyvíjanou mobilnou aplikáciou. Bez nutnosti byť na internete).</li>
+    </ul>
+    <p>Na tejto stránke využívame najnovšie verzie vývojových nástrojov.</p>
+  </div>
+</div>
+{% endblock %}

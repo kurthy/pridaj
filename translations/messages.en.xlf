@@ -11,7 +11,7 @@
       </trans-unit>
       <trans-unit id="g.pD35M" resname="Tituluj.Aves">
         <source>Tituluj.Aves</source>
-        <target>Database Aves-Symfónia</target>
+        <target>Database Aves-Symfónia 4</target>
       </trans-unit>
       <trans-unit id="UZFZG_m" resname="domov">
         <source>domov</source>
@@ -184,6 +184,10 @@
       <trans-unit id="4tClSWj" resname="Delete">
         <source>Delete</source>
         <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="YME6lQg" resname="o.symfonii">
+        <source>o.symfonii</source>
+        <target>Aves-Symfónia 4 - intro</target>
       </trans-unit>
     </body>
   </file>
