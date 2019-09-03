@@ -4,7 +4,6 @@ august každý deň
 30.8.2019 4-5 h 
 31.8.2019 - 9 h
 1.9.2019 od 4:00.. 
-todo: 
 - OK uvodne pridaj.nasesk.info nejde bez /sk ci /en 
 - OK  zobrazenie jedneho zaznamu striedaj tmave - svetle
 - OK menu pridaj prehlad data a nie excel
@@ -13,12 +12,21 @@ todo:
 - OK v prehľade zvážiť ešte užšie nadpisy stlpca počet na poč
 - OK  o symfonii - pridať linky nech nemusí ísť do menu
 
-- ! odhlasenemu nech nehodi error500 ale login
+2.9. od 19h spolu 1 a pol h
+todo: 
+
+- OK odhlasenemu nech nehodi error500 ale login
+- OK ošetrenie mazania, len údaje ktoré prihlásený užívateľ aj zapísal, hlášky
+
 - pri editácii položky dátum sa objavilo volba klikania a nemala by
 - pri editácii voľba druhov je dosť veľa, menšia voľba by bola dobrá
 - doriešiť načítanie súradnice pozície mobilu
 - mať možnosť nejakú mapu z Openlayers3 
 
+- k prehľadu záznamov akcia vzor
+
+3.9 od 5:25
+nasadenie vcerajsiech zmien do ostrej
 
  
 

@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 //use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * @Route("/zoology")
@@ -22,7 +23,7 @@ class ZoologyController extends AbstractController
 
   /**
    * @Route("/", name="zoology_index", methods={"GET"})
-   *
+   * @Security("is_granted('ROLE_USER')")
    */
   public function index(ZoologyRepository $zoologyRepository): Response
   {
@@ -36,6 +37,7 @@ class ZoologyController extends AbstractController
   }
     /**
      * @Route("/{id}", name="zoology_show", requirements={"id":"\d+"}, methods={"GET"})
+     * @Security("is_granted('ROLE_USER')")
      */
     public function show(Zoology $zoozaznam): Response
     {
@@ -46,7 +48,7 @@ class ZoologyController extends AbstractController
 
   /**
    * @Route("/new", name="newzoology")
-   *
+   * @Security("is_granted('ROLE_USER')")
    */
   public function new(EntityManagerInterface $em, Request $request)
   {
@@ -61,7 +63,7 @@ class ZoologyController extends AbstractController
 	   $em->persist($zoology);
            $em->flush();
           
-           return $this->redirectToRoute('homepage');
+           return $this->redirectToRoute('zoology_index');
     }
 
 
@@ -71,6 +73,7 @@ class ZoologyController extends AbstractController
   }
     /**
      * @Route("/{id}/edit", name="zoology_edit", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_USER')")
      */
     public function edit(Request $request, Zoology $zoozaznam): Response
     {
@@ -90,13 +93,27 @@ class ZoologyController extends AbstractController
     }
     /**
      * @Route("/{id}", name="zoology_delete", methods={"DELETE"})
+     * @Security("is_granted('ROLE_USER')")
      */
     public function delete(Request $request, Zoology $zoozaznam): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$zoozaznam->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$zoozaznam->getId(), $request->request->get('_token'))           && $zoozaznam->getSfGuardUserId() == $this->getUser()->getSfGuardUserId() ) {
+            $iPomID = $zoozaznam->getId();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($zoozaznam);
             $entityManager->flush();
+
+           $this->addFlash(
+            'notice',
+            'Record nr. '.$iPomID().' was deleted!'
+          );
+        }
+        else
+        {
+           $this->addFlash(
+            'notice',
+            'Record nr. '.$zoozaznam->getId().' was not deleted!'
+          );
         }
 
         return $this->redirectToRoute('zoology_index');
