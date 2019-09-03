@@ -49,6 +49,10 @@ class ZoologyType  extends AbstractType
 			    'data-date-today-highlight' => true,
 			    'data-date-language' => 'sk',
 			    'data-date-today-btn' => 'linked',
+                            'disableTouchKeyboard' => true,
+                            'Readonly' => true,
+                            'keepOpen' => false,
+                            'autoclose' => true,
 		    ],
  	    ])
             ->add('zoology_longitud',null, ['label' => 'zoology.longitud'])
