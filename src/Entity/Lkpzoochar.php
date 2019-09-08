@@ -70,6 +70,16 @@ class Lkpzoochar
      */
     private $lkpzoochar_popularmeaninghu;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $lkpzoochar_aves;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $lkpzoochar_mammalia;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -182,6 +192,31 @@ class Lkpzoochar
 
         return $this;
     }
+
+    public function getLkpzoocharAves(): ?bool
+    {
+        return $this->lkpzoochar_aves;
+    }
+
+    public function setLkpzoocharAves(bool $lkpzoochar_aves): self
+    {
+        $this->lkpzoochar_aves = $lkpzoochar_aves;
+
+        return $this;
+    }
+
+    public function getLkpzoocharMammalia(): ?bool
+    {
+        return $this->lkpzoochar_mammalia;
+    }
+
+    public function setLkpzoocharMammalia(bool $lkpzoochar_mammalia): self
+    {
+        $this->lkpzoochar_mammalia = $lkpzoochar_mammalia;
+
+        return $this;
+    }
+
     public function __toString()
     {
       return $this->getLkpzoocharIdCh();

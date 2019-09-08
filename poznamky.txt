@@ -15,18 +15,161 @@ august každý deň
 2.9. od 19h spolu 1 a pol h
 todo: 
 
+3.9 od 5:25 20 minút
+nasadenie vcerajsiech zmien do ostrej
 - OK odhlasenemu nech nehodi error500 ale login
 - OK ošetrenie mazania, len údaje ktoré prihlásený užívateľ aj zapísal, hlášky
 
-- pri editácii položky dátum sa objavilo volba klikania a nemala by
-- pri editácii voľba druhov je dosť veľa, menšia voľba by bola dobrá
-- doriešiť načítanie súradnice pozície mobilu
-- mať možnosť nejakú mapu z Openlayers3 
+od 18:45
 
-- k prehľadu záznamov akcia vzor
+- OK pri editácii položky dátum sa objavilo volba klikania a nemala by
+nasadená verzia 0.5
 
-3.9 od 5:25
-nasadenie vcerajsiech zmien do ostrej
+4.9.19 od 5:11 openlayers 5
+niekoľko hodín práce, aby sa priblížil na lokalitu kde je poloha zariadenia,
+
+- OK doriešiť načítanie súradnice pozície mobilu
+- OK mať možnosť nejakú mapu z Openlayers3 
+
+nasadené ako verzia 0.6
+
+5.9.19
+
+odložený kód z vývoja mapy z templates/osymfonii, tam to nemusí trčať
+
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+<h2>{% trans %}nadpis.mapy{% endtrans %}</h2>
+
+    <script type="text/javascript">
+      window.onload = function(){
+    var layer = new ol.layer.Tile({
+   //     source: new ol.source.OSM()
+        source: new ol.source.XYZ({
+        url: 'https://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png'
+    })
+      });
+
+//    var orto = new ol.TileLayer({
+//            url: 'https://zbgisws.skgeodesy.sk/zbgis_ortofoto_wms/service.svc/get',
+//          });
+
+    var view = new ol.View({
+        center: ol.proj.fromLonLat([19.6, 48.7]),
+         projection: 'EPSG:3857',
+        zoom: 8
+      });
+
+      var map = new ol.Map({
+        target: 'map',
+        layers: [layer],
+        view: view
+      });
+ 
+     // create an Overlay using the div with id location.
+      var marker = new ol.Overlay({
+        element: document.getElementById('location'),
+        positioning: 'bottom-left',
+        stopEvent: false
+      });
+     // add it to the map
+//      map.addOverlay(marker);
+
+        var suradnice = document.getElementById('myposition');
+
+        var mousePosition = new ol.control.MousePosition({
+        coordinateFormat: ol.coordinate.createStringXY(5),
+        projection: 'EPSG:4326',
+        className: 'custom-mouse-position',
+        target: suradnice,
+        undefinedHTML: '&nbsp;'
+      });
+
+      map.addControl(mousePosition);
+
+      // create a Geolocation object setup to track the position of the device
+      var geolocation = new ol.Geolocation({
+        tracking: true
+      });
+
+      // bind the projection to the view so that positions are reported in the
+      // projection of the view
+
+      //geolocation.bindTo('projection', view);
 
  
+      // bind the marker's position to the geolocation object, the marker will
+      // move automatically when the GeoLocation API provides position updates
+      //marker.bindTo('position', geolocation);
+
+      // when the GeoLocation API provides a position update, center the view
+      // on the new position
+      geolocation.on('change:position', function() {
+        var p = geolocation.getPosition();
+        console.log(p[0] + ' : ' + p[1]);
+        view.setCenter(ol.proj.transform([parseFloat(p[0]), parseFloat(p[1])],'EPSG:4326', 'EPSG:3857'));
+
+        view.setZoom(16);
+      });
+    }
+    </script>
+    <div id="map" class="map" style="width: 100%; height: 540px;"></div>
+    <div id="myposition"></div>
+
+/////////////////////////
+7.9.19
+hladanie prečo zrazu nejde dataTable pager stránovanie
+- OK keď klikáme, mapa aby zobrazila súradnica
+- OK mapa aby zobrazila súradnice rovno do zoology_longitud a zoology_latitud
+
+8.9.19
+OK - pokračovanie hľadanie príčiny dataTable zlyhania, base.html.twig bolo
+vymenené poradine objavenia sa body sekcie, nesmie byť za javascript sekciou,
+mapa ostala funkčná ver. 08
+
+todo 
+- mapa aby ukázala bod, kde je vypočítané že je zariadenie 
+
+- pri editácii voľba druhov je dosť veľa, menšia voľba by bola dobrá
+- k prehľadu záznamov akcia vzor
+- pridať aj iné stavovce pre zápis
+- validácia obohatená o prípravu pre hlavnú databázu
+-- nová položka, kde je vidieť stav, či je už poslaná do centra, potom už
+nebudú možnosti záznam upraviť a mazať
+-- pridá zaradenie do modulu ostatné stavovce podľa použitého druhu
+-- ak sa rovnajú súradnice, poznámka k lokalite a lokalita, v hlavnej databáze
+urobí záznam spojením druhovej časti (jedna lokalita veľa záznamov)
+toto však bude viditeľne predspracované už na pridaj.nasesk.info
+a viditeľné v prehliadaní zapísaných dát (to preto, lebo import z excelu to
+bude tiež musieť už tu urobiť, a tiež pre všetky ostatné typy nahrávania, api
+produktmi už tu)
+Uživateľ potom môže vidieť a možno aj zasiahnuť ASI TAK, ZE TOTO BUDU KONCEPTY
+A UZIVATEL ODSUHLASI, ZE SU PLATNE, POTOM AZ MOZU IST NA HLAVNU DATABAZU
+
+Možno to netreba komplikovať rozlišovaním som jedna lokalita / nie som tá istá
+lokalita, možno netreba robiť zložité rozdeľovanie na lokalita-mnoho druhov.
+Tak to robiť ako ked načíta z excelu dáta. 
+
+
+
+
 

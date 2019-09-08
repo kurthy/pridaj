@@ -34,6 +34,8 @@ class ZoologyType  extends AbstractType
         if ($aPom == 'sk')
         {
         $builder
+            ->add('zoology_longitud',null, ['label' => 'zoology.longitud'])
+            ->add('zoology_latitud',null, ['label' => 'zoology.latitud'])
             ->add('zoology_locality',null,[ 'label' => 'nazov.lokality'])
 	    ->add('zoology_date',DateType::class,[ 
 		    'label' => 'zoology.date',
@@ -55,8 +57,6 @@ class ZoologyType  extends AbstractType
                             'autoclose' => true,
 		    ],
  	    ])
-            ->add('zoology_longitud',null, ['label' => 'zoology.longitud'])
-            ->add('zoology_latitud',null, ['label' => 'zoology.latitud'])
             ->add('zoology_description',null, ['label' => 'zoology.description'])
 	    ->add('zoology_accessibility', EntityType::class, [
 	      'class' => Lkppristupnost::class,
@@ -73,7 +73,7 @@ class ZoologyType  extends AbstractType
               },
 	      'query_builder' => function (EntityRepository $er) {
 		      return $er->createQueryBuilder('d')
-                              ->where('d.lkpzoospecies_najc <= 360')
+                              ->where('d.lkpzoospecies_najc <= 260')
 			      ->orderBy('d.lkpzoospecies_subspecorder', 'ASC');
 	      },
               ])
@@ -100,6 +100,8 @@ class ZoologyType  extends AbstractType
             else
            {
 	   $builder
+            ->add('zoology_longitud',null, ['label' => 'zoology.longitud'])
+            ->add('zoology_latitud',null, ['label' => 'zoology.latitud'])
             ->add('zoology_locality',null,[ 'label' => 'nazov.lokality'])
 	    ->add('zoology_date',DateType::class,[ 
 		    'label' => 'zoology.date',
@@ -115,10 +117,12 @@ class ZoologyType  extends AbstractType
 			    'data-date-today-highlight' => true,
 			    'data-date-language' => 'en',
 			    'data-date-today-btn' => 'linked',
+                            'disableTouchKeyboard' => true,
+                            'Readonly' => true,
+                            'keepOpen' => false,
+                            'autoclose' => true
 		    ],
  	    ])
-            ->add('zoology_longitud',null, ['label' => 'zoology.longitud'])
-            ->add('zoology_latitud',null, ['label' => 'zoology.latitud'])
             ->add('zoology_description',null, ['label' => 'zoology.description'])
 	    ->add('zoology_accessibility', EntityType::class, [
 	      'class' => Lkppristupnost::class,
@@ -134,7 +138,7 @@ class ZoologyType  extends AbstractType
               },
 	      'query_builder' => function (EntityRepository $er) {
 		      return $er->createQueryBuilder('d')
-                              ->where('d.lkpzoospecies_najc <= 360')
+                              ->where('d.lkpzoospecies_najc <= 260')
 			      ->orderBy('d.lkpzoospecies_subspecorder', 'ASC');
 	      },
               ])

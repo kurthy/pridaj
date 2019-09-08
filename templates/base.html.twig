@@ -20,7 +20,7 @@
         {% block navbar %}
           {% if app.user %}
             <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-              <a class="navbar-brand " href="{{ path('osymfonii') }}">{% trans %}Tituluj.Aves{% endtrans %}  ver. 0.5</a>
+              <a class="navbar-brand " href="{{ path('osymfonii') }}">{% trans %}Tituluj.Aves{% endtrans %}  ver. 0.8</a>
              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
              </button>
@@ -68,14 +68,22 @@
 
         {% block body %}
         {% endblock %}
-      </div>
 
         {% block javascripts %}
+
+        <script src="/build/ol.js"></script>
           {{ encore_entry_script_tags('app') }}
+
+
             <!-- Renders app.js & a webpack runtime.js file
                 <script src="/build/runtime.js"></script>
                 <script src="/build/app.js"></script> -->
 
+
         {% endblock %}
+
+
+      </div>
+
     </body>
 </html>

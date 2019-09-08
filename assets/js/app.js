@@ -29,9 +29,17 @@ require('bootstrap-datepicker/js/locales/bootstrap-datepicker.sk.js');
 //require('autocomplete.js/dist/algolia-autocomplete.css');
 //require('algolia-autocomplete.js');
 //
-require('datatables/media/js/jquery.dataTables.min.js'); 
-require('datatables-bootstrap/js/dataTables.bootstrap4.min.js'); 
-require('datatables-bootstrap/css/dataTables.bootstrap4.min.css'); 
 
+
+require('datatables/media/js/jquery.dataTables.min.js'); 
+require('./dataTables.bootstrap4.min.js'); 
+require('../css/dataTables.bootstrap4.min.css'); 
 var strankuj = require('./pager');
+
+//require('font-awesome/css/font-awesome.css');
+
+require('./ol.js');
+require('../css/ol.css');
+
+
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
