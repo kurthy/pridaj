@@ -5,8 +5,105 @@
 
 {% block body %}
 
+
+    <script type="text/javascript">
+      window.onload = function(){
+    var layer = new ol.layer.Tile({
+   //     source: new ol.source.OSM()
+        source: new ol.source.XYZ({
+        url: 'https://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png'
+    })
+      });
+
+//    var orto = new ol.TileLayer({
+//            url: 'https://zbgisws.skgeodesy.sk/zbgis_ortofoto_wms/service.svc/get',
+//          });
+
+    var view = new ol.View({
+        center: ol.proj.fromLonLat([19.6, 48.7]),
+         projection: 'EPSG:3857',
+        zoom: 8
+      });
+
+      var map = new ol.Map({
+        target: 'map',
+        layers: [layer],
+        view: view
+      });
+ 
+     // create an Overlay using the div with id location.
+      var marker = new ol.Overlay({
+        element: document.getElementById('location'),
+        positioning: 'bottom-left',
+        stopEvent: false
+      });
+     // add it to the map
+//      map.addOverlay(marker);
+
+        var suradnice = document.getElementById('myposition');
+        var zLongitud = document.getElementById('zoology_zoology_longitud');
+        var zLatitud  = document.getElementById('zoology_zoology_latitud');
+        /*
+        var mousePosition = new ol.control.MousePosition({
+        coordinateFormat: ol.coordinate.createStringXY(5),
+        projection: 'EPSG:4326',
+        className: 'custom-mouse-position',
+        target: suradnice,
+        undefinedHTML: ''
+      });
+
+      map.addControl(mousePosition);
+
+
+        */
+      let coord = [];
+      // We track coordinate change each time the mouse is moved
+        map.on('click', function(evt){
+        coord = evt.coordinate;
+        var coordT = ol.proj.transform([parseFloat(coord[0]), parseFloat(coord[1])],'EPSG:3857', 'EPSG:4326');
+        console.log(coordT);
+   //     suradnice.innerHTML = coordT;
+        zLongitud.value =  coordT[1].toFixed(5);
+        zLatitud.value  =  coordT[0].toFixed(5);
+      });
+
+/*
+      // Anytime you want, simply read the tracked coordinate
+      document.addEventListener('mousedown', function(){
+        console.log(coord);
+      });
+*/
+      // create a Geolocation object setup to track the position of the device
+      var geolocation = new ol.Geolocation({
+        tracking: true
+      });
+
+      // bind the projection to the view so that positions are reported in the
+      // projection of the view
+
+      //geolocation.bindTo('projection', view);
+
+ 
+      // bind the marker's position to the geolocation object, the marker will
+      // move automatically when the GeoLocation API provides position updates
+      //marker.bindTo('position', geolocation);
+
+      // when the GeoLocation API provides a position update, center the view
+      // on the new position
+      geolocation.on('change:position', function() {
+        var p = geolocation.getPosition();
+        console.log(p[0] + ' : ' + p[1]);
+        view.setCenter(ol.proj.transform([parseFloat(p[0]), parseFloat(p[1])],'EPSG:4326', 'EPSG:3857'));
+
+        view.setZoom(15);
+      });
+    }
+    </script>
+
 <div class="container">
 <h1>{% trans %}novy.zaznam{% endtrans %}</h1>
+    <div id="map" class="map" style="width: 100%; height: 280px;"></div>
+    <div id="myposition"></div>
 {{ form(form) }}
 
 </div>

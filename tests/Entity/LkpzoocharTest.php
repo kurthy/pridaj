@@ -86,6 +86,32 @@ class LkpzoocharTest extends TestCase
     $oChar->setLkpzoocharPopularmeaninghu($chPom);
     $this->assertSame($chPom, $oChar->getLkpzoocharPopularmeaninghu());
   }
+
+  public function testPolozkaLkpzoocharaves()
+  {
+    $oChar = new Lkpzoochar();
+    $bPom  = true;
+    $oChar->setLkpzoocharAves($bPom);
+    $this->assertSame($bPom, $oChar->getLkpzoocharAves());
+  }
+
+  public function testPolozkaLkpzoocharMammalia()
+  {
+    $oChar = new Lkpzoochar();
+    $bPom  = true;
+    $oChar->setLkpzoocharMammalia($bPom);
+    $this->assertSame($bPom, $oChar->getLkpzoocharMammalia());
+  }
+/*
+  public function testPolozkaLkpzoocharOdonata()
+  {
+    $oChar = new Lkpzoochar();
+    $bPom  = true;
+    $oChar->setLkpzoocharOdonata($bPom);
+    $this->assertSame($bPom, $oChar->getLkpzoocharOdonata());
+  }
+ */
+  
 }
 
 ?>
