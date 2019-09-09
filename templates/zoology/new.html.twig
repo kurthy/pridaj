@@ -7,7 +7,9 @@
 
 
     <script type="text/javascript">
+
       window.onload = function(){
+
     var layer = new ol.layer.Tile({
    //     source: new ol.source.OSM()
         source: new ol.source.XYZ({
@@ -15,22 +17,94 @@
     })
       });
 
-//    var orto = new ol.TileLayer({
-//            url: 'https://zbgisws.skgeodesy.sk/zbgis_ortofoto_wms/service.svc/get',
-//          });
+        var layerOSM = new ol.layer.Group({ 
+          layers: [
+          new ol.layer.Tile({
+     source: new ol.source.OSM()
+          })
+         ]
+    });
 
+
+
+    var chvu =  new ol.layer.Group({ 
+          layers: [ 
+            new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+        url: 'http://maps.sopsr.sk/geoserver/wms?version=1.3.0',
+        params: {
+            'LAYERS': 'chvu',
+        },
+          })
+        })
+            ]
+    });
+
+    var orto =  new ol.layer.Group({ 
+        layers: [
+          new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+        url: 'https://zbgisws.skgeodesy.sk/zbgis_ortofoto_wms/service.svc/get',
+        params: {
+            'LAYERS': '1',
+        },
+          })
+        })
+          ]
+        });
+      var pozicia        = new ol.geom.Point(ol.proj.transform([19.6,48.7], 'EPSG:4326', 'EPSG:3857'));
+//      var pozicia        = new ol.geom.Point(coordT);
+      var poziciaFeature = new ol.Feature(pozicia); 
+
+      var vectorSource = new ol.source.Vector({
+                projection: 'EPSG:4326',
+                features: [poziciaFeature]
+            });
+      var bodpozicie = new ol.layer.Vector({
+                source: vectorSource,
+                style: styl
+            });
+
+        /////////// view /////////////
     var view = new ol.View({
         center: ol.proj.fromLonLat([19.6, 48.7]),
          projection: 'EPSG:3857',
         zoom: 8
       });
 
+        //// funkcie ///
+    function setMapType(evt) {
+            window.alert('xxx');
+      if(newType == 'OSM') {
+          map.setLayerGroup(layersOSM);
+      } else if (newType == 'CHVU') {
+          map.setLayerGroup(chvu);
+      }
+    }
+
+        
+
+var switchLayer = function(evt){
+    var attr = this.getAttribute('data-type');
+    switch(attr){
+        case 'OSM':
+    //        insertLayer(OSMLayer);
+            break;
+        case 'CHVU':
+     //       insertLayer(mapQuestOSMLayer);
+            break;
+    }
+};
+var lis = document.getElementById('menuLS').getElementsByTagName('li');
+
+/////////////// poskladanie do MAP /////////////////
       var map = new ol.Map({
         target: 'map',
-        layers: [layer],
+        layers: [orto,chvu,bodpozicie],
         view: view
       });
- 
+
+
      // create an Overlay using the div with id location.
       var marker = new ol.Overlay({
         element: document.getElementById('location'),
@@ -67,12 +141,15 @@
         zLatitud.value  =  coordT[0].toFixed(5);
       });
 
-/*
-      // Anytime you want, simply read the tracked coordinate
-      document.addEventListener('mousedown', function(){
-        console.log(coord);
+        // definovanie štýlu pre bod, čo skúšam
+      var styl = new ol.style.Style({
+          image: new ol.style.Circle({
+            radius: 5,
+            fill: new ol.style.Fill({color: '#666666'}),
+            stroke: new ol.style.Stroke({color: '#bada55', width: 1})
+          })
       });
-*/
+
       // create a Geolocation object setup to track the position of the device
       var geolocation = new ol.Geolocation({
         tracking: true
@@ -94,8 +171,7 @@
         var p = geolocation.getPosition();
         console.log(p[0] + ' : ' + p[1]);
         view.setCenter(ol.proj.transform([parseFloat(p[0]), parseFloat(p[1])],'EPSG:4326', 'EPSG:3857'));
-
-        view.setZoom(15);
+        view.setZoom(17);
       });
     }
     </script>
@@ -104,6 +180,14 @@
 <h1>{% trans %}novy.zaznam{% endtrans %}</h1>
     <div id="map" class="map" style="width: 100%; height: 280px;"></div>
     <div id="myposition"></div>
+<select onchange="setMapType(this.options[this.selectedIndex].value);">
+                <option value="OSM">OSM</option>
+                <option value="chvu">CHVU</option>
+</select> 
+<ul id="menuLS">
+    <li data-type="OSM">OSM</li>
+    <li data-type="CHVU">CHVU</li>
+</ul>
 {{ form(form) }}
 
 </div>
