@@ -118,6 +118,39 @@ class ZoologyController extends AbstractController
 
         return $this->redirectToRoute('zoology_index');
     }
+
+  /**
+   * @Route("/{id}/vzor", name="zoology_vzor")
+   * @Security("is_granted('ROLE_USER')")
+   */
+  public function newfromstamp(EntityManagerInterface $em, Request $request,  Zoology $zoovzor)
+  {
+
+    $zoology = new Zoology();
+    $zoology->setZoologyDate($zoovzor->getZoologyDate());
+    $zoology->setZoologyLongitud($zoovzor->getZoologyLongitud());
+    $zoology->setZoologyLatitud($zoovzor->getZoologyLatitud());
+    $zoology->setZoologyLocality($zoovzor->getZoologyLocality());
+//    $zoology->setZoologyAccessibility($zoovzor->getZoologyAccessibility());
+    $zoology->setZoologyDescription($zoovzor->getZoologyDescription());
+
+
+    $form = $this->createForm(ZoologyType::class, $zoology);
+    $form->handleRequest($request);
+    if($form->isSubmitted() && $form->isValid()) {
+	   $zoology = $form->getData();	
+	   $zoology->setSfGuardUserId($this->getUser()->getSfGuardUserId());
+	   $em->persist($zoology);
+           $em->flush();
+          
+           return $this->redirectToRoute('zoology_index');
+    }
+
+
+    return $this->render('zoology/vzor.html.twig', [
+            'form' => $form->createView(),
+        ]);
+  }
 }
 
 ?>

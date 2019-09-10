@@ -189,6 +189,14 @@
         <source>pocet.kratko</source>
         <target>Pč.</target>
       </trans-unit>
+      <trans-unit id="ZQpClqy" resname="Vzor">
+        <source>Vzor</source>
+        <target>Vzor</target>
+      </trans-unit>
+      <trans-unit id="HnO3zkE" resname="novy.zaznam.vzor">
+        <source>novy.zaznam.vzor</source>
+        <target>Nový záznam pomocou iného ako vzor</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

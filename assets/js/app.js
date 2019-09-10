@@ -37,9 +37,7 @@ require('../css/dataTables.bootstrap4.min.css');
 var strankuj = require('./pager');
 
 //require('font-awesome/css/font-awesome.css');
-
 require('./ol.js');
 require('../css/ol.css');
-
 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');

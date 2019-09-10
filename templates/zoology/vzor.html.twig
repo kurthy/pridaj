@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}novy.zaznam.vzor{% endtrans %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}novy.zaznam.vzor{% endtrans %}</h1>
+    {{ include('zoology/_form.html.twig') }}
+
+    <a class="btn btn-primary" href="{{ path('zoology_index') }}">{% trans %}back to list{% endtrans %}</a>
+    {# neviem načo dával to "new" tento riadok: include('zoology/_delete_form.html.twig') #}
+{% endblock %}
