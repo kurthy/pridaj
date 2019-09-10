@@ -10,18 +10,20 @@
 
       window.onload = function(){
 
-    var layer = new ol.layer.Tile({
+    var layerOTM = new ol.layer.Tile({
    //     source: new ol.source.OSM()
         source: new ol.source.XYZ({
         url: 'https://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png'
-    })
+    }),
+            opacity:0.4
       });
 
         var layerOSM = new ol.layer.Group({ 
           layers: [
           new ol.layer.Tile({
-     source: new ol.source.OSM()
-          })
+     source: new ol.source.OSM(),
+            opacity:0.3
+          }),
          ]
     });
 
@@ -73,7 +75,7 @@
       });
 
         //// funkcie ///
-    function setMapType(evt) {
+/*    function setMapType(evt) {
             window.alert('xxx');
       if(newType == 'OSM') {
           map.setLayerGroup(layersOSM);
@@ -81,9 +83,9 @@
           map.setLayerGroup(chvu);
       }
     }
-
+*/
         
-
+/*
 var switchLayer = function(evt){
     var attr = this.getAttribute('data-type');
     switch(attr){
@@ -95,12 +97,13 @@ var switchLayer = function(evt){
             break;
     }
 };
-var lis = document.getElementById('menuLS').getElementsByTagName('li');
 
+ var lis = document.getElementById('menuLS').getElementsByTagName('li');
+*/
 /////////////// poskladanie do MAP /////////////////
       var map = new ol.Map({
         target: 'map',
-        layers: [orto,chvu,bodpozicie],
+        layers: [orto,layerOTM,bodpozicie],
         view: view
       });
 
@@ -180,6 +183,7 @@ var lis = document.getElementById('menuLS').getElementsByTagName('li');
 <h1>{% trans %}novy.zaznam{% endtrans %}</h1>
     <div id="map" class="map" style="width: 100%; height: 280px;"></div>
     <div id="myposition"></div>
+    {#
 <select onchange="setMapType(this.options[this.selectedIndex].value);">
                 <option value="OSM">OSM</option>
                 <option value="chvu">CHVU</option>
@@ -188,6 +192,7 @@ var lis = document.getElementById('menuLS').getElementsByTagName('li');
     <li data-type="OSM">OSM</li>
     <li data-type="CHVU">CHVU</li>
 </ul>
+#}
 {{ form(form) }}
 
 </div>

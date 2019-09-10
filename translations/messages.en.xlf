@@ -189,6 +189,18 @@
         <source>o.symfonii</source>
         <target>Aves-Symfónia 4 - intro</target>
       </trans-unit>
+      <trans-unit id="ig0_klg" resname="pocet.kratko">
+        <source>pocet.kratko</source>
+        <target>Nr.</target>
+      </trans-unit>
+      <trans-unit id="ZQpClqy" resname="Vzor">
+        <source>Vzor</source>
+        <target>Use as a pattern</target>
+      </trans-unit>
+      <trans-unit id="HnO3zkE" resname="novy.zaznam.vzor">
+        <source>novy.zaznam.vzor</source>
+        <target>Create a new record from another record used as a pattern</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
