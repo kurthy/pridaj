@@ -146,7 +146,22 @@ OK - pokračovanie hľadanie príčiny dataTable zlyhania, base.html.twig bolo
 vymenené poradine objavenia sa body sekcie, nesmie byť za javascript sekciou,
 mapa ostala funkčná ver. 08
 
+- OK mapa pridať ortofotomozaiku
+
+- NO mapa aby sa dali meniť vrstvy
+riešené cez zobrazenie oboch, OTM priehlľadná 
+
+9.9.19
+>> k prehľadu záznamov akcia vzor
+10.9.19
+OK - vzor
+
+11.9.19
+OK - aby longitud a latitud nezaokruhloval formular, "scale" 
+oprava ako verzia 1.1
+
 todo 
+- mapa aj v režime edit záznam
 - mapa aby ukázala bod, kde je vypočítané že je zariadenie 
 
 - pri editácii voľba druhov je dosť veľa, menšia voľba by bola dobrá

@@ -34,8 +34,8 @@ class ZoologyType  extends AbstractType
         if ($aPom == 'sk')
         {
         $builder
-            ->add('zoology_longitud',null, ['label' => 'zoology.longitud'])
-            ->add('zoology_latitud',null, ['label' => 'zoology.latitud'])
+            ->add('zoology_longitud',null, ['label' => 'zoology.longitud', 'scale' => 5])
+            ->add('zoology_latitud',null, ['label' => 'zoology.latitud', 'scale' => 5])
             ->add('zoology_locality',null,[ 'label' => 'nazov.lokality'])
 	    ->add('zoology_date',DateType::class,[ 
 		    'label' => 'zoology.date',
