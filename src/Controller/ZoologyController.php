@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 //use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/zoology")
@@ -50,7 +51,7 @@ class ZoologyController extends AbstractController
    * @Route("/new", name="newzoology")
    * @Security("is_granted('ROLE_USER')")
    */
-  public function new(EntityManagerInterface $em, Request $request)
+  public function new(EntityManagerInterface $em, Request $request, TranslatorInterface $translator)
   {
     //založ nový záznam
     $zoology = new Zoology();
@@ -63,7 +64,11 @@ class ZoologyController extends AbstractController
 	   $em->persist($zoology);
            $em->flush();
           
-           return $this->redirectToRoute('zoology_index');
+           $this->addFlash(
+            'notice',
+            $translator->trans('zaznam.zalozeny',[ 'zaznam' => $zoology->getId()] )
+          );
+            return $this->redirectToRoute('zoology_show', [ 'id' => $zoology->getId() ]);
     }
 
 
@@ -75,7 +80,7 @@ class ZoologyController extends AbstractController
      * @Route("/{id}/edit", name="zoology_edit", methods={"GET","POST"})
      * @Security("is_granted('ROLE_USER')")
      */
-    public function edit(Request $request, Zoology $zoozaznam): Response
+    public function edit(Request $request, Zoology $zoozaznam, TranslatorInterface $translator): Response
     {
         $form = $this->createForm(ZoologyType::class, $zoozaznam);
         $form->handleRequest($request);
@@ -83,7 +88,12 @@ class ZoologyController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('zoology_index');
+            $this->addFlash(
+            'notice',
+            $translator->trans('zaznam.upraveny',[ 'zaznam' => $zoozaznam->getId()] )
+          );
+            return $this->redirectToRoute('zoology_show', [ 'id' => $zoozaznam->getId() ]);
+
         }
 
         return $this->render('zoology/edit.html.twig', [
@@ -95,7 +105,7 @@ class ZoologyController extends AbstractController
      * @Route("/{id}", name="zoology_delete", methods={"DELETE"})
      * @Security("is_granted('ROLE_USER')")
      */
-    public function delete(Request $request, Zoology $zoozaznam): Response
+    public function delete(Request $request, Zoology $zoozaznam, TranslatorInterface $translator): Response
     {
         if ($this->isCsrfTokenValid('delete'.$zoozaznam->getId(), $request->request->get('_token'))           && $zoozaznam->getSfGuardUserId() == $this->getUser()->getSfGuardUserId() ) {
             $iPomID = $zoozaznam->getId();
@@ -105,14 +115,14 @@ class ZoologyController extends AbstractController
 
            $this->addFlash(
             'notice',
-            'Record nr. '.$iPomID().' was deleted!'
+            $translator->trans('zaznam.zmazany',[ 'zaznam' => $iPomID] )
           );
         }
         else
         {
            $this->addFlash(
             'notice',
-            'Record nr. '.$zoozaznam->getId().' was not deleted!'
+            $translator->trans('zaznam.nezmazany',[ 'zaznam' => $zoozaznam->getId()] )
           );
         }
 
@@ -123,7 +133,7 @@ class ZoologyController extends AbstractController
    * @Route("/{id}/vzor", name="zoology_vzor")
    * @Security("is_granted('ROLE_USER')")
    */
-  public function newfromstamp(EntityManagerInterface $em, Request $request,  Zoology $zoovzor)
+  public function newfromstamp(EntityManagerInterface $em, Request $request,  Zoology $zoovzor, $pridavanieDruhu = "nie", TranslatorInterface $translator)
   {
 
     $zoology = new Zoology();
@@ -131,19 +141,35 @@ class ZoologyController extends AbstractController
     $zoology->setZoologyLongitud($zoovzor->getZoologyLongitud());
     $zoology->setZoologyLatitud($zoovzor->getZoologyLatitud());
     $zoology->setZoologyLocality($zoovzor->getZoologyLocality());
-//    $zoology->setZoologyAccessibility($zoovzor->getZoologyAccessibility());
     $zoology->setZoologyDescription($zoovzor->getZoologyDescription());
 
+//   $zoology->setZoologyAccessibility($zoovzor->getZoologyAccessibility());
+//   $zoology->setCount($zoovzor->getCount());
 
-    $form = $this->createForm(ZoologyType::class, $zoology);
+    $lPom = false;
+    if($request->query->get('pridavanieDruhu') == "ano") $lPom = true;
+
+    //tretí argument je parameter pre formulár, aby nezobrazoval položky, ktoré túto situáciu
+    //rozlišujú, ide o lokalitné položky
+    $form = $this->createForm(ZoologyType::class, $zoology, [
+      'disable_field' => $lPom
+      ]);
     $form->handleRequest($request);
     if($form->isSubmitted() && $form->isValid()) {
 	   $zoology = $form->getData();	
 	   $zoology->setSfGuardUserId($this->getUser()->getSfGuardUserId());
 	   $em->persist($zoology);
            $em->flush();
-          
-           return $this->redirectToRoute('zoology_index');
+
+           //rozlíšiť dve situácie, zaznam.zalozny.zo.vzoru a zaznam.zalozeny.pridaj.druh
+           $this->addFlash(
+            'notice',
+            $lPom == true ? 
+              $translator->trans('zaznam.zalozeny.pridaj.druh',[ 'zaznam' => $zoology->getId()] )
+            :
+              $translator->trans('zaznam.zalozeny.zo.vzoru',[ 'zaznam' => $zoology->getId()] )
+          );
+            return $this->redirectToRoute('zoology_show', [ 'id' => $zoology->getId() ]);
     }
 
 

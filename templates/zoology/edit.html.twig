@@ -3,7 +3,127 @@
 {% block title %}{% trans %}Uprava.zaznamu{% endtrans %}{% endblock %}
 
 {% block body %}
+    <script type="text/javascript">
+      window.onload = function(){
+
+    var layerOTM = new ol.layer.Tile({
+   //     source: new ol.source.OSM()
+        source: new ol.source.XYZ({
+        url: 'https://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png'
+    }),
+            opacity:0.4
+      });
+
+        var layerOSM = new ol.layer.Group({ 
+          layers: [
+          new ol.layer.Tile({
+     source: new ol.source.OSM(),
+            opacity:0.3
+          }),
+         ]
+    });
+
+
+
+    var chvu =  new ol.layer.Group({ 
+          layers: [ 
+            new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+        url: 'http://maps.sopsr.sk/geoserver/wms?version=1.3.0',
+        params: {
+            'LAYERS': 'chvu',
+        },
+          })
+        })
+            ]
+    });
+
+    var orto =  new ol.layer.Group({ 
+        layers: [
+          new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+        url: 'https://zbgisws.skgeodesy.sk/zbgis_ortofoto_wms/service.svc/get',
+        params: {
+            'LAYERS': '1',
+        },
+          })
+        })
+          ]
+        });
+
+
+
+        /////////// view /////////////
+    var view = new ol.View({
+        center: ol.proj.fromLonLat([19.6, 48.7]),
+         projection: 'EPSG:3857',
+        zoom: 8
+      });
+
+        var suradnice = document.getElementById('myposition');
+        var zLongitud = document.getElementById('zoology_zoology_longitud');
+        var zLatitud  = document.getElementById('zoology_zoology_latitud');
+
+        view.setCenter(ol.proj.transform([parseFloat(zLongitud.value.replace(/,/, '.')),parseFloat(zLatitud.value.replace(/,/, '.'))],'EPSG:4326', 'EPSG:3857' ));
+        view.setZoom(17);
+
+       // definovanie štýlu pre bod, čo skúšam
+      var styl = new ol.style.Style({
+          image: new ol.style.Circle({
+            radius: 20,
+            fill: null, // new ol.style.Fill({color: '#666666'}),
+            stroke: new ol.style.Stroke({color: '#00FF00', width: 2})
+          })
+      });
+       var pozicia        = new ol.geom.Point(ol.proj.transform([parseFloat(zLongitud.value.replace(/,/, '.')),parseFloat(zLatitud.value.replace(/,/, '.'))], 'EPSG:4326', 'EPSG:3857'));
+      var poziciaFeature = new ol.Feature(pozicia); 
+
+      var vectorSource = new ol.source.Vector({
+                projection: 'EPSG:4326',
+                features: [poziciaFeature]
+            });
+      var bodpozicie = new ol.layer.Vector({
+                source: vectorSource,
+                style: styl
+            });       
+
+/////////////// poskladanie do MAP /////////////////
+      var map = new ol.Map({
+        target: 'map',
+        layers: [orto,layerOTM,bodpozicie],
+        view: view
+      });
+
+
+     // create an Overlay using the div with id location.
+      var marker = new ol.Overlay({
+        element: document.getElementById('location'),
+        positioning: 'bottom-left',
+        stopEvent: false
+      });
+     // add it to the map
+//      map.addOverlay(marker);
+
+      let coord = [];
+      // We track coordinate change each time the mouse is moved
+        map.on('click', function(evt){
+        coord = evt.coordinate;
+        var coordT = ol.proj.transform([parseFloat(coord[0]), parseFloat(coord[1])],'EPSG:3857', 'EPSG:4326');
+        zLongitud.value =  coordT[0].toFixed(5);
+        zLatitud.value  =  coordT[1].toFixed(5);
+       var klikpozicia        = new ol.geom.Point(ol.proj.transform([parseFloat(coordT[0].toFixed(5)), parseFloat(coordT[1].toFixed(5))], 'EPSG:4326', 'EPSG:3857'));
+      var novaKlikFeature = new ol.Feature(klikpozicia);
+      vectorSource.clear();
+      vectorSource.addFeature(novaKlikFeature);
+      });
+
+
+
+    }
+    </script>
+
     <h1>{% trans %}Uprava.zaznamu{% endtrans %}</h1>
+    <div id="map" class="map" style="width: 100%; height: 280px;"></div>
     {{ include('zoology/_form.html.twig') }}
 
     <a class="btn btn-primary" href="{{ path('zoology_index') }}">{% trans %}back to list{% endtrans %}</a>

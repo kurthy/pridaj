@@ -53,6 +53,14 @@
         })
           ]
         });
+        // definovanie štýlu pre bod, čo skúšam
+      var styl = new ol.style.Style({
+          image: new ol.style.Circle({
+            radius: 20,
+            fill: null,
+            stroke: new ol.style.Stroke({color: '#00FF00', width: 2})
+          })
+      });
       var pozicia        = new ol.geom.Point(ol.proj.transform([19.6,48.7], 'EPSG:4326', 'EPSG:3857'));
 //      var pozicia        = new ol.geom.Point(coordT);
       var poziciaFeature = new ol.Feature(pozicia); 
@@ -137,10 +145,13 @@ var switchLayer = function(evt){
         map.on('click', function(evt){
         coord = evt.coordinate;
         var coordT = ol.proj.transform([parseFloat(coord[0]), parseFloat(coord[1])],'EPSG:3857', 'EPSG:4326');
-        console.log(coordT);
-   //     suradnice.innerHTML = coordT;
-        zLongitud.value =  coordT[1].toFixed(5);
-        zLatitud.value  =  coordT[0].toFixed(5);
+        zLongitud.value =  coordT[0].toFixed(5);
+        zLatitud.value  =  coordT[1].toFixed(5);
+       var klikpozicia        = new ol.geom.Point(ol.proj.transform([parseFloat(coordT[0].toFixed(5)), parseFloat(coordT[1].toFixed(5))], 'EPSG:4326', 'EPSG:3857'));
+      var novaKlikFeature = new ol.Feature(klikpozicia);
+      vectorSource.clear();
+      vectorSource.addFeature(novaKlikFeature);
+
       });
 
 /*
@@ -149,14 +160,7 @@ var switchLayer = function(evt){
         console.log(coord);
       });
 */
-        // definovanie štýlu pre bod, čo skúšam
-      var styl = new ol.style.Style({
-          image: new ol.style.Circle({
-            radius: 5,
-            fill: new ol.style.Fill({color: '#666666'}),
-            stroke: new ol.style.Stroke({color: '#bada55', width: 1})
-          })
-      });
+
 
       // create a Geolocation object setup to track the position of the device
       var geolocation = new ol.Geolocation({
@@ -179,9 +183,14 @@ var switchLayer = function(evt){
         var p = geolocation.getPosition();
         console.log(p[0] + ' : ' + p[1]);
         view.setCenter(ol.proj.transform([parseFloat(p[0]), parseFloat(p[1])],'EPSG:4326', 'EPSG:3857'));
-
+      var zoompozicia        = new ol.geom.Point(ol.proj.transform([parseFloat(p[0]), parseFloat(p[1])], 'EPSG:4326', 'EPSG:3857'));
+      var novaFeature = new ol.Feature(zoompozicia);
+      vectorSource.clear();
+      vectorSource.addFeature(novaFeature);
         view.setZoom(17);
+
       });
+
     }
     </script>
 

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\AbstractType;
+use App\Form\HiddenDateTimeType;
 use App\Entity\Zoology;
 use App\Entity\LkpzoospeciesAves;
 use App\Entity\Lkppristupnost;
@@ -13,6 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -34,11 +36,34 @@ class ZoologyType  extends AbstractType
         if ($aPom == 'sk')
         {
         $builder
-            ->add('zoology_longitud',null, ['label' => 'zoology.longitud', 'scale' => 5])
-            ->add('zoology_latitud',null, ['label' => 'zoology.latitud', 'scale' => 5])
-            ->add('zoology_locality',null,[ 'label' => 'nazov.lokality'])
-	    ->add('zoology_date',DateType::class,[ 
+          ->add('zoology_longitud', 
+                $options['disable_field'] == true ? HiddenType::class : null, 
+                $options['disable_field'] == true ? [] : [
+                    'label' => 'zoology.longitud', 
+                    'scale' => 5,
+                    'disabled' => $options['disable_field']
+                  ]
+                )
+                ->add('zoology_latitud',
+                $options['disable_field'] == true ? HiddenType::class : null, 
+                $options['disable_field'] == true ? [] : [
+                    'label' => 'zoology.latitud', 
+                    'scale' => 5,
+                    'disabled' => $options['disable_field']
+                  ]
+                )
+                ->add('zoology_locality',
+                 $options['disable_field'] == true ? HiddenType::class : null,                  
+                 $options['disable_field'] == true ? [] : [ 
+              'label' => 'nazov.lokality',
+              'disabled' => $options['disable_field']
+            ])
+            ->add('zoology_date',
+                 $options['disable_field'] == true ? HiddenDateTimeType::class : DateType::class,
+                 $options['disable_field'] == true ? ['required' => true] :    [ 
 		    'label' => 'zoology.date',
+                    'disabled' => $options['disable_field'],
+                    'data' => (isset($options['data']) && $options['data']->getZoologyDate() !== null) ? $options['data']->getZoologyDate() :new \DateTime(),   
 		    'widget' => 'single_text',
                     'html5' => false,
 		    'attr' => [
@@ -56,8 +81,13 @@ class ZoologyType  extends AbstractType
                             'keepOpen' => false,
                             'autoclose' => true,
 		    ],
- 	    ])
-            ->add('zoology_description',null, ['label' => 'zoology.description'])
+                  ])
+              ->add('zoology_description',
+                $options['disable_field'] == true ? HiddenType::class : null, 
+                $options['disable_field'] == true ? [] : [
+              'label' => 'zoology.description',
+             'disabled' => $options['disable_field']
+            ])
 	    ->add('zoology_accessibility', EntityType::class, [
 	      'class' => Lkppristupnost::class,
 	      'choice_label' => function ($lkppristupnost){
@@ -79,6 +109,7 @@ class ZoologyType  extends AbstractType
               ])
 	    ->add('count', null, [
 		    'label' => 'pocet',
+                    'data' => (isset($options['data']) && $options['data']->getCount() !== null) ? $options['data']->getCount() : 1   
 	    ])
 	    ->add('lkpzoochar_id', EntityType::class, [
 	      'class' => Lkpzoochar::class,
@@ -89,7 +120,14 @@ class ZoologyType  extends AbstractType
 		      return $er->createQueryBuilder('u')
 			      ->orderBy('u.lkpzoochar_comborder', 'ASC');
 	      },
-              'label' => 'charakteristika'
+              'label' => 'charakteristika',
+              /* nedarí sa
+              'data' => (isset($options['data']) && $options['data']->getLkpzoocharId() !== null) ? $options['data']->getLkpzoocharId() : function (EntityRepository $em) {
+                var_dump($em->getReference(Lkpzoochar::class, 36 ));
+              }
+        */
+              'placeholder' => 'charakteristika.vyzva.polozka',
+     // nedarí sa        'data' => 'M_MV' // $em->getReference(Lkpzoochar, 36)
 	      ]
              )
             ->add('description',null, ['label' => 'zoospecies.description'])
@@ -100,11 +138,30 @@ class ZoologyType  extends AbstractType
             else
            {
 	   $builder
-            ->add('zoology_longitud',null, ['label' => 'zoology.longitud'])
-            ->add('zoology_latitud',null, ['label' => 'zoology.latitud'])
-            ->add('zoology_locality',null,[ 'label' => 'nazov.lokality'])
+             ->add('zoology_longitud',
+                    $options['disable_field'] == true ? HiddenType::class : null, 
+                    $options['disable_field'] == true ? [] : [
+              'label' => 'zoology.longitud',
+              'scale' => 5,
+              'disabled' => $options['disable_field']
+            ])
+            ->add('zoology_latitud',
+                     $options['disable_field'] == true ? HiddenType::class : null,
+                     $options['disable_field'] == true ? [] : [
+              'label' => 'zoology.latitud',
+              'scale' => 5,
+              'disabled' => $options['disable_field']
+            ])
+            ->add('zoology_locality',
+                 $options['disable_field'] == true ? HiddenType::class : null,                  
+                 $options['disable_field'] == true ? [] :[ 
+              'label' => 'nazov.lokality',
+              'disabled' => $options['disable_field']
+            ])
 	    ->add('zoology_date',DateType::class,[ 
 		    'label' => 'zoology.date',
+                    'disabled' => $options['disable_field'],
+                    'data' => (isset($options['data']) && $options['data']->getZoologyDate() !== null) ? $options['data']->getZoologyDate() :new \DateTime(),   
 		    'widget' => 'single_text',
                     'html5' => false,
                     'attr' => [
@@ -123,7 +180,12 @@ class ZoologyType  extends AbstractType
                             'autoclose' => true
 		    ],
  	    ])
-            ->add('zoology_description',null, ['label' => 'zoology.description'])
+            ->add('zoology_description',
+                $options['disable_field'] == true ? HiddenType::class : null, 
+                $options['disable_field'] == true ? [] : [
+              'label' => 'zoology.description',
+              'disabled' => $options['disable_field']
+            ])
 	    ->add('zoology_accessibility', EntityType::class, [
 	      'class' => Lkppristupnost::class,
 	      'choice_label' => function ($lkppristupnost){
@@ -132,7 +194,7 @@ class ZoologyType  extends AbstractType
               'label' => 'zoology.acces'
 	      ])
               ->add('lkpzoospecies_id', null, [
-                            'placeholder' => 'druh.vyzva.polozka',
+              'placeholder' => 'druh.vyzva.polozka',
 	      'choice_label' => function ($lkpzoospeciesAves){
 		       return $lkpzoospeciesAves->getLkpzoospeciesLat(); 
               },
@@ -142,7 +204,10 @@ class ZoologyType  extends AbstractType
 			      ->orderBy('d.lkpzoospecies_subspecorder', 'ASC');
 	      },
               ])
-            ->add('count', null, ['label' => 'pocet'])
+              ->add('count', null, [
+                'label' => 'pocet',
+                'data' => (isset($options['data']) && $options['data']->getCount() !== null) ? $options['data']->getCount() : 1   
+              ])
             ->add('lkpzoochar_id', EntityType::class, [
 	      'class' => Lkpzoochar::class,
 	      'choice_label' =>  function($lkpzoochar){ 
@@ -153,6 +218,7 @@ class ZoologyType  extends AbstractType
 		      return $er->createQueryBuilder('u')
 			      ->orderBy('u.lkpzoochar_comborder', 'ASC');
 	      },
+              'placeholder' => 'charakteristika.vyzva.polozka',
 	      ]
              )
             ->add('description',null, ['label' => 'zoospecies.description'])
@@ -166,6 +232,7 @@ class ZoologyType  extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Zoology::class,
+            'disable_field' => false
         ]);
     }
 }

@@ -34,9 +34,11 @@
                 <td>{{ zaznam.lkpzoocharId }}</td>
                 <td>{{ zaznam.zoologyAccessibility }}</td>
                 <td>
-                  <a href="{{ path('zoology_show', {'id': zaznam.id})  }}" class="">{% trans %}show{% endtrans %}</a>
-                  <a href="{{ path('zoology_edit', {'id': zaznam.id})}}"   class="" >{% trans %}edit{% endtrans %}</a>
-                  <a href="{{ path('zoology_vzor', {'id': zaznam.id})}}"   class="" >{% trans %}Vzor{% endtrans %}</a>
+                  <a href="{{ path('zoology_show', {'id': zaznam.id})  }}" class="badge badge-info">{% trans %}show{% endtrans %}</a>
+                  <a href="{{ path('zoology_edit', {'id': zaznam.id})}}"   class="badge badge-warning" >{% trans %}edit{% endtrans %}</a>
+                  <a href="{{ path('zoology_vzor', {'id': zaznam.id, 'pridavanieDruhu' : 'ano'})}}"   class="badge badge-success" >{% trans %}Pridaj.Druh{% endtrans %}</a>
+                  <a href="{{ path('zoology_vzor', {'id': zaznam.id})}}"   class="badge badge-success" >{% trans %}Vzor{% endtrans %}</a>
+
                 </td>
             </tr>
         {% else %}

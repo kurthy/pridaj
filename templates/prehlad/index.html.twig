@@ -9,14 +9,14 @@
     {% if app.user %}
       <ul>
           <li>{% trans %}z.excelu{% endtrans %}</li>
-          <li><a class="nav-link" href="{{ path('newzoology') }}">{% trans %}z.mobilu{% endtrans %}</a></li>
+          <li><a class="badge badge-primary" href="{{ path('newzoology') }}">{% trans %}z.mobilu{% endtrans %}</a></li>
       </ul>
 
     <h2>{% trans %}nadpis.prehlad.pozorani{% endtrans %} </h2>
       <ul>
-          <li><a class="nav-link" href="{{ path('zoology_index') }}">{% trans %}link.na.zoznam.pozorovani{% endtrans %}</a></li>
+          <li><a class="badge badge-primary" href="{{ path('zoology_index') }}">{% trans %}link.na.zoznam.pozorovani{% endtrans %}</a></li>
       </ul>
-      <p><small>{% trans %}je.prihlaseny{% endtrans %}:  {{ app.user.username }} ({{ app.user.firstname }} ), <a href="{{ path('app_logout') }}">{% trans %}odhlasit{% endtrans %}</a> </small></p>
+      <p><small>{% trans %}je.prihlaseny{% endtrans %}:  {{ app.user.username }} ({{ app.user.firstname }} ), <a href="{{ path('app_logout') }}" class="badge badge-primary">{% trans %}odhlasit{% endtrans %}</a> </small></p>
 
 
 

@@ -191,7 +191,7 @@
       </trans-unit>
       <trans-unit id="ZQpClqy" resname="Vzor">
         <source>Vzor</source>
-        <target>Vzor</target>
+        <target>Vzor pre ďalší záznam</target>
       </trans-unit>
       <trans-unit id="HnO3zkE" resname="novy.zaznam.vzor">
         <source>novy.zaznam.vzor</source>

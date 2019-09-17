@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="sk" target-language="sk" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="4y1zwVS" resname="zaznam.zalozeny.zo.vzoru">
+        <source>zaznam.zalozeny.zo.vzoru</source>
+        <target>Záznam {zaznam} bol založený pomocou vzoru.</target>
+      </trans-unit>
+      <trans-unit id="Cd2lpjS" resname="zaznam.zalozeny">
+        <source>zaznam.zalozeny</source>
+        <target>Záznam {zaznam} bol založený.</target>
+      </trans-unit>
+      <trans-unit id="OVzOIZD" resname="zaznam.upraveny">
+        <source>zaznam.upraveny</source>
+        <target>Záznam {zaznam} bol upravený.</target>
+      </trans-unit>
+      <trans-unit id="5N8gstn" resname="zaznam.zmazany">
+        <source>zaznam.zmazany</source>
+        <target>Záznam {zaznam} bol zmazaný.</target>
+      </trans-unit>
+      <trans-unit id="m_itCKE" resname="zaznam.nezmazany">
+        <source>zaznam.nezmazany</source>
+        <target>Záznam {zaznam} nebol zmazaný.</target>
+      </trans-unit>
+      <trans-unit id="charakteristika.vyzva.polozka" resname="charakteristika.vyzva.polozka">
+        <source>charakteristika.vyzva.polozka</source>
+        <target>Zvoľte vhodnú charakteristiku...</target>
+      </trans-unit>
+      <trans-unit id="zaznam.zalozeny.pridaj.druh" resname="zaznam.zalozeny.pridaj.druh">
+        <source>zaznam.zalozeny.pridaj.druh</source>
+        <target>Záznam {zaznam} bol založený ako ďalší druh k rovnakej lokalite.</target>
+      </trans-unit>
+      <trans-unit id="Oznamenie" resname="Oznamenie">
+        <source>Oznamenie</source>
+        <target>Oznámenie!</target>
+      </trans-unit>
+      <trans-unit id="ZrLeE6g" resname="Pridaj.Druh">
+        <source>Pridaj.Druh</source>
+        <target>Pridať ďalší druh k tomuto pozorovaniu</target>
+      </trans-unit>
+      <trans-unit id="ZrLeE6g.Podrobny.Nadpis" resname="Pridaj.Druh.Podrobny.Nadpis">
+        <source>Pridaj.Druh.Podrobny.Nadpis</source>
+        <target>Pridať ďalší druh k tomuto pozorovaniu: {lokalita}, {datum}</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

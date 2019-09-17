@@ -3,7 +3,11 @@
 {% block title %}{% trans %}novy.zaznam.vzor{% endtrans %}{% endblock %}
 
 {% block body %}
-    <h1>{% trans %}novy.zaznam.vzor{% endtrans %}</h1>
+  {% if app.request.get('pridavanieDruhu') == 'ano' %} 
+    <h3>{{'Pridaj.Druh.Podrobny.Nadpis'|trans({'%lokalita%': form.vars.value.zoologyLocality, '%datum%' : form.vars.value.zoologyDate|date('d.m.Y')}) }}</h3>
+  {% else %} 
+  <h1>{% trans %}novy.zaznam.vzor{% endtrans %}</h1>
+  {% endif %}
     {{ include('zoology/_form.html.twig') }}
 
     <a class="btn btn-primary" href="{{ path('zoology_index') }}">{% trans %}back to list{% endtrans %}</a>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="sk" target-language="sk" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="4y1zwVS" resname="zaznam.zalozeny.zo.vzoru">
+        <source>zaznam.zalozeny.zo.vzoru</source>
+        <target>Record {zaznam} was succesfully created by pattern.</target>
+      </trans-unit>
+      <trans-unit id="Cd2lpjS" resname="zaznam.zalozeny">
+        <source>zaznam.zalozeny</source>
+        <target>Record {zaznam} was succesfully created.</target>
+      </trans-unit>
+      <trans-unit id="OVzOIZD" resname="zaznam.upraveny">
+        <source>zaznam.upraveny</source>
+        <target>Record {zaznam} was changed.</target>
+      </trans-unit>
+      <trans-unit id="5N8gstn" resname="zaznam.zmazany">
+        <source>zaznam.zmazany</source>
+        <target>Record {zaznam} was deleted.</target>
+      </trans-unit>
+      <trans-unit id="m_itCKE" resname="zaznam.nezmazany">
+        <source>zaznam.nezmazany</source>
+        <target>Record {zaznam} was NOT deleted.</target>
+      </trans-unit>
+      <trans-unit id="charakteristika.vyzva.polozka" resname="charakteristika.vyzva.polozka">
+        <source>charakteristika.vyzva.polozka</source>
+        <target>Choose a suitable charakteristic...</target>
+      </trans-unit>
+      <trans-unit id="zaznam.zalozeny.pridaj.druh" resname="zaznam.zalozeny.pridaj.druh">
+        <source>zaznam.zalozeny.pridaj.druh</source>
+        <target>Record {zaznam} was successfully created as next species for the same locality.</target>
+      </trans-unit>
+      <trans-unit id="Oznamenie" resname="Oznamenie">
+        <source>Oznamenie</source>
+        <target>Message!</target>
+      </trans-unit>
+      <trans-unit id="ZrLeE6g" resname="Pridaj.Druh">
+        <source>Pridaj.Druh</source>
+        <target>Add another species to this locality</target>
+      </trans-unit>
+      <trans-unit id="ZrLeE6g.Podrobny.Nadpis" resname="Pridaj.Druh.Podrobny.Nadpis">
+        <source>Pridaj.Druh.Podrobny.Nadpis</source>
+        <target>Add another species to this locality: {lokalita}, {datum}</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,9 +1,11 @@
 //assets/js/pager.js
 module.export = $('#dtBasicExample').dataTable({
   pagingType: "full_numbers",
+  "order": [[ 0, 'desc' ]], 
 });
 module.export = $('#dtBasicExamplesk').dataTable({
   pagingType: "full_numbers",
+  "order": [[ 0, 'desc' ]], 
   language: 
  {
     "sEmptyTable":     "Nie sú k dispozícii žiadne dáta",
