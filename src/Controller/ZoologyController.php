@@ -60,6 +60,7 @@ class ZoologyController extends AbstractController
     if($form->isSubmitted() && $form->isValid()) {
 	   $zoology = $form->getData();	
 	   $zoology->setSfGuardUserId($this->getUser()->getSfGuardUserId());
+	   $zoology->setZoologyExport('N');
   //         dd($zoology);
 	   $em->persist($zoology);
            $em->flush();
@@ -142,6 +143,7 @@ class ZoologyController extends AbstractController
     $zoology->setZoologyLatitud($zoovzor->getZoologyLatitud());
     $zoology->setZoologyLocality($zoovzor->getZoologyLocality());
     $zoology->setZoologyDescription($zoovzor->getZoologyDescription());
+    $zoology->setZoologyExport('N');
 
 //   $zoology->setZoologyAccessibility($zoovzor->getZoologyAccessibility());
 //   $zoology->setCount($zoovzor->getCount());

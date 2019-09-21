@@ -71,7 +71,7 @@ class ZoologyTest extends TestCase
   public function testPolozkaZoologyDescription()
   {
     $oZoo = new Zoology();
-    $length = 356;
+    $length = 255;
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randomString = '';
     for ($i = 0; $i < $length; $i++) {
@@ -80,6 +80,15 @@ class ZoologyTest extends TestCase
     $chPom256 = $randomString; 
     $oZoo->setZoologyDescription($chPom256);
     $this->assertSame(255, strlen($oZoo->getZoologyDescription()), ' Položka má mať maximum char255, dĺžka zapísaného reťazca je však '.strlen($chPom256));
+  }
+
+  public function testPolozkyZoologyExport()
+  {
+
+    $oZoo = new Zoology();
+    $chPom = 'N';
+    $oZoo->setZoologyExport($chPom);
+    $this->assertSame($chPom, $oZoo->getZoologyExport(),'Zoology_export položka enum s hodnotami N,E,I,Z');
   }
 }
 

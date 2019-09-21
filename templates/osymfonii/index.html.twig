@@ -5,7 +5,7 @@
 {% block body %}
 <div class="container">
   <div class="jumbotron">
-    <h2>{% trans %}o.symfonii{% endtrans %}</h2>
+    <h3>{% trans %}o.symfonii{% endtrans %}</h3>
     <p>Aves-Symfónia 4 je súčasťou databázového systému AVES Symfónia Slovenskej ornitologickej spoločnosti SOS/BL. Hlavná databáza sídli na  <a href="https://aves.vtaky.sk">aves.vtaky.sk</a>. Tam sa nachádzajú hlavné dáta a program vyvíjaný už 10 rokov.</p>
 <p>Táto stránka má cieľ poskytovať:</p>
     <ul>
@@ -20,6 +20,47 @@
       <li>&#9874; Prerobenie celého AVES Symfónia zo Sf.1 na Sf.4</li>
     </ul>
     <p>Využívame najnovšie verzie vývojových nástrojov.</p>
+  </div>
+  <div class="jumbotron">
+    <h3>Aktuálna verzia Aves-Symfónia 4: {{ constant('App\\Utilities\\Konstanty::VERZIA_PRIDAJ') }}</h3>
+   <p>Nové funkcionality:</p>
+   <ul>
+     <li>&#9989; <strong>Pridať ďalší druh k pozorovaniu</strong>. Po zápise prvého druhu je možné k tej istej lokalite pridávať ďalšie druhy. Voľba je prístupná v zozname pozorovaní alebo pri zobrazení konkrétneho pozorovania.</li>
+     <li>&#9989; Uložené nové záznamy alebo upravené záznamy sú presmerované na zobrazenie záznamu.</li> 
+     <li>&#9989; O výsledku ukladania, úpravy alebo mazania je generované jednorázová <strong>informatívna hláška</strong> v hornej časti obrazoky.</li
+     <li>&#9989; Ušetrenie hľadania na mape ak sme znova na rovnakej lokalite. Možnosť pridať nový záznam z rovnakej lokality <strong>"Vzor pre ďalší záznam"</strong> </li>
+     <li> &#9989; Pozícia na mape je ohraničená zeleným kruhom, klikaním na mapu sa posúva na miesto kliknutia. Ak je kruh červený (zobrazenie záznamu), vtedy len ukazuje kde boli zadané súradnice a nedá sa meniť.</li>
+   </ul>
+ 
+   <p>Plán pre ďalšiu verzie</p>
+   <ul>
+     <li>&#9874; posielanie dát do centrálneho Avesu</li>
+     <li>&#9874; odoslaný záznam nech sa už nedá upravovať, iba použiť ako vzor</li>
+     <li>&#9874; import hromadne z excel súboru</li>
+     <li>&#9874; iné živočíšne skupiny</li>
+     <li>&#9874; ďalšie položky formuláru, buď voliteľne užívateľom alebo ak užívateľ pracuje nie cez mobil ale napríklad cez veľkú obrazovku počítača</li>
+     <li>&#9874; synchronizovanie užívateľov, ak sa registruje nový na AVES-e alebo si zmení e-mail a užívateľské meno, tak tie isté zmeny urobiť v tabuľke užívateľov i tu</li>
+     <li>&#9874; záznamy aktivít, zapísaných záznamov, poslaných, importovaných z excelu a podobne</li>
+   </ul>  
+
+   <p>Nové funkcionality verzie 1.3</p>
+   <ul>
+     <li>&#9989; poradie v prehľade od najnovšieho záznamu</li>
+     <li>&#9989;"bug", bola vymenená z.šírka s dĺžkou!</li>
+     <li>&#9989; predvyplnenie dnešného dátum a predvyplnenie počtu 1 </li>
+     <li>&#9989; mapa pridať ortofotomozaiku, OpenTopoMap je priehľadná</li>
+    </ul>
+
+   <p>Nové funkcionality verzie 1.2</p>
+   <ul>
+     <li>&#9989; keď klikáme do mapy, mapa  zobrazuje súradnica do položiek formulára, rovno do zoology_longitud a zoology_latitud</li>
+    </ul>
+
+   <p>Nové funkcionality verzie 1.1</p>
+   <ul>
+     <li>&#9989; keď máme https://pridaj.nasesk.info, "s" bezpečné, potom sa opýta či smie priblížiť mapu na lokalitu mobilu/počítača</li>
+     <li>&#9989; SK a EN verzia podľa prihlásenia</li>
+    </ul>
   </div>
 </div>
 {% endblock %}

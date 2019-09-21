@@ -97,6 +97,11 @@ class Zoology
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="string", length=1, nullable=true)
+     */
+    private $zoology_export;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -230,6 +235,18 @@ class Zoology
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getZoologyExport(): ?string
+    {
+        return $this->zoology_export;
+    }
+
+    public function setZoologyExport(?string $zoology_export): self
+    {
+        $this->zoology_export = $zoology_export;
 
         return $this;
     }
