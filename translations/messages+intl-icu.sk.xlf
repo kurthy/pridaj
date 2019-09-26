@@ -45,6 +45,10 @@
         <source>Pridaj.Druh.Podrobny.Nadpis</source>
         <target>Pridať ďalší druh k tomuto pozorovaniu: {lokalita}, {datum}</target>
       </trans-unit>
+      <trans-unit id="uz.je.v.avese" resname="uz.je.v.avese">
+        <source>uz.je.v.avese</source>
+        <target>Záznam bol okopírovaný do AVES-u.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

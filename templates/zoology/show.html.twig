@@ -156,8 +156,11 @@
         </tbody>
     </table>
     <div>
-
+ {% if zoozaznam.zoologyExport != 'E' %}
     <a class="btn btn-warning btn-sm" href="{{ path('zoology_edit', {'id': zoozaznam.id}) }}">{% trans %}edit{% endtrans %}</a>
+ {% else %}
+    <div class="badge badge-light">{% trans %}uz.je.v.avese{% endtrans %}</div>
+ {% endif %}
     <a class="btn btn-primary btn-sm" href="{{ path('zoology_index') }}">{% trans %}back to list{% endtrans %}</a>
     <br /><br />
     <a class="btn btn-success" href="{{ path('zoology_vzor', {'id': zoozaznam.id, 'pridavanieDruhu' : 'ano' }) }}">{% trans %}Pridaj.Druh{% endtrans %}</a>

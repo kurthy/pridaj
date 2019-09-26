@@ -45,6 +45,10 @@
         <source>Pridaj.Druh.Podrobny.Nadpis</source>
         <target>Add another species to this locality: {lokalita}, {datum}</target>
       </trans-unit>
+      <trans-unit id="uz.je.v.avese" resname="uz.je.v.avese">
+        <source>uz.je.v.avese</source>
+        <target>Record was copied to AVES.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

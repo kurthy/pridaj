@@ -81,26 +81,51 @@ class ZoologyController extends AbstractController
      * @Route("/{id}/edit", name="zoology_edit", methods={"GET","POST"})
      * @Security("is_granted('ROLE_USER')")
      */
-    public function edit(Request $request, Zoology $zoozaznam, TranslatorInterface $translator): Response
+    public function edit(Request $request, Zoology $zoozaznam, TranslatorInterface $translator, EntityManagerInterface $em): Response
     {
-        $form = $this->createForm(ZoologyType::class, $zoozaznam);
-        $form->handleRequest($request);
+        //upraviť sa nesmie záznam, ak bol exportovaný do AVES-u!
+        if($zoozaznam->getZoologyExport() <> 'E'): 
+          //zabrániť exportu do AVES počas editácie zmenou zoology_export na Z
+          $oPomZoo = $this->getDoctrine()->getRepository(Zoology::class)->find($zoozaznam->getId());
+          $oPomZoo->setZoologyExport('Z');
+          $em->persist($oPomZoo);
+          $em->flush();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+          $form = $this->createForm(ZoologyType::class, $zoozaznam);
+          $form->handleRequest($request);
+
+          if ($form->isSubmitted() && $form->isValid()) {
+              $this->getDoctrine()->getManager()->flush();
+
+             //zabrániť exportu do AVES počas editácie zmenou zoology_export na Z, teraz nazad na N
+          
+             $oPomZoo2 = $this->getDoctrine()->getRepository(Zoology::class)->find($zoozaznam->getId());
+          $oPomZoo2->setZoologyExport('N');
+          $em->persist($oPomZoo2);
+          $em->flush();
+
+              $this->addFlash(
+              'notice',
+              $translator->trans('zaznam.upraveny',[ 'zaznam' => $zoozaznam->getId()] )
+            );
+              return $this->redirectToRoute('zoology_show', [ 'id' => $zoozaznam->getId() ]);
+
+          }
+
+          return $this->render('zoology/edit.html.twig', [
+              'zoozaznam' => $zoozaznam,
+              'form' => $form->createView(),
+          ]);
+
+        else:
 
             $this->addFlash(
             'notice',
-            $translator->trans('zaznam.upraveny',[ 'zaznam' => $zoozaznam->getId()] )
+            $translator->trans('zaznam.exportovany.do.avesu',[ 'zaznam' => $zoozaznam->getId()] )
           );
             return $this->redirectToRoute('zoology_show', [ 'id' => $zoozaznam->getId() ]);
 
-        }
-
-        return $this->render('zoology/edit.html.twig', [
-            'zoozaznam' => $zoozaznam,
-            'form' => $form->createView(),
-        ]);
+        endif;
     }
     /**
      * @Route("/{id}", name="zoology_delete", methods={"DELETE"})

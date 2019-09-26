@@ -25,23 +25,28 @@
     <h3>Aktuálna verzia Aves-Symfónia 4: {{ constant('App\\Utilities\\Konstanty::VERZIA_PRIDAJ') }}</h3>
    <p>Nové funkcionality:</p>
    <ul>
-     <li>&#9989; <strong>Pridať ďalší druh k pozorovaniu</strong>. Po zápise prvého druhu je možné k tej istej lokalite pridávať ďalšie druhy. Voľba je prístupná v zozname pozorovaní alebo pri zobrazení konkrétneho pozorovania.</li>
-     <li>&#9989; Uložené nové záznamy alebo upravené záznamy sú presmerované na zobrazenie záznamu.</li> 
-     <li>&#9989; O výsledku ukladania, úpravy alebo mazania je generované jednorázová <strong>informatívna hláška</strong> v hornej časti obrazoky.</li
-     <li>&#9989; Ušetrenie hľadania na mape ak sme znova na rovnakej lokalite. Možnosť pridať nový záznam z rovnakej lokality <strong>"Vzor pre ďalší záznam"</strong> </li>
-     <li> &#9989; Pozícia na mape je ohraničená zeleným kruhom, klikaním na mapu sa posúva na miesto kliknutia. Ak je kruh červený (zobrazenie záznamu), vtedy len ukazuje kde boli zadané súradnice a nedá sa meniť.</li>
+     <li>&#9989; <strong>Odosielanie dát do centrálneho AVES-u</strong>. Aves si kopíruje k sebe jednotlivé záznamy. Ak boli vytvorené pridávaním ďalších druhov k rovnakej lokalite, vytvorí z nich ako zvyčajne jeden záznam s mnohými druhmi. Dopočítava k nim lokalitné údaje a ako pozorovateľa dá autora záznamu.</li>
+     <li>&#9989; odoslaný záznam sa tu už nedá upravovať, iba použiť ako vzor. Editujte prosím už len v Aves-e.</li> 
+     <li>&#9989; počas úpravy existujúceho záznamu AVES počká, kým sa dokončí editácia záznamu.</li>
    </ul>
  
    <p>Plán pre ďalšiu verzie</p>
    <ul>
-     <li>&#9874; posielanie dát do centrálneho Avesu</li>
-     <li>&#9874; odoslaný záznam nech sa už nedá upravovať, iba použiť ako vzor</li>
      <li>&#9874; import hromadne z excel súboru</li>
      <li>&#9874; iné živočíšne skupiny</li>
      <li>&#9874; ďalšie položky formuláru, buď voliteľne užívateľom alebo ak užívateľ pracuje nie cez mobil ale napríklad cez veľkú obrazovku počítača</li>
      <li>&#9874; synchronizovanie užívateľov, ak sa registruje nový na AVES-e alebo si zmení e-mail a užívateľské meno, tak tie isté zmeny urobiť v tabuľke užívateľov i tu</li>
      <li>&#9874; záznamy aktivít, zapísaných záznamov, poslaných, importovaných z excelu a podobne</li>
    </ul>  
+
+   <p>Nové funkcionality verzie 1.4</p>
+   <ul>
+     <li>&#9989; <strong>Pridať ďalší druh k pozorovaniu</strong>. Po zápise prvého druhu je možné k tej istej lokalite pridávať ďalšie druhy. Voľba je prístupná v zozname pozorovaní alebo pri zobrazení konkrétneho pozorovania.</li>
+     <li>&#9989; Uložené nové záznamy alebo upravené záznamy sú presmerované na zobrazenie záznamu.</li> 
+     <li>&#9989; O výsledku ukladania, úpravy alebo mazania je generované jednorázová <strong>informatívna hláška</strong> v hornej časti obrazoky.</li
+     <li>&#9989; Ušetrenie hľadania na mape ak sme znova na rovnakej lokalite. Možnosť pridať nový záznam z rovnakej lokality <strong>"Vzor pre ďalší záznam"</strong> </li>
+     <li> &#9989; Pozícia na mape je ohraničená zeleným kruhom, klikaním na mapu sa posúva na miesto kliknutia. Ak je kruh červený (zobrazenie záznamu), vtedy len ukazuje kde boli zadané súradnice a nedá sa meniť.</li>
+   </ul>
 
    <p>Nové funkcionality verzie 1.3</p>
    <ul>
