@@ -49,6 +49,10 @@
         <source>uz.je.v.avese</source>
         <target>Záznam bol okopírovaný do AVES-u.</target>
       </trans-unit>
+      <trans-unit id="Save.And.Add.Species" resname="Save.And.Add.Species">
+        <source>Save.And.Add.Species</source>
+        <target>Uložiť a pridať ďalší druh k tomuto pozorovaniu</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

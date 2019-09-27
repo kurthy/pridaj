@@ -1,12 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %}Zoology index{% endblock %}
 {% block body %}
-  {% for message in app.flashes('notice') %}
-      <div class="flash-notice alert alert-success alert-dismissible fade show">
-          <strong>Oznámenie!</strong> {{ message|trans }}
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-      </div>
-  {% endfor %}
+    {{ include('zoology/_flash_form.html.twig') }}
   <div class="row header" style="text-align:center;color:green">
   <h2>{% trans %}prehlad.zapisanych.pozorovani{% endtrans %}</h2>
   </div>

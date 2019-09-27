@@ -121,17 +121,24 @@ class ZoologyType  extends AbstractType
 			      ->orderBy('u.lkpzoochar_comborder', 'ASC');
 	      },
               'label' => 'charakteristika',
+/*              'preferred_choices' => function (EntityRepository $er){
+        		      $res = $er->createQueryBuilder('u')
+			      ->where('u.id =', 36 );             
+                              var_dump($res);
+              },
+ */
               /* nedarí sa
               'data' => (isset($options['data']) && $options['data']->getLkpzoocharId() !== null) ? $options['data']->getLkpzoocharId() : function (EntityRepository $em) {
                 var_dump($em->getReference(Lkpzoochar::class, 36 ));
               }
         */
-              'placeholder' => 'charakteristika.vyzva.polozka',
+            //  'placeholder' => 'charakteristika.vyzva.polozka',
      // nedarí sa        'data' => 'M_MV' // $em->getReference(Lkpzoochar, 36)
 	      ]
              )
             ->add('description',null, ['label' => 'zoospecies.description'])
             ->add('save', SubmitType::class, ['attr' => ['class' => 'btn-success btn'], 'label' => 'save'])
+            ->add('saveAndAdd', SubmitType::class, ['attr' => ['class' => 'btn-success btn'], 'label' => 'Save.And.Add.Species'])
             ->add('reset', ResetType::class, ['label' => 'reset'])
         ;
 	    }
@@ -218,11 +225,12 @@ class ZoologyType  extends AbstractType
 		      return $er->createQueryBuilder('u')
 			      ->orderBy('u.lkpzoochar_comborder', 'ASC');
 	      },
-              'placeholder' => 'charakteristika.vyzva.polozka',
+        // netreba, aby bola prvá položka tá doporučovaná      'placeholder' => 'charakteristika.vyzva.polozka',
 	      ]
              )
             ->add('description',null, ['label' => 'zoospecies.description'])
             ->add('save', SubmitType::class, ['attr' => ['class' => 'btn-danger btn'], 'label' => 'save'])
+            ->add('saveAndAdd', SubmitType::class, ['attr' => ['class' => 'btn-success btn'], 'label' => 'Save.And.Add.Species'])
             ->add('reset', ResetType::class, ['label' => 'reset'])
         ;	   
       }

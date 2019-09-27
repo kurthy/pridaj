@@ -58,18 +58,31 @@ class ZoologyController extends AbstractController
     $form = $this->createForm(ZoologyType::class, $zoology);
     $form->handleRequest($request);
     if($form->isSubmitted() && $form->isValid()) {
+
+
 	   $zoology = $form->getData();	
 	   $zoology->setSfGuardUserId($this->getUser()->getSfGuardUserId());
 	   $zoology->setZoologyExport('N');
   //         dd($zoology);
 	   $em->persist($zoology);
            $em->flush();
-          
+
+           $cPomZazDetFlash =  $zoology->getId().' ('.$zoology->getZoologyLocality().', '.$zoology->getZoologyDate()->format('Y-m-d').', '.$zoology->getLkpzoospeciesId().')';
+
            $this->addFlash(
             'notice',
-            $translator->trans('zaznam.zalozeny',[ 'zaznam' => $zoology->getId()] )
+            $translator->trans('zaznam.zalozeny',[ 'zaznam' => $cPomZazDetFlash ] )
           );
-            return $this->redirectToRoute('zoology_show', [ 'id' => $zoology->getId() ]);
+
+           $nextAction = $form->get('saveAndAdd')->isClicked()
+           ? 'zoology_vzor'
+           : 'zoology_show';
+
+            if ($nextAction == 'zoology_vzor'): 
+              return $this->redirectToRoute($nextAction, [ 'id' => $zoology->getId(), 'pridavanieDruhu' => 'ano' ]);
+            else:
+              return $this->redirectToRoute($nextAction, [ 'id' => $zoology->getId() ]);
+            endif;
     }
 
 
@@ -104,11 +117,13 @@ class ZoologyController extends AbstractController
           $em->persist($oPomZoo2);
           $em->flush();
 
-              $this->addFlash(
-              'notice',
-              $translator->trans('zaznam.upraveny',[ 'zaznam' => $zoozaznam->getId()] )
-            );
-              return $this->redirectToRoute('zoology_show', [ 'id' => $zoozaznam->getId() ]);
+          $cPomZazDetFlash =  $zoology->getId().' ('.$zoology->getZoologyLocality().', '.$zoology->getZoologyDate()->format('Y-m-d').', '.$zoology->getLkpzoospeciesId().')';
+
+          $this->addFlash(
+            'notice',
+            $translator->trans('zaznam.upraveny',[ 'zaznam' => $cPomZazDetFlash ] )
+          );
+            return $this->redirectToRoute('zoology_show', [ 'id' => $zoozaznam->getId() ]);
 
           }
 
@@ -119,9 +134,11 @@ class ZoologyController extends AbstractController
 
         else:
 
+           $cPomZazDetFlash =  $zoology->getId().' ('.$zoology->getZoologyLocality().', '.$zoology->getZoologyDate()->format('Y-m-d').', '.$zoology->getLkpzoospeciesId().')';
+
             $this->addFlash(
             'notice',
-            $translator->trans('zaznam.exportovany.do.avesu',[ 'zaznam' => $zoozaznam->getId()] )
+            $translator->trans('zaznam.exportovany.do.avesu',[ 'zaznam' =>  $cPomZazDetFlash  ] )
           );
             return $this->redirectToRoute('zoology_show', [ 'id' => $zoozaznam->getId() ]);
 
@@ -188,14 +205,26 @@ class ZoologyController extends AbstractController
 	   $em->persist($zoology);
            $em->flush();
 
+
+           $cPomZazDetFlash =  $zoology->getId().' ('.$zoology->getZoologyLocality().', '.$zoology->getZoologyDate()->format('Y-m-d').', '.$zoology->getLkpzoospeciesId().')';
            //rozlíšiť dve situácie, zaznam.zalozny.zo.vzoru a zaznam.zalozeny.pridaj.druh
            $this->addFlash(
             'notice',
             $lPom == true ? 
-              $translator->trans('zaznam.zalozeny.pridaj.druh',[ 'zaznam' => $zoology->getId()] )
+              $translator->trans('zaznam.zalozeny.pridaj.druh',[ 'zaznam' => $cPomZazDetFlash ] )
             :
-              $translator->trans('zaznam.zalozeny.zo.vzoru',[ 'zaznam' => $zoology->getId()] )
+              $translator->trans('zaznam.zalozeny.zo.vzoru',[ 'zaznam' => $cPomZazDetFlash ] )
           );
+
+           $nextAction = $form->get('saveAndAdd')->isClicked()
+           ? 'zoology_vzor'
+           : 'zoology_show';
+
+            if ($nextAction == 'zoology_vzor'): 
+              return $this->redirectToRoute($nextAction, [ 'id' => $zoology->getId(), 'pridavanieDruhu' => 'ano' ]);
+            else:
+              return $this->redirectToRoute($nextAction, [ 'id' => $zoology->getId() ]);
+            endif;
             return $this->redirectToRoute('zoology_show', [ 'id' => $zoology->getId() ]);
     }
 

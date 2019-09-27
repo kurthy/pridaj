@@ -3,6 +3,8 @@
 {% block title %}{% trans %}novy.zaznam.vzor{% endtrans %}{% endblock %}
 
 {% block body %}
+<div class="container">
+    {{ include('zoology/_flash_form.html.twig') }}
   {% if app.request.get('pridavanieDruhu') == 'ano' %} 
     <h3>{{'Pridaj.Druh.Podrobny.Nadpis'|trans({'%lokalita%': form.vars.value.zoologyLocality, '%datum%' : form.vars.value.zoologyDate|date('d.m.Y')}) }}</h3>
   {% else %} 
@@ -12,4 +14,5 @@
 
     <a class="btn btn-primary" href="{{ path('zoology_index') }}">{% trans %}back to list{% endtrans %}</a>
     {# neviem načo dával to "new" tento riadok: include('zoology/_delete_form.html.twig') #}
+</div>
 {% endblock %}

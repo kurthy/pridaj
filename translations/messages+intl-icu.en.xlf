@@ -49,6 +49,10 @@
         <source>uz.je.v.avese</source>
         <target>Record was copied to AVES.</target>
       </trans-unit>
+      <trans-unit id="Save.And.Add.Species" resname="Save.And.Add.Species">
+        <source>Save.And.Add.Species</source>
+        <target>Save and add another species to this locality</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
