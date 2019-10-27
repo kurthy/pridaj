@@ -6,109 +6,104 @@ namespace App\Tests\Entity;
 use PHPUnit\Framework\TestCase;
 use App\Entity\Lkpzoochar;
 
+
 class LkpzoocharTest extends TestCase
 {
+  protected static $oChar;
+
+  public static function setUpBeforeClass(): void
+  {
+    self::$oChar = new Lkpzoochar();
+  }
+
   public function testPolozkaId()
   {
-    $oChar = new Lkpzoochar();
-    $this->assertNull($oChar->getId());
+    $this->assertNull(self::$oChar->getId());
   }
 
   public function testPolozkaIdCh()
   {
-    $oChar = new Lkpzoochar();
     $chPom = 'D12'; 
-    $oChar->setLkpzoocharIdCh($chPom);
-    $this->assertSame($chPom, $oChar->getLkpzoocharIdCh());
+    self::$oChar->setLkpzoocharIdCh($chPom);
+    $this->assertSame($chPom, self::$oChar->getLkpzoocharIdCh());
   }
 
   public function testPolozkaMeaning()
   {
-     $oChar = new Lkpzoochar();   
      $chPom = 'Vylietané mláďatá';
-     $oChar->setLkpzoocharMeaning($chPom);
-     $this->assertSame($chPom,$oChar->getLkpzoocharMeaning());
+     self::$oChar->setLkpzoocharMeaning($chPom);
+     $this->assertSame($chPom,self::$oChar->getLkpzoocharMeaning());
   }
 
   public function testPolozkaPopularmeaning()
   {
-    $oChar = new Lkpzoochar();
     $chPom = 'Dlšie vysvetlenie významu skratky charakteristiky';
-    $oChar->setLkpzoocharPopularmeaning($chPom);
-    $this->assertSame($chPom, $oChar->getLkpzoocharPopularmeaning());
+    self::$oChar->setLkpzoocharPopularmeaning($chPom);
+    $this->assertSame($chPom, self::$oChar->getLkpzoocharPopularmeaning());
   }
 
   public function testPolozkaDescription()
   {
-    $oChar = new Lkpzoochar();
     $chPom = 'Podrobné vysvetlenie významu skratky charakteristiky';
-    $oChar->setLkpzoocharDescription($chPom);
-    $this->assertSame($chPom, $oChar->getLkpzoocharDescription());
+    self::$oChar->setLkpzoocharDescription($chPom);
+    $this->assertSame($chPom, self::$oChar->getLkpzoocharDescription());
   }
 
   public function testPolozkaExpertise()
   {
-    $oChar = new Lkpzoochar();
     $chPom = 'Presne neviem načo využiť túto položku, no už tu bola';
-    $oChar->setLkpzoocharExpertise($chPom);
-    $this->assertSame($chPom, $oChar->getLkpzoocharExpertise());
+    self::$oChar->setLkpzoocharExpertise($chPom);
+    $this->assertSame($chPom, self::$oChar->getLkpzoocharExpertise());
   }
 
   public function testPolozkaComborder()
   {
-    $oChar = new Lkpzoochar();
     $iPom  = 13;
-    $oChar->setLkpzoocharComborder($iPom);
-    $this->assertSame($iPom, $oChar->getLkpzoocharComborder());
+    self::$oChar->setLkpzoocharComborder($iPom);
+    $this->assertSame($iPom, self::$oChar->getLkpzoocharComborder());
 
   }
 
   public function testPolozkaPopularmeaningde()
   {
-    $oChar = new Lkpzoochar();
     $chPom = 'Beschreibung in deutsche Sprache';
-    $oChar->setLkpzoocharPopularmeaningde($chPom);
-    $this->assertSame($chPom, $oChar->getLkpzoocharPopularmeaningde());
+    self::$oChar->setLkpzoocharPopularmeaningde($chPom);
+    $this->assertSame($chPom, self::$oChar->getLkpzoocharPopularmeaningde());
   }
 
   public function testPolozkaPopularmeaningen()
   {
-    $oChar = new Lkpzoochar();
     $chPom = 'Description of meaning in english language';
-    $oChar->setLkpzoocharPopularmeaningen($chPom);
-    $this->assertSame($chPom, $oChar->getLkpzoocharPopularmeaningen());
+    self::$oChar->setLkpzoocharPopularmeaningen($chPom);
+    $this->assertSame($chPom, self::$oChar->getLkpzoocharPopularmeaningen());
   }
 
   public function testPolozkaPopularmeaninghu()
   {
-    $oChar = new Lkpzoochar();
     $chPom = 'Magyarázat magyar nyelven';
-    $oChar->setLkpzoocharPopularmeaninghu($chPom);
-    $this->assertSame($chPom, $oChar->getLkpzoocharPopularmeaninghu());
+    self::$oChar->setLkpzoocharPopularmeaninghu($chPom);
+    $this->assertSame($chPom, self::$oChar->getLkpzoocharPopularmeaninghu());
   }
 
   public function testPolozkaLkpzoocharaves()
   {
-    $oChar = new Lkpzoochar();
     $bPom  = true;
-    $oChar->setLkpzoocharAves($bPom);
-    $this->assertSame($bPom, $oChar->getLkpzoocharAves());
+    self::$oChar->setLkpzoocharAves($bPom);
+    $this->assertSame($bPom, self::$oChar->getLkpzoocharAves());
   }
 
   public function testPolozkaLkpzoocharMammalia()
   {
-    $oChar = new Lkpzoochar();
     $bPom  = true;
-    $oChar->setLkpzoocharMammalia($bPom);
-    $this->assertSame($bPom, $oChar->getLkpzoocharMammalia());
+    self::$oChar->setLkpzoocharMammalia($bPom);
+    $this->assertSame($bPom, self::$oChar->getLkpzoocharMammalia());
   }
 /*
   public function testPolozkaLkpzoocharOdonata()
   {
-    $oChar = new Lkpzoochar();
     $bPom  = true;
-    $oChar->setLkpzoocharOdonata($bPom);
-    $this->assertSame($bPom, $oChar->getLkpzoocharOdonata());
+    self::$oChar->setLkpzoocharOdonata($bPom);
+    $this->assertSame($bPom, self::$oChar->getLkpzoocharOdonata());
   }
  */
   

@@ -7,45 +7,46 @@ use App\Entity\Lkppristupnost;
 
 class LkppristupnostTest extends TestCase
 {
+  protected static $oPrist;
+  
+  public static function setUpBeforeClass(): void
+  {
+    self::$oPrist = new Lkppristupnost();
+  }
+
   public function testPolozkaId()
   {
-    $oPrist = new Lkppristupnost();
-    $this->assertNull($oPrist->getId());
+    $this->assertNull(self::$oPrist->getId());
   }
 
   public function testPolozkaPristupnost()
   {
-    $oPrist = new Lkppristupnost();
     $chPom  = 'V';
-    $oPrist->setLkppristupnostPristupnost($chPom);
-    $this->assertSame($chPom, $oPrist->getLkppristupnostPristupnost());
+    self::$oPrist->setLkppristupnostPristupnost($chPom);
+    $this->assertSame($chPom, self::$oPrist->getLkppristupnostPristupnost());
   }
 
   public function testPolozkaPopissk()
   {
-    $oPrist = new Lkppristupnost();
     $chPom  = 'Popis skratky V že znamená verejné';
-    $oPrist->setLkppristupnostPopissk($chPom);
-    $this->assertSame($chPom, $oPrist->getLkppristupnostPopissk());
+    self::$oPrist->setLkppristupnostPopissk($chPom);
+    $this->assertSame($chPom, self::$oPrist->getLkppristupnostPopissk());
   }
 
   public function testPolozkaPopisen()
   {
-    $oPrist = new Lkppristupnost();
     $chPom  = 'Explanation of meaning V abbreviation in english language';
-    $oPrist->setLkppristupnostPopisen($chPom);
-    $this->assertSame($chPom, $oPrist->getLkppristupnostPopisen());  
+    self::$oPrist->setLkppristupnostPopisen($chPom);
+    $this->assertSame($chPom, self::$oPrist->getLkppristupnostPopisen());  
   }
 
   public function testToString()
   {
-    $oPrist   = new Lkppristupnost();
     $chPomPri  = 'V';
     $chPomPop  = 'Popis položky V';
-    $oPrist->setLkppristupnostPristupnost($chPomPri);
-    $oPrist->setLkppristupnostPopissk($chPomPop);
-    $this->assertSame($chPomPri, $oPrist->__toString());
+    self::$oPrist->setLkppristupnostPristupnost($chPomPri);
+    self::$oPrist->setLkppristupnostPopissk($chPomPop);
+    $this->assertSame($chPomPri, self::$oPrist->__toString());
   } 
 }
-
 ?>

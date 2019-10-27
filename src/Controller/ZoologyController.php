@@ -117,7 +117,7 @@ class ZoologyController extends AbstractController
           $em->persist($oPomZoo2);
           $em->flush();
 
-          $cPomZazDetFlash =  $zoology->getId().' ('.$zoology->getZoologyLocality().', '.$zoology->getZoologyDate()->format('Y-m-d').', '.$zoology->getLkpzoospeciesId().')';
+          $cPomZazDetFlash =  $zoozaznam->getId().' ('.$zoozaznam->getZoologyLocality().', '.$zoozaznam->getZoologyDate()->format('Y-m-d').', '.$zoozaznam->getLkpzoospeciesId().')';
 
           $this->addFlash(
             'notice',
@@ -134,7 +134,7 @@ class ZoologyController extends AbstractController
 
         else:
 
-           $cPomZazDetFlash =  $zoology->getId().' ('.$zoology->getZoologyLocality().', '.$zoology->getZoologyDate()->format('Y-m-d').', '.$zoology->getLkpzoospeciesId().')';
+           $cPomZazDetFlash =  $zoozaznam->getId().' ('.$zoozaznam->getZoologyLocality().', '.$zoozaznam->getZoologyDate()->format('Y-m-d').', '.$zoozaznam->getLkpzoospeciesId().')';
 
             $this->addFlash(
             'notice',

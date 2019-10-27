@@ -9,50 +9,50 @@ use DateTime;
 
 class ZoologyTest extends TestCase
 {
+  protected static $oZoo;
+  public static function setUpBeforeClass(): void
+  {
+    self::$oZoo = new Zoology();
+  }
+
   public function testPolozkyId()
   {
-    $oZoo = new Zoology();
-    $this->assertNull($oZoo->getId());
+    $this->assertNull(self::$oZoo->getId());
   }
 
   public function testPolozkaSfGuardUserId()
   {
-    $oZoo = new Zoology();
     $iPom = 22;
-    $oZoo->setSfGuardUserId($iPom);
-    $this->assertSame($iPom, $oZoo->getSfGuardUserId());
+    self::$oZoo->setSfGuardUserId($iPom);
+    $this->assertSame($iPom, self::$oZoo->getSfGuardUserId());
   }
 
   public function testPolozkaZoologyDate()
   {
-    $oZoo = new Zoology();
     $dPom = new DateTime('2019-08-25 00:00');
-    $oZoo->setZoologyDate($dPom);
-    $this->assertSame($dPom, $oZoo->getZoologyDate());
+    self::$oZoo->setZoologyDate($dPom);
+    $this->assertSame($dPom, self::$oZoo->getZoologyDate());
   }
 
   public function test_Polozka_Zoology_Longitud()
   {
-    $oZoo = new Zoology();
     $fPom = 17.12345;
-    $oZoo->setZoologyLongitud($fPom);
-    $this->assertSame($fPom, $oZoo->getZoologyLongitud());
+    self::$oZoo->setZoologyLongitud($fPom);
+    $this->assertSame($fPom, self::$oZoo->getZoologyLongitud());
   }
 
   public function test_Polozka_Zoology_Latitud()
   {
-    $oZoo = new Zoology();
     $fPom = 48.12345;
-    $oZoo->setZoologyLatitud($fPom);
-    $this->assertSame($fPom, $oZoo->getZoologyLatitud());
+    self::$oZoo->setZoologyLatitud($fPom);
+    $this->assertSame($fPom, self::$oZoo->getZoologyLatitud());
   }
 
   public function testPolozkaZoologyLocality()
   {
-    $oZoo = new Zoology();
     $chPom = 'Čermeľská dolina';
-    $oZoo->setZoologyLocality($chPom);
-    $this->assertSame($chPom, $oZoo->getZoologyLocality());
+    self::$oZoo->setZoologyLocality($chPom);
+    $this->assertSame($chPom, self::$oZoo->getZoologyLocality());
   }
 
   public function testPolozkyZoologyAccessibility()
@@ -60,17 +60,15 @@ class ZoologyTest extends TestCase
 
     $chPom    = 'V';
 
-    $oZoo     = new Zoology();
     $oPristup = new Lkppristupnost();
     $oPristup->setLkppristupnostPristupnost($chPom);
 
-    $oZoo->setZoologyAccessibility($oPristup);
-    $this->assertSame($chPom, strval($oZoo->getZoologyAccessibility()));
+    self::$oZoo->setZoologyAccessibility($oPristup);
+    $this->assertSame($chPom, strval(self::$oZoo->getZoologyAccessibility()));
   }
 
   public function testPolozkaZoologyDescription()
   {
-    $oZoo = new Zoology();
     $length = 255;
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randomString = '';
@@ -78,20 +76,16 @@ class ZoologyTest extends TestCase
         $randomString .= $characters[rand(0, 33)];
     }
     $chPom256 = $randomString; 
-    $oZoo->setZoologyDescription($chPom256);
-    $this->assertSame(255, strlen($oZoo->getZoologyDescription()), ' Položka má mať maximum char255, dĺžka zapísaného reťazca je však '.strlen($chPom256));
+    self::$oZoo->setZoologyDescription($chPom256);
+    $this->assertSame(255, strlen(self::$oZoo->getZoologyDescription()), ' Položka má mať maximum char255, dĺžka zapísaného reťazca je však '.strlen($chPom256));
   }
 
   public function testPolozkyZoologyExport()
   {
 
-    $oZoo = new Zoology();
     $chPom = 'N';
-    $oZoo->setZoologyExport($chPom);
-    $this->assertSame($chPom, $oZoo->getZoologyExport(),'Zoology_export položka enum s hodnotami N,E,I,Z');
+    self::$oZoo->setZoologyExport($chPom);
+    $this->assertSame($chPom, self::$oZoo->getZoologyExport(),'Zoology_export položka enum s hodnotami N,E,I,Z');
   }
 }
-
-
-
 ?>
