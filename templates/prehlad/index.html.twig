@@ -8,8 +8,9 @@
     <h2>{% trans %}pridaj.pozorovanie{% endtrans %} </h2>
     {% if app.user %}
       <ul>
-          <li>{% trans %}z.excelu{% endtrans %}</li>
           <li><a class="badge badge-primary" href="{{ path('newzoology') }}">{% trans %}z.mobilu{% endtrans %}</a></li>
+          <li><a class="badge badge-primary" href="{{ path('impsubory_index') }}">{% trans %}z.excelu{% endtrans %}</a></li>
+
       </ul>
 
     <h2>{% trans %}nadpis.prehlad.pozorani{% endtrans %} </h2>

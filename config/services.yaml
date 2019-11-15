@@ -5,7 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'sk'
-
+    excelfiles_directory: '%kernel.project_dir%/public/uploads/excelfiles'
 services:
     # default configuration for services in *this* file
     _defaults:

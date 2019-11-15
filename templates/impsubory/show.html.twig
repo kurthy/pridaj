@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Impsubory{% endblock %}
+
+{% block body %}
+    <h1>Impsubory</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ impsubory.id }}</td>
+            </tr>
+            <tr>
+                <th>Sf_guard_user_id</th>
+                <td>{{ impsubory.sfGuardUserId }}</td>
+            </tr>
+            <tr>
+                <th>Impsubor</th>
+                <td>{{ impsubory.impsubor }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ impsubory.created ? impsubory.created|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{{ impsubory.updated ? impsubory.updated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Notice</th>
+                <td>{{ impsubory.notice }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('impsubory_index') }}">back to list</a>
+
+    <a href="{{ path('impsubory_edit', {'id': impsubory.id}) }}">edit</a>
+
+    {{ include('impsubory/_delete_form.html.twig') }}
+{% endblock %}

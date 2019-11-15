@@ -53,6 +53,88 @@
         <source>Save.And.Add.Species</source>
         <target>Save and add another species to this locality</target>
       </trans-unit>
+      <trans-unit id="Impsubor" resname="Impsubor">
+        <source>Impsubor</source>
+        <target>Imported file</target>
+      </trans-unit>
+      <trans-unit id="importovany.kedy" resname="importovany.kedy">
+        <source>importovany.kedy</source>
+        <target>Date and time of upload</target>
+      </trans-unit>
+     <trans-unit id="stav.spracovania" resname="stav.spracovania">
+        <source>stav.spracovania</source>
+        <target>Status progress of import from file</target>
+      </trans-unit>
+     <trans-unit id="prehlad.importovanych.excel.suborov" resname="prehlad.importovanych.excel.suborov">
+        <source>prehlad.importovanych.excel.suborov</source>
+        <target>List of imported excel files</target>
+      </trans-unit>
+     <trans-unit id="importuj.novy.excel.subor" resname="importuj.novy.excel.subor">
+        <source>importuj.novy.excel.subor</source>
+        <target>Upload a new Excel file</target>
+      </trans-unit>
+     <trans-unit id="zoology.export" resname="zoology.export">
+        <source>zoology.export</source>
+        <target>Status of export</target>
+      </trans-unit>
+     <trans-unit id="nieje.pripraveny.hned.do.Avesu" resname="nieje.pripraveny.hned.do.Avesu">
+        <source>nieje.pripraveny.hned.do.Avesu</source>
+        <target>- avoid the immediate import after the save into Aves? (e.g. is expected the change of Nr., Notice ..)</target>
+      </trans-unit>
+     <trans-unit id="zoology.export.kratko" resname="zoology.export.kratko">
+       <source>zoology.export.kratko</source>
+        <target>E.</target>
+      </trans-unit>
+     <trans-unit id="z.este.editacia.nie.do.Avesu" resname="z.este.editacia.nie.do.Avesu">
+       <source>z.este.editacia.nie.do.Avesu</source>
+        <target>to change, finalize the edit, not prepared into Aves yet</target>
+      </trans-unit>
+     <trans-unit id="i.pripraveny.na.export.do.avesu" resname="i.pripraveny.na.export.do.avesu">
+       <source>i.pripraveny.na.export.do.avesu</source>
+        <target>imported, prepared to export into Aves</target>
+      </trans-unit>
+     <trans-unit id="e.uz.bol.poslany.do.avesu" resname="e.uz.bol.poslany.do.avesu">
+       <source>e.uz.bol.poslany.do.avesu</source>
+        <target>exported and imported into Avesu</target>
+      </trans-unit>
+     <trans-unit id="n.este.neexportovany.do.avesu" resname="n.este.neexportovany.do.avesu">
+       <source>n.este.neexportovany.do.avesu</source>
+        <target>new, not exported into Avesu</target>
+      </trans-unit>
+     <trans-unit id="vysvetlenie.vyznamu" resname="vysvetlenie.vyznamu">
+       <source>vysvetlenie.vyznamu</source>
+        <target>explanation of meaning</target>
+      </trans-unit>
+     <trans-unit id="warning" resname="warning">
+       <source>warning</source>
+        <target>warning</target>
+      </trans-unit>
+     <trans-unit id="danger" resname="danger">
+       <source>danger</source>
+        <target>Error</target>
+      </trans-unit>
+     <trans-unit id="success" resname="success">
+       <source>success</source>
+        <target>success</target>
+      </trans-unit>
+     <trans-unit id="info" resname="info">
+       <source>info</source>
+        <target>message</target>
+      </trans-unit>
+     <trans-unit id="load.data" resname="load.data">
+       <source>load.data</source>
+        <target>load data</target>
+      </trans-unit>
+     <trans-unit id="stiahni.vzorovy.excel" resname="stiahni.vzorovy.excel">
+       <source>stiahni.vzorovy.excel</source>
+        <target>sample excel file</target>
+      </trans-unit>
+    <trans-unit id="importuj.z.excel.súboru" resname="importuj.z.excel.súboru">
+       <source>importuj.z.excel.súboru</source>
+        <target>Import data from excel file</target>
+      </trans-unit>
+
+
     </body>
   </file>
 </xliff>

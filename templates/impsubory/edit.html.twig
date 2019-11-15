@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Impsubory{% endblock %}
+
+{% block body %}
+    <h1>Edit Impsubory</h1>
+
+    {{ include('impsubory/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('impsubory_index') }}">back to list</a>
+
+    {{ include('impsubory/_delete_form.html.twig') }}
+{% endblock %}

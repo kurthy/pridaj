@@ -31,6 +31,10 @@ class ApplicationAvailabilityFunctionalTest extends WebTestCase
         yield ['/sk/osymfonii'];
         yield ['/sk/zoology/new'];
         yield ['/en/zoology/new'];
+        yield ['/sk/impsubory/'];
+        yield ['/en/impsubory/'];
+        yield ['/sk/impsubory/new'];
+        yield ['/en/impsubory/new'];
 
         // ...
     }

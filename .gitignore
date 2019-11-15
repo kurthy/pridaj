@@ -3,6 +3,7 @@
 /.env.local.php
 /.env.*.local
 /public/bundles/
+/public/uploads/
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
@@ -28,6 +29,11 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
-<<<<<<< HEAD
+#<<<<<<< HEAD
 poznamky*.txt
->>>>>>> mapabod
+troubleshoot-logs.txt
+#>>>>>>> mapabod
+###> composer a json subory, vsetko co ovplyvnuje symfony sucasti, ktore pri spojeni vetva nesmie prepisovat ###
+composer.*
+/config/
+symfony.lock

@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    {# form_widget(form) #}
+    {{ form_row(form.subor) }}
+    {{ form_row(form.impsubor) }}
+    {{ form_row(form.created) }}
+
+    <button class="btn btn-success">{{ button_label|default('save')|trans|capitalize }}</button>
+<a class="btn btn-outline-primary"  href="{{ path('impsubory_index') }}">{{ 'back to list'|trans|capitalize }}</a>
+
+{{ form_end(form) }}

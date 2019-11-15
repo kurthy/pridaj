@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}prehlad.importovanych.excel.suborov{% endtrans %}{% endblock %}
+{% block body %}
+  <div class="row header" style="text-align:center;color:green">
+    <h2>{% trans %}prehlad.importovanych.excel.suborov{% endtrans %}</h2>
+  </div>
+  <div class="text-center">
+          {{ include('impsubory/_buttons.html.twig') }}
+
+    <table  id={% if  app.request.locale == 'en' %} "dtBasicExample" {% else %} "dtBasicExamplesk" {% endif %} class="table table-striped table-bordered table-responsive"  style="width:100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{% trans %}Impsubor{% endtrans %}</th>
+                <th>{% trans %}importovany.kedy{% endtrans %}</th>
+                <th>{% trans %}stav.spracovania{% endtrans %}</th>
+                <th>{% trans %}actions{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for impsubory in impsubories %}
+            <tr>
+                <td>{{ impsubory.id }}</td>
+                <td>{{ impsubory.impsubor }}</td>
+                <td>{{ impsubory.created ? impsubory.created|date('d.m.Y H:i:s') : '' }}</td>
+                <td>{{ impsubory.notice }}</td>
+                <td>
+                    <a href="{{ path('impsubory_show', {'id': impsubory.id}) }}" class="badge badge-info">{% trans %}show{% endtrans %}</a>
+                    <a href="{{ path('impsubory_edit', {'id': impsubory.id}) }}" class="badge badge-warning" >{{'load.data'|trans|capitalize }}</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr scope="row">
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+          {{ include('impsubory/_buttons.html.twig') }}
+
+</div>
+
+  </div>
+{% endblock %}

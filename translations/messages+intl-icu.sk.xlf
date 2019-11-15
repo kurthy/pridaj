@@ -53,6 +53,99 @@
         <source>Save.And.Add.Species</source>
         <target>Uložiť a pridať ďalší druh k tomuto pozorovaniu</target>
       </trans-unit>
+      <trans-unit id="Impsubor" resname="Impsubor">
+        <source>Impsubor</source>
+        <target>Importovaný súbor</target>
+      </trans-unit>
+      <trans-unit id="importovany.kedy" resname="importovany.kedy">
+        <source>importovany.kedy</source>
+        <target>Dátum a čas nahratia súboru</target>
+      </trans-unit>
+     <trans-unit id="stav.spracovania" resname="stav.spracovania">
+        <source>stav.spracovania</source>
+        <target>Stav postupu importu zo súboru</target>
+      </trans-unit>
+     <trans-unit id="prehlad.importovanych.excel.suborov" resname="prehlad.importovanych.excel.suborov">
+        <source>prehlad.importovanych.excel.suborov</source>
+        <target>Zoznam importovaných excel súborov</target>
+      </trans-unit>
+     <trans-unit id="importuj.novy.excel.subor" resname="importuj.novy.excel.subor">
+        <source>importuj.novy.excel.subor</source>
+        <target>Nahraj excel súbor</target>
+      </trans-unit>
+     <trans-unit id="zoology.export" resname="zoology.export">
+        <source>zoology.export</source>
+        <target>Stav pre export</target>
+      </trans-unit>
+     <trans-unit id="nieje.pripraveny.hned.do.Avesu" resname="nieje.pripraveny.hned.do.Avesu">
+        <source>nieje.pripraveny.hned.do.Avesu</source>
+        <target>- zabrániť aby sa po uložení hneď načítal do Avesu? (napr. budú menené počty, poznámky..atď.)</target>
+      </trans-unit>
+     <trans-unit id="zoology.export.kratko" resname="zoology.export.kratko">
+       <source>zoology.export.kratko</source>
+        <target>E.</target>
+      </trans-unit>
+     <trans-unit id="z.este.editacia.nie.do.Avesu" resname="z.este.editacia.nie.do.Avesu">
+       <source>z.este.editacia.nie.do.Avesu</source>
+        <target>zmeniť, treba dokončiť editáciu, nie je pripravený do Avesu</target>
+      </trans-unit>
+     <trans-unit id="i.pripraveny.na.export.do.avesu" resname="i.pripraveny.na.export.do.avesu">
+       <source>i.pripraveny.na.export.do.avesu</source>
+        <target>importovaný, pripravený na export do Avesu</target>
+      </trans-unit>
+     <trans-unit id="e.uz.bol.poslany.do.avesu" resname="e.uz.bol.poslany.do.avesu">
+       <source>e.uz.bol.poslany.do.avesu</source>
+        <target>exportovaný, už bol poslaný do Avesu</target>
+      </trans-unit>
+     <trans-unit id="n.este.neexportovany.do.avesu" resname="n.este.neexportovany.do.avesu">
+       <source>n.este.neexportovany.do.avesu</source>
+        <target>nový, ešte neexportovaný do Avesu</target>
+      </trans-unit>
+     <trans-unit id="vysvetlenie.vyznamu" resname="vysvetlenie.vyznamu">
+       <source>vysvetlenie.vyznamu</source>
+        <target>vysvetlenie významu</target>
+      </trans-unit>
+     <trans-unit id="warning" resname="warning">
+       <source>warning</source>
+        <target>varovanie</target>
+      </trans-unit>
+     <trans-unit id="danger" resname="danger">
+       <source>danger</source>
+        <target>chyba</target>
+      </trans-unit>
+     <trans-unit id="success" resname="success">
+       <source>success</source>
+        <target>úspech</target>
+      </trans-unit>
+     <trans-unit id="info" resname="info">
+       <source>info</source>
+        <target>oznámenie</target>
+      </trans-unit>
+     <trans-unit id="load.data" resname="load.data">
+       <source>load.data</source>
+        <target>načítať údaje</target>
+      </trans-unit>
+     <trans-unit id="stiahni.vzorovy.excel" resname="stiahni.vzorovy.excel">
+       <source>stiahni.vzorovy.excel</source>
+        <target>vzorový excel súbor</target>
+      </trans-unit>
+     <trans-unit id="importuj.z.excel.súboru" resname="importuj.z.excel.súboru">
+       <source>importuj.z.excel.súboru</source>
+        <target>Importuj dáta z excel súboru</target>
+      </trans-unit>
+     <trans-unit id="created" resname="created">
+       <source>Created</source>
+        <target>Vytvorený</target>
+      </trans-unit>
+     <trans-unit id="browse" resname="browse">
+       <source>Browse</source>
+        <target>Nájdi</target>
+      </trans-unit>
+
+
+
+
+
     </body>
   </file>
 </xliff>

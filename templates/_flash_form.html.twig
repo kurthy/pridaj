@@ -1,0 +1,11 @@
+  {# for message in app.flashes('notice') #}
+  {# endfor #}
+  
+  {% for label, messages in app.flashes %}
+    {% for message in messages %}
+      <div class="flash-{{ label }} alert alert-{{ label }} alert-dismissible fade show">
+          <strong>{{ label|trans|capitalize }}!</strong> {{ message }}.
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+    {% endfor %}
+ {% endfor %}

@@ -10,10 +10,10 @@
 <p>Táto stránka má cieľ poskytovať:</p>
     <ul>
       <li>&#9989; <a  href="{{ path('newzoology') }}">Možnosť zápisu pozorovaní</a> aj cez web malých zariadení (mobil, tablet, malý notebook) a <a  href="{{ path('zoology_index') }}"> prezerania zapísaných dát</a>. Zariadenia pripojené na internet.</li>
-      <li>&#9874;Import dát zapísaných v:</li>
+      <li>&#9989;Import dát zapísaných v:</li>
         <ul>
-          <li>&#9874;Excel</li>
-          <li>&#9874;CSV (štrukturovaný text)</li>
+          <li>&#9989; <a href="{{ path('impsubory_index') }}">Excel</a></li>
+          <li>&#9874; CSV (štrukturovaný text)</li>
           <li>&#9989; AVES Symfónia API (API - univerzálny komunikačný nástroj pre posielanie dát, podľa API vytvoriť vlastnými nástrojmi podľa vlastných predstáv)</li>
         </ul>
         <li>&#9989;  <a href="http://api.nasesk.info/api">AVES Symfónia API</a> pre zber dát (univerzálne prostredie, využitie tretími stranami, napríklad aktuálne vyvíjanou mobilnou aplikáciou. Bez nutnosti byť na internete).</li>
@@ -25,6 +25,31 @@
     <h3>Aktuálna verzia Aves-Symfónia 4: {{ constant('App\\Utilities\\Konstanty::VERZIA_PRIDAJ') }}</h3>
    <p>Nové funkcionality:</p>
    <ul>
+     <li>&#9989; Možnosť <strong>zapísať dáta do excel súboru a naraz ich načítať do databázy</strong> v rozsahu položiek ako sa tu dajú aj online zapísať.</li>
+     <ul>
+       <li>Vzorový excel <strong>pridajAves.xls</strong> súbor k dispozícii <a href="{{path('download_file')}}">na stiahnutie</a>. Má viacero záložiek: -druhovník Aves, číselník prístupnosti, číselník charakteristík a príklad.  </li>
+       <li>Druhy možnosť zapisovať ako rod druh, slovensky alebo ako id druhu. Pri slovenčine možno písať s diakritikou alebo úplne bez diakritiky (Kacica lyziciarka namiesto Kačica lyžičiarka) </li>
+       <li>Charakteristiky možno zapisovať iba jedným spôsobom, podľa stĺpca id_ch v číselníku (M_MV, ZIMOVANIE, B2, D16 atď.)</li>
+       <li>Prvý riadok je pre názvy položiek.</li>
+       <li>Najprv urobí kontrolu druhého riadka, či sú dáta podľa vzoru. Ak nie sú v poriadku, podá informáciu o každej chybnej bunke.</li>
+       <li>Ak sú v poriadku načíta záznamy a zakladá ich. Ak je v niektorom riadku chyba na konci podá súhrnnú presnú správu a každom riadku kde bola chyba a každej bunke s chybou v tom riadku. Tie riadky nezakladá. Na konci podá podrobnú informáciu.</li>
+       <li>Možno znovu poslať ten istý excel, už založené záznamy znovu nezakladá (za duplikát považuje, ak už existuje záznam s rovnakými nasledujúcimi položkami: užívateľ, obe súradnice, dátum, druh, počet a charakteristika). Preto je vhodné opraviť chyby v pôvodnom exceli a znovu poslať už opravený súbor.</li>
+       <li>Založené riadky majú označenie veľké <strong>I</strong> (importované). Kým nie sú označené veľkým <strong>N</strong> (neexportované), ostávajú tu a do Avesu sa nenačítavajú, aby ste ich mohli skontrolovať. Pre úplnosť veľkým <strong>E</strong> sú označené už okopírované úspešne do Aves-u. </li>
+
+     </ul>
+     <li>&#9989; Možnosť <strong>označiť</strong> práve vytváraný záznam aby sa po uložení <strong>hneď nenačítal do Avesu</strong>. (napr. budú menené počty, poznámky..atď. kým pozorovanie trvá). V takom prípade má označenie veľké <strong>Z</strong> ("Z" ako vyžadujúce ešte zmeny).</li>
+   </ul>
+ 
+   <p>Plán pre ďalšie verzie</p>
+   <ul>
+     <li>&#9874; iné živočíšne skupiny</li>
+     <li>&#9874; súbežne rozšíriť import cez Excel súbor</li>
+     <li>&#9874; ďalšie položky formuláru, buď voliteľne užívateľom alebo ak užívateľ pracuje nie cez mobil ale napríklad cez veľkú obrazovku počítača</li>
+     <li>&#9874; synchronizovanie užívateľov, ak sa registruje nový na AVES-e alebo si zmení e-mail a užívateľské meno, tak tie isté zmeny urobiť v tabuľke užívateľov i tu</li>
+     <li>&#9874; záznamy aktivít, zapísaných záznamov, poslaných, importovaných z excelu a podobne</li>
+   </ul>  
+   <p>Nové funkcionality verzie 1.4.4</p>
+   <ul>
      <li>&#9989; Nové tlačidlo <strong>Uložiť a pridať ďalší druh k tomuto pozorovaniu</strong>. Ušetrí čas, ak vieme, že píšeme za sebou viacero druhov z rovnakého miesta. (Preskočí zobrazenie uloženého s nutnosťou zísť dole a "stlačiť nový druh pre danú lokalitu".) Ak už píšeme posledný pozorovaný druh, stlačíme jednoduché tlačidlo "Uložiť".</li>
      <li>&#9989; obohatené dynamické informácie v zelenom poli o lokalitu, dátum a druh.</li> 
      <li>&#9989; predvolená charakteristika podľa aktuálneho mesiaca. M_MV jul, august, sept, okt, nov; ZIMOVANIE dec, jan, feb; M_MV  marec; A0 april, maj, jun </li>
@@ -32,15 +57,6 @@
      
    </ul>
  
-   <p>Plán pre ďalšiu verzie</p>
-   <ul>
-     <li>&#9874; import hromadne z excel súboru</li>
-     <li>&#9874; iné živočíšne skupiny</li>
-     <li>&#9874; ďalšie položky formuláru, buď voliteľne užívateľom alebo ak užívateľ pracuje nie cez mobil ale napríklad cez veľkú obrazovku počítača</li>
-     <li>&#9874; synchronizovanie užívateľov, ak sa registruje nový na AVES-e alebo si zmení e-mail a užívateľské meno, tak tie isté zmeny urobiť v tabuľke užívateľov i tu</li>
-     <li>&#9874; záznamy aktivít, zapísaných záznamov, poslaných, importovaných z excelu a podobne</li>
-   </ul>  
-
    <p>Nové funkcionality verzie 1.4.3</p>
    <ul>
      <li>&#9989; <strong>Odosielanie dát do centrálneho AVES-u</strong>. Aves si kopíruje k sebe jednotlivé záznamy. Ak boli vytvorené pridávaním ďalších druhov k rovnakej lokalite, vytvorí z nich ako zvyčajne jeden záznam s mnohými druhmi. Dopočítava k nim lokalitné údaje a ako pozorovateľa dá autora záznamu.</li>

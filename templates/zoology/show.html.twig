@@ -97,7 +97,7 @@
     </script>
 
 <div class="container">
-    {{ include('zoology/_flash_form.html.twig') }}
+    {{ include('_flash_form.html.twig') }}
   <div class="row header" style="text-align:center;color:green">
   <h2>{% trans %}id.zaznamu{% endtrans %} {{ zoozaznam.id }}</h2>
   </div>
@@ -128,6 +128,24 @@
               <th>{% trans %}zoology.description{% endtrans %}</th>
                 <td>{{ zoozaznam.zoologyDescription }}</td>
             </tr>
+             <tr>
+              <th>{% trans %}zoology.export{% endtrans %}</th>
+               {% set Evyznam = 'vysvetlenie.vyznamu'|trans %}
+               {% if zoozaznam.zoologyExport == 'N' %}
+                 {% set Evyznam = 'n.este.neexportovany.do.avesu'|trans %}
+               {% elseif zoozaznam.zoologyExport == 'E'  %}
+                 {% set Evyznam = 'e.uz.bol.poslany.do.avesu'|trans %}
+               {% elseif zoozaznam.zoologyExport == 'Z'  %}
+                 {% set Evyznam = 'z.este.editacia.nie.do.Avesu'|trans %}
+               {% elseif zoozaznam.zoologyExport == 'I'  %}
+                 {% set Evyznam = 'i.pripraveny.na.export.do.avesu'|trans %}
+               {% else %}
+                 {% set Evyznam = '' %}
+               {% endif %}
+
+                <td>{{ zoozaznam.zoologyExport }} - {{ Evyznam }}</td>
+            </tr>
+
              <tr>
               <th>{% trans %}Lkpzoospecies id{% endtrans %}</th>
               <td>{{ zoozaznam.getLkpzoospeciesId.lkpzoospeciesLat }}</td>

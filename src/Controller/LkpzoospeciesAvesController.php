@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * @Route("/lkpzoospecies/aves")
@@ -17,6 +18,7 @@ class LkpzoospeciesAvesController extends AbstractController
 {
     /**
      * @Route("/", name="lkpzoospecies_aves_index", methods={"GET"})
+     * @Security("is_granted('ROLE_USER')")
      */
     public function index(LkpzoospeciesAvesRepository $lkpzoospeciesAvesRepository): Response
     {
@@ -27,6 +29,7 @@ class LkpzoospeciesAvesController extends AbstractController
 
     /**
      * @Route("/new", name="lkpzoospecies_aves_new", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_USER')")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +53,7 @@ class LkpzoospeciesAvesController extends AbstractController
 
     /**
      * @Route("/{id}", name="lkpzoospecies_aves_show", methods={"GET"})
+     * @Security("is_granted('ROLE_USER')")
      */
     public function show(LkpzoospeciesAves $lkpzoospeciesAfe): Response
     {
@@ -60,6 +64,7 @@ class LkpzoospeciesAvesController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="lkpzoospecies_aves_edit", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_USER')")
      */
     public function edit(Request $request, LkpzoospeciesAves $lkpzoospeciesAfe): Response
     {
@@ -80,6 +85,7 @@ class LkpzoospeciesAvesController extends AbstractController
 
     /**
      * @Route("/{id}", name="lkpzoospecies_aves_delete", methods={"DELETE"})
+     * @Security("is_granted('ROLE_USER')")
      */
     public function delete(Request $request, LkpzoospeciesAves $lkpzoospeciesAfe): Response
     {

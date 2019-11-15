@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -88,6 +89,12 @@ class ZoologyType  extends AbstractType
               'label' => 'zoology.description',
              'disabled' => $options['disable_field']
             ])
+            ->add('nieHnedDoAvesu',
+              CheckboxType::class, [
+              'label'    => 'nieje.pripraveny.hned.do.Avesu',
+              'required' => false,
+              'mapped'   => false
+              ])
 	    ->add('zoology_accessibility', EntityType::class, [
 	      'class' => Lkppristupnost::class,
 	      'choice_label' => function ($lkppristupnost){
@@ -193,6 +200,12 @@ class ZoologyType  extends AbstractType
               'label' => 'zoology.description',
               'disabled' => $options['disable_field']
             ])
+         ->add('nieHnedDoAvesu',
+              CheckboxType::class, [
+              'label' => 'nieje.pripraveny.hned.do.Avesu',
+              'mapped'   => false
+              ])
+
 	    ->add('zoology_accessibility', EntityType::class, [
 	      'class' => Lkppristupnost::class,
 	      'choice_label' => function ($lkppristupnost){

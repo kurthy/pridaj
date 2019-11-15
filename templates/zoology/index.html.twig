@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
-{% block title %}Zoology index{% endblock %}
+{% block title %}{% trans %}prehlad.zapisanych.pozorovani{% endtrans %}{% endblock %}
 {% block body %}
-    {{ include('zoology/_flash_form.html.twig') }}
+    {{ include('_flash_form.html.twig') }}
   <div class="row header" style="text-align:center;color:green">
   <h2>{% trans %}prehlad.zapisanych.pozorovani{% endtrans %}</h2>
   </div>
@@ -15,6 +15,7 @@
                 <th>{% trans %}pocet.kratko{% endtrans %}</th>
                 <th>{% trans %}charakteristika.kratko{% endtrans %}</th>
                 <th>{% trans %}zoology.acces.kratko{% endtrans %}</th>
+                <th>{% trans %}zoology.export.kratko{% endtrans %}</th>
                 <th>{% trans %}actions{% endtrans %}</th>
             </tr>
         </thead>
@@ -28,12 +29,16 @@
                 <td>{{ zaznam.count }}</td>
                 <td>{{ zaznam.lkpzoocharId }}</td>
                 <td>{{ zaznam.zoologyAccessibility }}</td>
+                <td>{{ zaznam.zoologyExport }}</td>
                 <td>
                   <a href="{{ path('zoology_show', {'id': zaznam.id})  }}" class="badge badge-info">{% trans %}show{% endtrans %}</a>
                   {% if zaznam.zoologyExport != 'E' %}
                   <a href="{{ path('zoology_edit', {'id': zaznam.id})}}"   class="badge badge-warning" >{% trans %}edit{% endtrans %}</a>
                   {% else %}
                     <div class="badge badge-light">{% trans %}uz.je.v.avese{% endtrans %}</div>
+                  {% endif %}
+                  {% if zaznam.zoologyExport == 'I' %}
+                  <a href="{{ path('zoology_preaves', {'id': zaznam.id})}}"   class="badge badge-warning" >{% trans %}pre Aves{% endtrans %}</a>
                   {% endif %}
 
                   <a href="{{ path('zoology_vzor', {'id': zaznam.id, 'pridavanieDruhu' : 'ano'})}}"   class="badge badge-success" >{% trans %}Pridaj.Druh{% endtrans %}</a>
