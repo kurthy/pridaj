@@ -31,5 +31,25 @@
 
     {% endif %}
   </div>
+  <div class="jumbotron">
+    <h3>{% trans %}o.symfonii{% endtrans %}</h3>
+    <p>Aves-Symfónia 4 je súčasťou databázového systému AVES Symfónia Slovenskej ornitologickej spoločnosti SOS/BL. Hlavná databáza sídli na  <a href="https://aves.vtaky.sk">aves.vtaky.sk</a>. Tam sa nachádzajú hlavné dáta a program vyvíjaný už 10 rokov.</p>
+<p>Táto stránka má cieľ poskytovať:</p>
+    <ul>
+      <li>&#9989; <a  href="{{ path('newzoology') }}">Možnosť zápisu pozorovaní</a> aj cez web malých zariadení (mobil, tablet, malý notebook) a <a  href="{{ path('zoology_index') }}"> prezerania zapísaných dát</a>. Zariadenia pripojené na internet.</li>
+      <li>&#9989;Import dát zapísaných v:</li>
+        <ul>
+          <li>&#9989; <a href="{{ path('impsubory_index') }}">Excel</a> (vzorový excel súbor s pomôckami <a href="{{path('download_file')}}">na stiahnutie</a>)</li>
+          <li>&#9874; CSV (štrukturovaný text)</li>
+          <li>&#9989; AVES Symfónia API (API - univerzálny komunikačný nástroj pre posielanie dát, podľa API vytvoriť vlastnými nástrojmi podľa vlastných predstáv)</li>
+        </ul>
+        <li>&#9989;  <a href="http://api.nasesk.info/api">AVES Symfónia API</a> pre zber dát (univerzálne prostredie, využitie tretími stranami, napríklad aktuálne vyvíjanou mobilnou aplikáciou. Bez nutnosti byť na internete).</li>
+      <li>&#9874; Prerobenie celého AVES Symfónia zo Sf.1 na Sf.4</li>
+    </ul>
+    <p>Využívame najnovšie verzie vývojových nástrojov.</p>
+
+    <p>Aktuálne <a class="navbar-brand " href="{{ path('osymfonii') }}">{{ constant('App\\Utilities\\Konstanty::VERZIA_PRIDAJ') }}</a>
+</p>
+  </div>
 
 {% endblock %}

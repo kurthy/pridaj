@@ -5,7 +5,7 @@ namespace App\Utilities;
 
 class Konstanty{
 
-    const VERZIA_PRIDAJ = ' ver. 1.4.5';
+    const VERZIA_PRIDAJ = ' ver. 1.4.6';
 
 }
 ?>

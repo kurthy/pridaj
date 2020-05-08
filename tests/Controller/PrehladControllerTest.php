@@ -25,11 +25,18 @@ class PrehladControllerTest extends WebTestCase
     $this->assertSelectorTextContains('html a[href*="en"]', 'Sign');
 
 
-    //nemal by mať menu kým sa neprihlási
+    //nemal by mať menu kým sa neprihlási, iba domov
     $this->assertEquals(
-        0,
+        1,
         $crawler->filter('html a[href*="sk"]:contains("Domov")')->count()
     );
+
+    //nemal by mať menu kým sa neprihlási, iba domov
+    $this->assertEquals(
+        0,
+        $crawler->filter('html a[href*="sk"]:contains("Zapísané pozorovania")')->count()
+    );
+
 
     //prihlásenie
     $client = self::createClient([],[

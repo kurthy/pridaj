@@ -26,8 +26,10 @@
                 <td>{{ impsubory.created ? impsubory.created|date('d.m.Y H:i:s') : '' }}</td>
                 <td>{{ impsubory.notice }}</td>
                 <td>
+                  {#
                     <a href="{{ path('impsubory_show', {'id': impsubory.id}) }}" class="badge badge-info">{% trans %}show{% endtrans %}</a>
                     <a href="{{ path('impsubory_edit', {'id': impsubory.id}) }}" class="badge badge-warning" >{{'load.data'|trans|capitalize }}</a>
+                   #}
                 </td>
             </tr>
         {% else %}

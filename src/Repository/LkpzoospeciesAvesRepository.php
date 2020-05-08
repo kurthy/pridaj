@@ -4,7 +4,9 @@ namespace App\Repository;
 
 use App\Entity\LkpzoospeciesAves;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+//use Symfony\Bridge\Doctrine\RegistryInterface;
+//namiesto toho je:
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method LkpzoospeciesAves|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,7 +16,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class LkpzoospeciesAvesRepository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, LkpzoospeciesAves::class);
     }
