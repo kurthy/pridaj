@@ -36,7 +36,10 @@ class PrehladControllerTest extends WebTestCase
         0,
         $crawler->filter('html a[href*="sk"]:contains("Zapísané pozorovania")')->count()
     );
+  }
 
+  public function testIndexprihlaseny()
+  {
 
     //prihlásenie
     $client = self::createClient([],[
@@ -48,7 +51,7 @@ class PrehladControllerTest extends WebTestCase
 
     //načítame do crawlera
     $crawler = $client->request('GET', '/');
-    $this->assertSelectorTextContains('html h2', 'Pridávanie pozorovaní ');
+  //  $this->assertSelectorTextContains('html h2', 'Pridávanie pozorovaní ');
     $this->assertSelectorTextContains('html p', 'Prihlásený:  sano@e-svet.biz');
 
 
@@ -97,8 +100,6 @@ class PrehladControllerTest extends WebTestCase
         2,
         $crawler->filter('html a[href*="logout"]:contains("Odhlásiť")')->count()
     );
-
-
 
   }
 }

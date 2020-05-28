@@ -78,6 +78,9 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "easycorp/easy-deploy-bundle": {
+        "version": "v1.0.6"
+    },
     "egulias/email-validator": {
         "version": "2.1.8"
     },

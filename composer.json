@@ -33,6 +33,7 @@
         "symfony/yaml": "5.0.*"
     },
     "require-dev": {
+        "easycorp/easy-deploy-bundle": "^1.0",
         "symfony/browser-kit": "5.0.*",
         "symfony/css-selector": "5.0.*",
         "symfony/debug-pack": "*",
