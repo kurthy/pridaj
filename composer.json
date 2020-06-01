@@ -6,6 +6,8 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "gedmo/doctrine-extensions": "^2.4",
+        "laminas/laminas-code": "^3.4",
+        "laminas/laminas-eventmanager": "^3.2",
         "phpoffice/phpspreadsheet": "^1.9",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "5.0.*",
