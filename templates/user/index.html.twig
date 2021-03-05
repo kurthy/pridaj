@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container">
+<div class="row header" style="text-align:center;color:green">
+<h1>Zoznam užívateľov</h1>
+    <table id="dtBasicExample" class="table table-striped table-dark table-responsive" >
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Email</th>
+                <th scope="col">Meno užívateľa</th>
+                <th scope="col">Heslo</th>
+                <th scope="col">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for uziv in users %}
+            <tr>
+                <td scope="row">{{ uziv.id }}</td>
+                <td scope="row">{{ uziv.email }}</td>
+                <td scope="row">{{ uziv.username }}</td>
+                <td scope="row">{{ uziv.password }}</td>
+                <td scope="rog">
+                    <a href="{{ path('user_show', {'id': uziv.id})  }}" class="btn btn-primary">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr scope="row">
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

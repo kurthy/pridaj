@@ -60,6 +60,11 @@ class LkpzoospeciesAves
      */
     private $lkpzoospecies_najc;
 
+    /**
+     * @ORM\Column(type="string", length=8, nullable=true)
+     */
+    private $lkpzoospecies_ebirdcode;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -140,6 +145,18 @@ class LkpzoospeciesAves
     public function __toString()
     {
       return $this->getLkpzoospeciesSk();
+    }
+
+    public function getLkpzoospeciesEbirdcode(): ?string
+    {
+        return $this->lkpzoospecies_ebirdcode;
+    }
+
+    public function setLkpzoospeciesEbirdcode(?string $lkpzoospecies_ebirdcode): self
+    {
+        $this->lkpzoospecies_ebirdcode = $lkpzoospecies_ebirdcode;
+
+        return $this;
     }
 
 }

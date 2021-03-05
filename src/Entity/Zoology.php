@@ -102,6 +102,36 @@ class Zoology
      */
     private $zoology_export;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $zoology_timefrom;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $zoology_timeto;
+
+    /**
+     * @ORM\Column(type="boolean",options={"default":false})
+     */
+    private $zoology_completelistofspecies;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $zoology_person;
+
+    /**
+     * @ORM\Column(type="string", length=26, nullable=true)
+     */
+    private $zoology_typpoz;
+
+    /**
+     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
+     */
+    private $zoology_distkm;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -247,6 +277,78 @@ class Zoology
     public function setZoologyExport(?string $zoology_export): self
     {
         $this->zoology_export = $zoology_export;
+
+        return $this;
+    }
+
+    public function getZoologyTimefrom(): ?\DateTimeInterface
+    {
+        return $this->zoology_timefrom;
+    }
+
+    public function setZoologyTimefrom(?\DateTimeInterface $zoology_timefrom): self
+    {
+        $this->zoology_timefrom = $zoology_timefrom;
+
+        return $this;
+    }
+
+    public function getZoologyTimeto(): ?\DateTimeInterface
+    {
+        return $this->zoology_timeto;
+    }
+
+    public function setZoologyTimeto(?\DateTimeInterface $zoology_timeto): self
+    {
+        $this->zoology_timeto = $zoology_timeto;
+
+        return $this;
+    }
+
+    public function getZoologyCompletelistofspecies(): ?bool
+    {
+        return $this->zoology_completelistofspecies;
+    }
+
+    public function setZoologyCompletelistofspecies(bool $zoology_completelistofspecies): self
+    {
+        $this->zoology_completelistofspecies = $zoology_completelistofspecies;
+
+        return $this;
+    }
+
+    public function getZoologyPerson(): ?string
+    {
+        return $this->zoology_person;
+    }
+
+    public function setZoologyPerson(?string $zoology_person): self
+    {
+        $this->zoology_person = $zoology_person;
+
+        return $this;
+    }
+
+    public function getZoologyTyppoz(): ?string
+    {
+        return $this->zoology_typpoz;
+    }
+
+    public function setZoologyTyppoz(?string $zoology_typpoz): self
+    {
+        $this->zoology_typpoz = $zoology_typpoz;
+
+        return $this;
+    }
+
+    public function getZoologyDistkm(): ?string
+    {
+        return $this->zoology_distkm;
+    }
+
+    public function setZoologyDistkm(?string $zoology_distkm): self
+    {
+        $this->zoology_distkm = $zoology_distkm;
 
         return $this;
     }

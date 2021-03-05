@@ -13,11 +13,6 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< symfony/phpunit-bridge ###
-
-###> symfony/web-server-bundle ###
-/.web-server-pid
-###< symfony/web-server-bundle ###
-
 ###< vim tilda and swap files ###
 *~
 *.swp

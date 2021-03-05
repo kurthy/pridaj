@@ -30,7 +30,8 @@ class ZoologyController extends AbstractController
     $user = $this->getUser();
     return $this->render('zoology/index.html.twig', [
       'zoology' => $zoologyRepository->findBy(
-        ['sf_guard_user_id' => $user->getSfGuardUserId()] 
+        ['sf_guard_user_id' => $user->getSfGuardUserId()],
+        ['id' => 'DESC']
       ),
     ]);
 
@@ -63,6 +64,7 @@ class ZoologyController extends AbstractController
 
 	   $zoology = $form->getData();	
 	   $zoology->setSfGuardUserId($this->getUser()->getSfGuardUserId());
+           $zoology->setZoologyCompletelistofspecies(false);
 
      //novému záznamu môže užívateľ zafajknúť že "nie je pripravený hneď do Avesu"
      //vtedy nastaví novému záznamu hodnotu exportu "Z", iba ak nie je hodnota Z
@@ -111,7 +113,6 @@ class ZoologyController extends AbstractController
           if($zoozaznam->getZoologyExport() <> 'Z') $oPomZoo->setZoologyExport('Z');
           $em->persist($oPomZoo);
           $em->flush();
-
           $form = $this->createForm(ZoologyType::class, $zoozaznam);
           $form->handleRequest($request);
 
@@ -132,7 +133,6 @@ class ZoologyController extends AbstractController
 
           $em->persist($oPomZoo2);
           $em->flush();
-
           $cPomZazDetFlash =  $zoozaznam->getId().' ('.$zoozaznam->getZoologyLocality().', '.$zoozaznam->getZoologyDate()->format('Y-m-d').', '.$zoozaznam->getLkpzoospeciesId().')';
 
           $this->addFlash(
@@ -206,6 +206,8 @@ class ZoologyController extends AbstractController
     else:
       $zoology->setZoologyExport('Z');
     endif;
+
+    $zoology->setZoologyCompletelistofspecies(false);
 
 //   $zoology->setZoologyAccessibility($zoovzor->getZoologyAccessibility());
 //   $zoology->setCount($zoovzor->getCount());

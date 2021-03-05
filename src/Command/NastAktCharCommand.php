@@ -85,6 +85,7 @@ class NastAktCharCommand extends Command
 
        $output->writeln('Podľa pravidiel nastavil charakteristiku: '.$aktCharakteristika);
 
+       return Command::SUCCESS;
     }
 }
 ?>

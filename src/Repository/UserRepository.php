@@ -22,6 +22,36 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+   /**
+     * @return User[]
+     */
+    public function najdiUzivatelov()
+    {
+      return $this->createQueryBuilder('u')
+            ->Select('u.id,u.email,u.username,u.password')
+            ->andWhere('u.password = :prazdne')
+            ->setParameter('prazdne','')
+            ->orderBy('u.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+        
+/*
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\Product p
+            WHERE p.price > :price
+            ORDER BY p.price ASC'
+        )->setParameter('price', $price);
+
+        // returns an array of Product objects
+        return $query->getResult();
+*/
+    }
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */
@@ -50,4 +80,18 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
     */
+  /**
+     * @return User[]
+     */
+    public function najdiUzivatela($value)
+    {
+      return $this->createQueryBuilder('u')
+            ->Select('u.id,u.email,u.username,u.password')
+            ->andWhere('u.id = :idcko')
+            ->setParameter('idcko',$value)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+  
 }

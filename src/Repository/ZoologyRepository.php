@@ -46,5 +46,16 @@ class ZoologyRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+   */ 
+
+    public function najdiChecklist($value)
+    {
+        return $this->createQueryBuilder('z')
+            ->andWhere('z.zoology_description like :val')
+            ->setParameter('val', '%'.$value.'%')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 }

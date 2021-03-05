@@ -53,6 +53,11 @@ class User implements UserInterface
      */
     private $sfGuardUserId;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $ebdisnam;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,6 +175,18 @@ class User implements UserInterface
     public function setSfGuardUserId(int $sfGuardUserId): self
     {
         $this->sfGuardUserId = $sfGuardUserId;
+
+        return $this;
+    }
+
+    public function getEbdisnam(): ?string
+    {
+        return $this->ebdisnam;
+    }
+
+    public function setEbdisnam(?string $ebdisnam): self
+    {
+        $this->ebdisnam = $ebdisnam;
 
         return $this;
     }

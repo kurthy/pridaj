@@ -17,6 +17,7 @@
                 <th scope="col">Lkpzoospecies_dynamic_id</th>
                 <th scope="col">Lkpzoospecies_subspecorder</th>
                 <th scope="col">Lkpzoospecies_najc</th>
+                <th scope="col">Lkpzoospecies_ebirdcode</th>
                 <th scope="col">actions</th>
             </tr>
         </thead>
@@ -30,6 +31,7 @@
                 <td scope="row">{{ lkpzoospecies_afe.lkpzoospeciesDynamicId }}</td>
                 <td scope="row">{{ lkpzoospecies_afe.lkpzoospeciesSubspecorder }}</td>
                 <td scope="row">{{ lkpzoospecies_afe.lkpzoospeciesNajc }}</td>
+                <td scope="row">{{ lkpzoospecies_afe.lkpzoospeciesEbirdcode }}</td>
                 <td scope="row">
                     <a href="{{ path('lkpzoospecies_aves_show', {'id': lkpzoospecies_afe.id})  }}" class="btn btn-primary">show</a>
                     <a href="{{ path('lkpzoospecies_aves_edit', {'id': lkpzoospecies_afe.id})}}"   class="btn btn-success" >edit</a>
