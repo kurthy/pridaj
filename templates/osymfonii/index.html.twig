@@ -8,6 +8,24 @@
     <h3>Aktuálna verzia Aves-Symfónia 5: {{ constant('App\\Utilities\\Konstanty::VERZIA_PRIDAJ') }}</h3>
    <p>Nové funkcionality:</p>
    <ul>
+     <li>&#9989; Možnosť <strong>importovať dáta z eBird</strong> zapísané z územia Slovenska. Databáza <a href="http://www.eBird.com">www.eBird.com</a> má aj vydarenú mobilnú aplikáciu. Radi ju používajú aj naši zoológovia. </li>
+     <ul>
+       <li>Všetky pozorovania <strong>z určitého dňa</strong>. Tento proces prebieha denne automaticky.</li>
+       <li>Možnosť načítať jeden záznam ("checklist") z eBird databázy.</li>
+       <li>Návod a podrobnosti: <a href="http://e-svet.biz/symfonak/index.php?title=EBird">Fígle pre rozšírenie eBird záznamu pre dtb. Aves Symfónia</a></li>
+     </ul>
+   </ul>
+ 
+   <p>Plán pre ďalšie verzie</p>
+   <ul>
+     <li>&#9874; iné živočíšne skupiny</li>
+     <li>&#9874; súbežne rozšíriť import cez Excel súbor</li>
+     <li>&#9874; ďalšie položky formuláru, buď voliteľne užívateľom alebo ak užívateľ pracuje nie cez mobil ale napríklad cez veľkú obrazovku počítača</li>
+     <li>&#9874; synchronizovanie užívateľov, ak sa registruje nový na AVES-e alebo si zmení e-mail a užívateľské meno, tak tie isté zmeny urobiť v tabuľke užívateľov i tu</li>
+     <li>&#9874; záznamy aktivít, zapísaných záznamov, poslaných, importovaných z excelu a podobne</li>
+   </ul>  
+   <p>Nové funkcionality verzie 1.4.7</p>
+   <ul>
      <li>&#9989; Možnosť <strong>zapísať dáta do excel súboru a naraz ich načítať do databázy</strong> v rozsahu položiek ako sa tu dajú aj online zapísať.</li>
      <ul>
        <li>Vzorový excel <strong>pridajAves.xls</strong> súbor k dispozícii <a href="{{path('download_file')}}">na stiahnutie</a>. Má viacero záložiek: -druhovník Aves, číselník prístupnosti, číselník charakteristík a príklad.  </li>
@@ -22,15 +40,8 @@
      </ul>
      <li>&#9989; Možnosť <strong>označiť</strong> práve vytváraný záznam aby sa po uložení <strong>hneď nenačítal do Avesu</strong>. (napr. budú menené počty, poznámky..atď. kým pozorovanie trvá). V takom prípade má označenie veľké <strong>Z</strong> ("Z" ako vyžadujúce ešte zmeny).</li>
    </ul>
- 
-   <p>Plán pre ďalšie verzie</p>
-   <ul>
-     <li>&#9874; iné živočíšne skupiny</li>
-     <li>&#9874; súbežne rozšíriť import cez Excel súbor</li>
-     <li>&#9874; ďalšie položky formuláru, buď voliteľne užívateľom alebo ak užívateľ pracuje nie cez mobil ale napríklad cez veľkú obrazovku počítača</li>
-     <li>&#9874; synchronizovanie užívateľov, ak sa registruje nový na AVES-e alebo si zmení e-mail a užívateľské meno, tak tie isté zmeny urobiť v tabuľke užívateľov i tu</li>
-     <li>&#9874; záznamy aktivít, zapísaných záznamov, poslaných, importovaných z excelu a podobne</li>
-   </ul>  
+
+
    <p>Nové funkcionality verzie 1.4.4</p>
    <ul>
      <li>&#9989; Nové tlačidlo <strong>Uložiť a pridať ďalší druh k tomuto pozorovaniu</strong>. Ušetrí čas, ak vieme, že píšeme za sebou viacero druhov z rovnakého miesta. (Preskočí zobrazenie uloženého s nutnosťou zísť dole a "stlačiť nový druh pre danú lokalitu".) Ak už píšeme posledný pozorovaný druh, stlačíme jednoduché tlačidlo "Uložiť".</li>
