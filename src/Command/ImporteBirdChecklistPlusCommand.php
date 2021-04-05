@@ -1,5 +1,5 @@
 <?php
-// src/Command/ImporteBirdChecklistCommand.php
+// src/Command/ImporteBirdChecklistPlusCommand.php
 namespace App\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -16,10 +16,10 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Validator\Constraints\DateTime;
 
-class ImporteBirdChecklistCommand extends Command
+class ImporteBirdChecklistPlusCommand extends Command
 {
     // the name of the command (the part after "bin/console")
-    protected static $defaultName = 'eBird:importchecklist';
+    protected static $defaultName = 'eBird:importchecklistplus';
 
     private $container;
 
@@ -31,8 +31,11 @@ class ImporteBirdChecklistCommand extends Command
     }
     protected function configure()
     {
-      	$this->setDescription('Podľa eBird checklistu importuje dáta z eBird zo Slovenska v mene užívateľa eBird a dáta si potiahne Aves');
+      	$this->setDescription('Podľa eBird checklistu a lokalitnych parametrov importuje dáta z eBird zo Slovenska v mene užívateľa eBird a dáta si potiahne Aves');
         $this->addArgument('checklist',InputArgument::REQUIRED, 'Ktorý checklist spracovať?');
+        $this->addArgument('locName',InputArgument::REQUIRED, 'Meno lokality?');
+        $this->addArgument('lat',InputArgument::REQUIRED, 'Latitude?');
+        $this->addArgument('lng',InputArgument::REQUIRED, 'Longitude?');
 
     }
 
@@ -58,13 +61,9 @@ class ImporteBirdChecklistCommand extends Command
 
       $protocolId =  $durationHrs= $durationMin = $effortDistanceKm = $commentsloc = $obsDt = $aPomobsDt = $allObsReported = $obsDtFrom = $userDisplayName = $obsDtTo = "";
 
-     //$aPomKeysChecklist = array_keys($aChecklist);
-	   //die(var_dump($aChecklist));
-     // die($aChecklist['locId']);
-     //for($ic = 0; $ic < count($aChecklist); $ic++ ){
 
      //naplnenie premennych hodnotami z eBird zaznamu, ktore treba pre Aves zaznam 
-     $locId            = $aChecklist['locId'];
+     $locId           = $aChecklist['locId'];
      $userDisplayName = $aChecklist['userDisplayName'];
      $sfGuardUserId   = $this->setSfguardid($userDisplayName);
 
@@ -91,7 +90,7 @@ class ImporteBirdChecklistCommand extends Command
      $obsDtFrom       = new \DateTime($obsDt);
      $aPomObsDtTo     = date('Y-m-d H:i', strtotime('+'.$durationMin.' minutes', strtotime($obsDt)));
 
-//$output->writeln("$aPomObsDtTo");
+     //$output->writeln("$aPomObsDtTo");
      $obsDtTo         = new \DateTime($aPomObsDtTo);
      //orig code: ('Y-m-d H:i', strtotime('+'.$durationMin.' minutes', strtotime($obsDt)));
      if(array_key_exists('comments',$aChecklist))
@@ -100,66 +99,16 @@ class ImporteBirdChecklistCommand extends Command
      $neimportovatDoAvesu = $this->setNoimport($commentsloc);
      $commentsloc = $this->setCommentsloc($commentsloc,$subId);
 
-
-     //$output->writeln(var_dump($aChecklist));
-
-      $eBirdUrl = 'https://api.ebird.org/v2/product/lists/'.$locId.'?key=82n4s8p912m2';
-
-      $cA = curl_init($eBirdUrl);
-      curl_setopt($cA, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($cA, CURLOPT_HTTPHEADER, array(
-       'Content-Type: application/json', 'Accept: application/json', 'X-eBirdApiToken: 82n4s8p912m2'
-        ));
-      $json4 = curl_exec($cA);
-      curl_close($cA);
-      $output->writeln("získaj dáta z lokalitnej časti eBirdu $locId \n");
-
-      $aData = json_decode($json4, true);
-      $aPomKeys = array_keys($aData);
-      if(count($aData) < 1): //endif line  280
-        $output->writeln("Skúste o 15 minút, nová lokalita ešte nebola u eBird spracovaná! (alebo autor záznamu má v eBird nastavené v profile prísnejšie pravidlá, napríklad nezobrazovať medzi TOP100 a podobne)");
-      //  die("Skúste o pár hodín, založili ste úplne novú lokalitu a ešte nebola u eBird spracovaná!"); 
-       return Command::SUCCESS; //skusim takto lebo v cykle za cely den to zastane
-
-      else: //dolezite else, iba tu je import:
-
-      for($i = 0; $i < count($aData); $i++ ){
-
-         $output->writeln("Loop lokalite eBirdu $locId");
-         $subId = $numSpecies = $locName = $obsDatum = $latitude = $longitude = $obsTime = "";
-
-          foreach($aData[$aPomKeys[$i]] as $key => $value ) {
-          //vsetko
-          //$output->writeln(var_dump($key));
-
-          //naplnenie premennych hodnotami z eBird zaznamu, ktore treba pre Aves zaznam 
-          /**/
-//          if($key == 'userDisplayName') $userDisplayName = $value;
-          if($key == 'numSpecies')      $numSpecies      = $value;
-          if($key == 'loc'):
-            $locName         = $value['name'];
-            $latitude        = $value['latitude'];
-            $longitude       = $value['longitude'];
-
-          endif;
-        }
-
-            break; //stačí zobrať z prvého popisu
-
-      } //for   $aData 
+     $locName         =  $input->getArgument('locName'); 
+     $latitude        =  $input->getArgument('lat'); 
+     $longitude       =  $input->getArgument('lng'); 
 
 
 
+     if(array_key_exists('obs',$aChecklist)): //$aChecklist je vtedy vnorene pole v poli
 
-
-//           endif;
-
-
-
-           if(array_key_exists('obs',$aChecklist)): //$aChecklist je vtedy vnorene pole v poli
-
-             $aPomKeysObs = array_keys($aChecklist['obs']);
-             //$output->writeln(" aPomKeysObs = array_keys(value);".var_dump($aPomKeysObs));
+       $aPomKeysObs = array_keys($aChecklist['obs']);
+       //$output->writeln(" aPomKeysObs = array_keys(value);".var_dump($aPomKeysObs));
 
              for($iobs = 0; $iobs < count($aChecklist['obs']); $iobs++ ){
 
@@ -213,7 +162,7 @@ class ImporteBirdChecklistCommand extends Command
 
                  // $em->persist($xx);
                  // $em->flush();
-                $output->writeln("Časť údajov k checklistu $subId získaná z prehľadu:  \npozorovateľ: $userDisplayName \ndátum: $obsDt \npozorovanie od: $obsTime \nlokalita: $locName \nlatitude: $latitude \nlongitude: $longitude \n");
+                $output->writeln("Časť údajov k checklistu $subId získaná z prehľadu:  \npozorovateľ: $userDisplayName \ndátum: $obsDt \nlokalita: $locName \nlatitude: $latitude \nlongitude: $longitude \n");
 
                $output->writeln("Lokalitná časť checklistu $subId (poznámka je pre každý pozorovaný druh rovnaká, Aves ich spojí): \nprotokol: $protocolId (poznámka: napr. P22 znamená travel, P21 stationar, P20 incidental) \nkompletný zoznam druhov ?: $allObsReported  \ndátum a čas $obsDt \npozorovanie trvalo: $durationHrs v minútach to je $durationMin \ntrasa: $effortDistanceKm km \nkomentár k lokalite: $commentsloc");
 
@@ -226,46 +175,50 @@ class ImporteBirdChecklistCommand extends Command
 
 
 $aPomZapisane = false;
+//vynimky, ludia co uz do urcite datumu prepisali z eBirdu do Avesu rucne
+if ($userDisplayName == 'Jan Dobsovic' and $obsDt <= '2019-12-31' ) $aPomZapisane = true;
+if ($userDisplayName == 'Lukas Sekelsky' and $obsDt <= '2020-04-23' ) $aPomZapisane = true;
+if ($userDisplayName == 'Dusan Kerestur' and $obsDt <= '2020-12-31' ) $aPomZapisane = true;
 
 if($aPomZapisane == false): 
-$z = new Zoology();
-$z->setSfGuardUserId($sfGuardUserId);
-$z->setZoologyPerson($userDisplayName);
-$z->setZoologyDate(new \DateTime($datum[0]));
-$z->setZoologyLongitud($longitude);
-$z->setZoologyLatitud($latitude);
-$z->setZoologyLocality($locName);
+  $z = new Zoology();
+  $z->setSfGuardUserId($sfGuardUserId);
+  $z->setZoologyPerson($userDisplayName);
+  $z->setZoologyDate(new \DateTime($datum[0]));
+  $z->setZoologyLongitud($longitude);
+  $z->setZoologyLatitud($latitude);
+  $z->setZoologyLocality($locName);
 
-if($effortDistanceKm > 0) $z->setZoologyDistkm($effortDistanceKm);
+  if($effortDistanceKm > 0) $z->setZoologyDistkm($effortDistanceKm);
 
-$aPomTypPoz = $this->setTyppoz($protocolId);
-$z->setZoologyTyppoz($aPomTypPoz);
+  $aPomTypPoz = $this->setTyppoz($protocolId);
+  $z->setZoologyTyppoz($aPomTypPoz);
 
-$oPomPrist = $em->getRepository(Lkppristupnost::class)->findOneBy(['lkppristupnost_pristupnost' => 'V']);
-$z->setZoologyAccessibility($oPomPrist); 
-$z->setLkpzoospeciesId($oPomSpec);
-$z->setCount($aPomCount);
-$z->setDescription($commentsdruh); //todo podmienit ak existuje
-$oPomChar = $em->getRepository(Lkpzoochar::class)->findOneBy(['id' => $charid]);
-$z->setLkpzoocharId($oPomChar);
-if($obsDtFrom) $z->setZoologyTimefrom($obsDtFrom);
-if($obsDtTo) $z->setZoologyTimeto($obsDtTo);
-$z->setZoologyCompletelistofspecies($allObsReported);
-$z->setZoologyDescription($commentsloc); //todo nemusi byt vyplnene, osetrit if exists
-if($neimportovatDoAvesu): 
-  $z->setZoologyExport("Z");
-else:
-  $z->setZoologyExport("N"); 
-endif;
-$em->persist($z);
-$em->flush();
+  $oPomPrist = $em->getRepository(Lkppristupnost::class)->findOneBy(['lkppristupnost_pristupnost' => 'V']);
+  $z->setZoologyAccessibility($oPomPrist); 
+  $z->setLkpzoospeciesId($oPomSpec);
+  $z->setCount($aPomCount);
+  $z->setDescription($commentsdruh); //todo podmienit ak existuje
+  $oPomChar = $em->getRepository(Lkpzoochar::class)->findOneBy(['id' => $charid]);
+  $z->setLkpzoocharId($oPomChar);
+  if($obsDtFrom) $z->setZoologyTimefrom($obsDtFrom);
+  if($obsDtTo) $z->setZoologyTimeto($obsDtTo);
+  $z->setZoologyCompletelistofspecies($allObsReported);
+  $z->setZoologyDescription($commentsloc); //todo nemusi byt vyplnene, osetrit if exists
+  if($neimportovatDoAvesu): 
+    $z->setZoologyExport("Z");
+  else:
+    $z->setZoologyExport("N"); 
+  endif;
+  $em->persist($z);
+  $em->flush();
 else:
   $output->writeln("Záznam už je v avese pre užívateľa $userDisplayName a dátum $datum[0].");
 endif;
 
                else: //neexistuje v druhovniku taky druh
                  $output->writeln("Nenašiel sa tento druh: $speciesCode (checklist: $subId");
-                $output->writeln("Časť údajov k checklistu $subId získaná z prehľadu:  \npozorovateľ: $userDisplayName \ndátum: $obsDt \npozorovanie od: $obsTime \nlokalita: $locName \nlatitude: $latitude \nlongitude: $longitude \n");
+                $output->writeln("Časť údajov k checklistu $subId získaná z prehľadu:  \npozorovateľ: $userDisplayName \ndátum: $obsDt \nlokalita: $locName \nlatitude: $latitude \nlongitude: $longitude \n");
 
                $output->writeln("Lokalitná časť checklistu $subId (poznámka je pre každý pozorovaný druh rovnaká, Aves ich spojí): \nprotokol: $protocolId (poznámka: napr. P22 znamená travel, P21 stationar, P20 incidental) \nkompletný zoznam druhov ?: $allObsReported  \ndátum a čas $obsDt \npozorovanie trvalo: $durationHrs v minútach to je $durationMin \ntrasa: $effortDistanceKm km \nkomentár k lokalite: $commentsloc");
 
@@ -280,9 +233,6 @@ endif;
              }
              endif; //koniec pre výber pozorovaní - druhov v jednom checkliste
 
-        endif; // if(count($aData) < 1):  line 119
-        // } //koniec for  $aChecklist 
-     
 
 
        return Command::SUCCESS;

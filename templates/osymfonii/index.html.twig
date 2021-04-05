@@ -8,11 +8,12 @@
     <h3>Aktuálna verzia Aves-Symfónia 5: {{ constant('App\\Utilities\\Konstanty::VERZIA_PRIDAJ') }}</h3>
    <p>Nové funkcionality:</p>
    <ul>
-     <li>&#9989; Možnosť <strong>importovať dáta z eBird</strong> zapísané z územia Slovenska. Databáza <a href="http://www.eBird.com">www.eBird.com</a> má aj vydarenú mobilnú aplikáciu. Radi ju používajú aj naši zoológovia. </li>
+     <li>&#9989; <strong>eBird import</strong> Pridaná nová funkcionalita, nový príkaz "listden" ako možnosť <strong>importovať dáta z eBird</strong>, ktoré doterajší import nezískal. </li>
      <ul>
-       <li>Všetky pozorovania <strong>z určitého dňa</strong>. Tento proces prebieha denne automaticky.</li>
-       <li>Možnosť načítať jeden záznam ("checklist") z eBird databázy.</li>
-       <li>Návod a podrobnosti: <a href="http://e-svet.biz/symfonak/index.php?title=EBird">Fígle pre rozšírenie eBird záznamu pre dtb. Aves Symfónia</a></li>
+       <li>To sú záznamy užívateľov, ktorí majú prísnejšie nastavený svoj profil (napríklad nechcú byť medzi TOP100) a dáta z lokalít, z ktorých zapisovali doteraz len takíto užívatelia.</li>
+       <li>V týchto prípadoch nedokáže získať lokalitné informácie ani cielený import - jeden záznam ("checklist") z eBird databázy.</li>
+       <li>Použitie: <code>pridaj.nasesk.info/sk/listden/rok-mesiac-den</code> napríklad 2021-03-18</li>
+       <li>príkaz vyhľadá všetky záznamy zo Slovenska z daného dňa a doteraz neimportované záznamy importuje s prihladnutím na pravidlá jednotlivých užívateľov (užívateľ xy definoval pri zahájení importu v decembri 2020 od ktorého dátumu už netreba importovať jeho dáta)</li>
      </ul>
    </ul>
  
@@ -24,6 +25,16 @@
      <li>&#9874; synchronizovanie užívateľov, ak sa registruje nový na AVES-e alebo si zmení e-mail a užívateľské meno, tak tie isté zmeny urobiť v tabuľke užívateľov i tu</li>
      <li>&#9874; záznamy aktivít, zapísaných záznamov, poslaných, importovaných z excelu a podobne</li>
    </ul>  
+   <p>Nové funkcionality verzie 1.4.8</p>
+   <ul>
+     <li>&#9989; Možnosť <strong>importovať dáta z eBird</strong> zapísané z územia Slovenska. Databáza <a href="http://www.eBird.com">www.eBird.com</a> má aj vydarenú mobilnú aplikáciu. Radi ju používajú aj naši zoológovia. </li>
+     <ul>
+       <li>Všetky pozorovania <strong>z určitého dňa</strong>. Tento proces prebieha denne.</li>
+       <li>Možnosť načítať jeden záznam ("checklist") z eBird databázy.</li>
+       <li>Návod a podrobnosti: <a href="http://e-svet.biz/symfonak/index.php?title=EBird">Fígle pre rozšírenie eBird záznamu pre dtb. Aves Symfónia</a></li>
+     </ul>
+   </ul>
+ 
    <p>Nové funkcionality verzie 1.4.7</p>
    <ul>
      <li>&#9989; Možnosť <strong>zapísať dáta do excel súboru a naraz ich načítať do databázy</strong> v rozsahu položiek ako sa tu dajú aj online zapísať.</li>

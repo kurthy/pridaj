@@ -103,9 +103,11 @@ class ListChecklisteBirdCommand extends Command
 ));
       $json4 = curl_exec($cA);
       curl_close($cA);
-      $output->writeln("získaj dáta predchádzajúci deň $spracujaktivityzaden kraj $krajkodvalue \n");
+      $output->writeln("získaj dáta za deň $spracujaktivityzaden kraj $krajkodvalue \n");
 
       $aData = json_decode($json4, true);
+
+      $aPomSubId = array();
 
       $aPomKeys = array_keys($aData);
       for($i = 0; $i < count($aData); $i++ ){
@@ -113,16 +115,29 @@ class ListChecklisteBirdCommand extends Command
         $output->writeln("Loop v kraji $krajkodvalue č $i, každý cyklus spracuje jeden konkrétny checklist");
 
         //definovania premennych a v dalsich cykloch ich vyprazdnenie, subId znovu definovať ako pole pre dalsieho poz 
-        $subId = "";
+        $subId   = "";
+        $locName = "";
+        $lat     = "";
+        $lng     = "";
+
 
           //napln dátami o jednom konkrétnom checkliste z jeho popisu zo zoznamu checklistov za den,  
           foreach($aData[$aPomKeys[$i]] as $key => $value ) {
 
-          if($key == 'subId')           $subId     = $value;
+          if($key == 'subId')         $subId   = $value;
+          if($key == 'locName')       $locName = $value;
+          if($key == 'lat')           $lat     = $value;
+          if($key == 'lng')           $lng     = $value;
 
         }
          //zo získaného popisu checklistu vypíš id číslo checklistu 
-         $output->writeln("Hľadám Checklist $subId či je nový.");
+         //over ci sa neopakuje (vystup $aData ma druhy a cisla checkl. sa opak
+         if (!in_array($subId,$aPomSubId)):
+           $aPomSubId[] = $subId;
+           $output->writeln("Hľadám Checklist $subId či je nový.");
+         else: 
+          continue;
+         endif;
 
          //kontrola na zabezpečenie preskočenia importo tohoto presneho checklistu
          $checklistUzImportovany = $em
@@ -134,9 +149,12 @@ class ListChecklisteBirdCommand extends Command
          $output->writeln("Nový Checklist: $subId - ešte nebol importovaný.. importuj");
        
 
-         $command = $this->getApplication()->find('eBird:importchecklist');
+         $command = $this->getApplication()->find('eBird:importchecklistplus');
          $arguments = [
-                  'checklist' => $subId
+                  'checklist' => $subId,
+                  'locName' => $locName,
+                  'lat' => $lat,
+                  'lng' => $lng
               ];
          $importInput = new ArrayInput($arguments); 
          $returnCode = $command->run($importInput, $output);
